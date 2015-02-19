@@ -1,0 +1,195 @@
+//
+// Navs
+// --------------------------------------------------
+
+
+// Base class
+// --------------------------------------------------
+
+.nav {
+	margin-bottom: 0;
+	padding-left: 0; // Override default ul/ol
+	list-style: none;
+	&:extend(.clearfix all);
+
+	> li {
+		position: relative;
+		display: block;
+
+		> a {
+			position: relative;
+			display: block;
+			padding: @nav-link-padding;
+			&:hover,
+			&:focus {
+				text-decoration: none;
+				background-color: @nav-link-hover-bg;
+			}
+		}
+
+		// Disabled state sets text to gray and nukes hover/tab effects
+		&.disabled > a {
+			color: @nav-disabled-link-color;
+
+			&:hover,
+			&:focus {
+				color: @nav-disabled-link-hover-color;
+				text-decoration: none;
+				background-color: transparent;
+				cursor: @cursor-disabled;
+			}
+		}
+	}
+
+	// Open dropdowns
+	.open > a {
+		&,
+		&:hover,
+		&:focus {
+			background-color: @nav-link-hover-bg;
+			border-color: @link-color;
+		}
+	}
+
+	// Prevent IE8 from misplacing imgs
+	//
+	// See https://github.com/h5bp/html5-boilerplate/issues/984#issuecomment-3985989
+	> li > a > img {
+		max-width: none;
+	}
+}
+
+
+// Tabs
+// -------------------------
+
+// Give the tabs something to sit on
+.nav-tabs {
+	text-transform: uppercase;
+	font-weight: bold;
+
+	> li {
+		float: left;
+		padding-right: 3.3106961%;
+
+		&:last-child {
+			padding-right: 0;
+		}
+
+		// Actual tabs (as links)
+		> a {
+			margin-bottom: -1px;
+			font-size: 14px;
+			line-height: @line-height-base;
+			border: 1px solid @nav-tabs-border-color;
+			color: @nav-tabs-color;
+
+			&:hover {
+				color: @nav-tabs-hover-color;
+				background-color: @nav-tabs-hover-bg;
+				border-bottom-color: transparent;
+			}
+
+			@media screen and (max-width: 1420px) {
+				font-size: 13px;
+			}
+			@media screen and (max-width: 1320px) {
+				font-size: 11px;
+			}
+		}
+
+		// Active state, and its :hover to override normal :hover
+		&.active > a {
+			&,
+			&:hover,
+			&:focus {
+				color: @nav-tabs-active-color;
+				background-color: @nav-tabs-active-bg;
+				border-color: @nav-tabs-active-border-color;
+				border-bottom-color: transparent;
+				cursor: default;
+			}
+		}
+	}
+	// pulling this in mainly for less shorthand
+	&.nav-justified {
+		.nav-justified();
+		.nav-tabs-justified();
+	}
+}
+
+
+// Nav variations
+// --------------------------------------------------
+
+// Justified nav links
+// -------------------------
+
+.nav-justified {
+	width: 100%;
+
+	> li {
+		display: table-cell;
+		white-space: nowrap;
+		padding-right: 1.8471338%;
+		float: none;
+		width: 1%;
+
+		> a {
+			margin-bottom: -1px;
+		}
+	}
+
+	> .dropdown .dropdown-menu {
+		top: auto;
+		left: auto;
+	}
+}
+
+// Move borders to anchors instead of bottom of list
+//
+// Mixin for adding on top the shared `.nav-justified` styles for our tabs
+.nav-tabs-justified {
+	border-bottom: 0;
+
+	> li {
+		border-bottom: 1px solid @nav-tabs-justified-border-color;
+
+		> a {
+			border-color: @nav-tabs-justified-border-color @nav-tabs-justified-border-color transparent;
+		}
+	}
+
+	> .active > a,
+	> .active > a:hover,
+	> .active > a:focus {
+		border: 1px solid @nav-tabs-justified-active-border-color;
+		border-bottom-color: @body-bg;
+	}
+}
+
+
+// Tabbable tabs
+// -------------------------
+
+// Hide tabbable panes to start, show them when `.active`
+.tab-content {
+	> .tab-pane {
+		display: none;
+		visibility: hidden;
+	}
+	> .active {
+		display: block;
+		visibility: visible;
+	}
+}
+
+
+// Dropdowns
+// -------------------------
+
+// Specific dropdowns
+.nav-tabs .dropdown-menu {
+	// make dropdown border overlap tab border
+	margin-top: -1px;
+}
