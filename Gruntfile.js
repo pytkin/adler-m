@@ -229,6 +229,9 @@ module.exports = function (grunt) {
 			dist: {
 				src: [
 					'<%= config.bowerConf.directory %>/jquery/dist/jquery.js',
+					'<%= config.bowerConf.directory %>/flexslider/jquery.flexslider.js',
+
+					'<%= config.bowerConf.directory %>/bootstrap/js/affix.js',
 
 					'<%= config.app %>/js/*.js',
 					'!<%= config.app %>/js/app.js'

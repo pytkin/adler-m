@@ -1,0 +1,353 @@
+//
+// Flexslider
+// --------------------------------------------------
+
+
+/* ====================================================================================================================
+* RESETS
+* ====================================================================================================================*/
+
+
+.flex-container,
+.flex-slider {
+  a:hover,
+  a:focus {
+    outline: none;
+  }
+}
+
+.slides,
+.flex-control-nav,
+.flex-direction-nav {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* ====================================================================================================================
+* BASE STYLES
+* ====================================================================================================================*/
+
+
+.flexslider {
+  margin: 0;
+  padding: 0;
+
+  .slides {
+    > li {
+      display: none;
+      -webkit-backface-visibility: hidden;
+    }
+    img {
+      width: 100%;
+      display: block;
+      min-height: 197px;
+    }
+
+    //
+    // Clearfix for the .slides element
+    //
+    &:after {
+      content: "\0020";
+      display: block;
+      clear: both;
+      visibility: hidden;
+      line-height: 0;
+      height: 0;
+    }
+    html[xmlns] & {
+      display: block;
+    }
+    * html & {
+      height: 1%;
+    }
+
+    //
+    // No JavaScript Fallback
+    // If you are not using another script, such as Modernizr, make sure you
+    // include js that eliminates this class on page load
+    //
+    .no-js &{
+      > li{
+        &:first-child {
+          display: block;
+        }
+      }
+    }
+  }
+}
+
+
+
+
+
+/* ====================================================================================================================
+* DEFAULT THEME
+* ====================================================================================================================*/
+
+
+.flexslider {
+  background-color: #cbcdca;
+  position: relative;
+  zoom: 1;
+
+  .slides {
+    zoom: 1;
+  }
+
+  .slide-content {
+    position: absolute;
+    top: 0;
+    right: 88px;
+    width: 395px;
+    padding-top: 48px;
+
+    @media (max-width: 1099px) {
+      right: 19px;
+      height: 100%;
+      padding-top: 28px;
+    }
+    @media (max-width: @screen-xs-max) {
+      width: auto;
+      right: 9px;
+      left: 9px;
+      padding-top: 12px;
+    }
+
+
+    h4 {
+      font-size: 38px;
+      line-height: 1;
+      font-weight: bold;
+      color: #ff5b2d;
+      margin-bottom: 16px;
+      margin-top: 0;
+
+      @media (max-width: 1099px) {
+        font-size: 30px;
+        text-align: right;
+      }
+      @media (max-width: @screen-xs-max) {
+        font-size: 18px;
+        margin-bottom: 12px;
+      }
+    }
+    .scale {
+      font-size: 22px;
+      line-height: 1;
+      font-weight: bold;
+      color: #ff5b2d;
+      margin-bottom: 28px;
+
+      @media (max-width: 1099px) {
+        font-size: 18px;
+        text-align: right;
+      }
+      @media (max-width: @screen-xs-max) {
+        font-size: 12px;
+      }
+    }
+    .description {
+      font-size: 24px;
+      line-height: 36px;
+      color: #fff;
+      font-weight: bold;
+      margin-bottom: 35px;
+
+      @media (max-width: 1099px) and (min-width: @screen-sm-min) {
+        display: none;
+      }
+      @media (max-width: @screen-xs-max) {
+        position: absolute;
+        left: 0;
+        bottom: 30px;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 1.2;
+        margin-bottom: 0;
+        right: 23.3%;
+      }
+      @media (max-width: @screen-xs-min) {
+        font-size: 11px;
+        line-height: 14px;
+      }
+
+      p:last-child {
+        margin-bottom: 0;
+      }
+    }
+    .button {
+      display: inline-block;
+      padding: 0 40px;
+      color: #fff;
+      font-size: 40px;
+      line-height: 51px;
+      height: 51px;
+      font-weight: bold;
+      background-color: #ff5b2d;
+      border-radius: 5px;
+      text-decoration: none;
+
+      @media (max-width: 1099px) {
+        font-size: 30px;
+        padding: 0 18px;
+        position: absolute;
+        right: 0;
+        bottom: 30px;
+      }
+      @media (max-width: @screen-xs-max) {
+        font-size: 14px;
+        padding: 0 5px;
+        line-height: 30px;
+        height: 30px;
+      }
+
+      &:hover,
+      &:focus {
+        background-color: lighten(#ff5b2d, 10%);
+      }
+    }
+  }
+  .flex-control-nav {
+    position: absolute;
+    bottom: 37px;
+    right: 39px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: block;
+    z-index: 5;
+
+    @media (max-width: 1099px) {
+      text-align: center;
+      width: 100%;
+      right: 0;
+    }
+    @media (max-width: @screen-xs-max) {
+      bottom: 10px;
+    }
+
+    li {
+      display: inline-block;
+      vertical-align: middle;
+      margin: 0 11px;
+    }
+    a {
+      display: inline-block;
+      font: 0/0 a;
+      width: 10px;
+      height: 10px;
+      background-color: #ff5b2d;
+      border: 3px solid transparent;
+      border-radius: 50%;
+      cursor: pointer;
+      box-sizing: content-box;
+      background-clip: content-box;
+
+      &.flex-active {
+        background-color: transparent;
+        border-color: #ff5b2d;
+      }
+    }
+  }
+  .flex-direction-nav {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: block;
+
+    .flex-prev,
+    .flex-next {
+      width: 72px;
+      height: 360px;
+      position: absolute;
+      z-index: 10;
+      top: 50%;
+      margin-top: -180px;
+      background-position: center;
+      background-repeat: no-repeat;
+
+      @media (max-width: 1099px) {
+        height: 160px;
+        margin-top: -80px;
+      }
+      @media (max-width: @screen-xs-max) {
+        height: 60px;
+        margin-top: -30px;
+      }
+
+      &:focus,
+      &:hover {
+        outline: 0;
+      }
+    }
+    .flex-prev {
+      left: 0;
+      background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAiCAYAAABr0zihAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyRpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoTWFjaW50b3NoKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo1RjNDNzBFNTJBN0UxMUU0ODIyRUZERkExNjQ1QkQ0MiIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo1RjNDNzBFNjJBN0UxMUU0ODIyRUZERkExNjQ1QkQ0MiI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjVGM0M3MEUzMkE3RTExRTQ4MjJFRkRGQTE2NDVCRDQyIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjVGM0M3MEU0MkE3RTExRTQ4MjJFRkRGQTE2NDVCRDQyIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+yOw5wgAAAPVJREFUeNpi/P//PwORwAmIFRiJ1MANxBeB+BsDSAMReAIQ/wNiN2IU2wDxXyCeA3YNAcWcQHwLiB8DMT8xGnr/Q4AvTAyfYgsg/gPEi5HFcSlmB+IrQPwciIWI0dAKdUoguhw2xcZA/BuIl2MzDF2ADYgvAfFLIBYhRkMj1CkRuAIDmaMPxL+AeB2+oIYxWID4DBC/BWIJYjRUQZ0SQyipgAhtIP4BxJuISYgg4igQvwdiKWI0MEHTO9G5iCwnkexpsoKV5IhDTxphxGogOfGRnLzJykBkZVGSCwH0YsaHWA0kF2QkF5UYhTHJxT0jqRUKQIABAESGVrN4r0vBAAAAAElFTkSuQmCC);
+    }
+    .flex-next {
+      right: 0;
+      background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAAkCAYAAABSSLCCAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyRpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoTWFjaW50b3NoKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo1RjNDNzBFOTJBN0UxMUU0ODIyRUZERkExNjQ1QkQ0MiIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo1RjNDNzBFQTJBN0UxMUU0ODIyRUZERkExNjQ1QkQ0MiI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjVGM0M3MEU3MkE3RTExRTQ4MjJFRkRGQTE2NDVCRDQyIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjVGM0M3MEU4MkE3RTExRTQ4MjJFRkRGQTE2NDVCRDQyIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+hkDb2gAAAOFJREFUeNq0lTsKwlAQRd8Tf6W1iGAtgiC4GgvBwj0oCBZuyEIQXEJACG5DEauoxfMOTiB2cwccOOlOuCTziSmlgGqDIlgLUgRHMJUXWJBHB1zBBbSskjBL39oxkrAHbzBhpK7GzEHTKlVjbhmpjPkCY0aSmDdwBg2rJMw15oaRhAN4ghEj9cAdZKBulYSFxlwzUtmXPzEtDdoHj2rMYOzspcZcMZLEPIECDKMOoaUGIBdqwVOeeH/7EPQnd/1cuo1cDUuPBj2ErnGnFwu9wlzLkl7L9AFwnRr6qEXP+fwIMABTwiIH6t1CsAAAAABJRU5ErkJggg==);
+    }
+  }
+}
+
+.flex-viewport {
+  max-height: 2000px;
+  transition: all 1s ease;
+
+  .loading & {
+    max-height: 300px;
+  }
+}
+
+.carousel li {
+  margin-right: 5px;
+}
+
+
+//
+// Direction Nav
+//
+
+.flex-direction-nav {
+  display: none;
+}
+
+
+//
+// Pause/Play
+//
+
+.flex-pauseplay {
+  display: none;
+}
+
+
+//
+// Control Nav
+//
+
+.flex-control-nav {
+  display: none;
+}
+
+
+
+/* ====================================================================================================================
+* RESPONSIVE
+* ====================================================================================================================*/
+
+@media screen and (max-width: 860px) {
+  .flex-direction-nav {
+    .flex-prev {
+      opacity: 1;
+      left: 10px;
+    }
+
+    .flex-next {
+      opacity: 1;
+      right: 10px;
+    }
+  }
+}

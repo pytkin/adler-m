@@ -11,42 +11,158 @@
 	<body>
 
 		<div class="content-wrapper">
-			<header class="page-header">
+			<header class="site-header" data-spy="affix" data-offset-top="100">
 		        <div class="fixed-part" id="fixed-head">
 		          <div class="top-nav">
-					<ul class="nav main-menu">
-						<li><a href="/ru/info/shop/about/">О магазине</a></li>
-						<li><a href="/ru/info/how2buy/">Оплата и доставка</a></li>
-						<li><a href="/ru/info/faq/">FAQ</a></li>
-						<li><a href="/ru/info/contact/">Контакты</a></li>
+					<ul class="nav menu">
+						<li><a href="#">О магазине</a></li>
+						<li><a href="#">Оплата и доставка</a></li>
+						<li><a href="#">FAQ</a></li>
+						<li><a href="#">Контакты</a></li>
 					</ul>
 					<ul class="nav lang-chooser">
-						<li class="lang active"><a href="/ru/" title="Change to language: ru">ru</a></li>
-						<li class="lang"><a href="/en/" title="Change to language: en">en</a></li>
+						<li class="active"><a href="/ru/" title="Change to language: ru">ru</a></li>
+						<li><a href="/en/" title="Change to language: en">en</a></li>
 					</ul>
 					<ul class="nav social">
-						<li><a class="blog" href="/ru/blog/">Блог</a></li>
-						<li><a class="vk" href="/ru/blog/">ВКонтакте</a></li>
+						<li><a class="blog" href="#">Блог</a></li>
+						<li><a class="vk" href="#">ВКонтакте</a></li>
 					</ul>
 					<ul class="nav auth">
-						<li><a class="auth open-popup" href="/ru/accounts/login/">Вход</a></li>
-						<li><a class="register open-popup" href="/ru/accounts/signup/">Регистрация</a></li>
+						<li><a class="signin open-popup" href="#">Вход</a></li>
+						<!-- <li><span class="signed">Здравствуй, <a href="#">Василий</a></span></li> -->
+						<li class="divider"></li>
+						<li><a class="register open-popup" href="#">Регистрация</a></li>
 					</ul>
+				  </div><!-- /.top-nav -->
+		          <div class="bottom-nav">
+		          	<div class="nav-header">
+						<span class="logo">
+							<img src="dist/img/logo.png" alt="">
+						</span>
+						<a href="#" class="catalog-menu-toggle" id="show-catalog-menu">
+							<span class="bar"></span>
+							<span class="bar"></span>
+							<span class="bar"></span>
+						</a>
+		          	</div>
+					<span class="slogan">Лучшие коллекционные модели<br>автомобилей со всего мира!</span>
+
+					<div class="pull-right">
+						<div class="contacts">
+							<span class="contact-phone">8 (904) 637 04 78</span>
+							<span class="contact-link"><a href="#">Напишите нам</a></span>
+						</div>
+						<span class="mobile-separator visible-xs-block"></span>
+						<div class="mobile-header visible-xs-block">
+							<a href="#" class="catalog-menu-toggle-mobile" id="show-catalog-menu-modile">
+								<span class="bar"></span>
+								<span class="bar"></span>
+								<span class="bar"></span>
+							</a>
+						</div>
+						<div class="pull-right">
+							<form class="search-form" method="get" action="/ru/catalog/">
+								<input id="id_q" name="q" class="form-control" placeholder="Найти" type="search" autocomplete="off">
+								<button type="submit">найти!</button>
+								<button type="button" class="show-search visible-xs-block visible-sm-block">Найти</button>
+							</form>
+							<div class="cart">
+								<a class="cart-link" href="/ru/personal/cart/">Корзина<span class="count">1</span></a>
+							</div>
+						</div>
+					</div>
 		          </div>
-		          <div class="bottom-nav"></div>
 		        </div>
 		        <nav class="catalog-menu" id="catalog-menu">
-
+					<ul>
+						<li><a href="#">Весь каталог</a></li>
+						<li><a href="#">Новинки</a></li>
+						<li><a href="#">Предзаказ</a></li>
+						<li><a href="#">Акции и распродажи</a></li>
+						<li><a href="#">Снова в продаже</a></li>
+						<li><a href="#">Аксессуары</a></li>
+						<li><a href="#">Литература</a></li>
+					</ul>
 		        </nav>
 			</header>
 
 			<div class="page-content">
-
-			</div><!-- /.content -->
+				<div class="promo-slider flexslider">
+					<ul class="slides">
+						<li>
+							<img src="dist/img/temp/image-01.jpg" alt="Tyrrell Ford 007">
+							<div class="slide-content">
+								<h4>Tyrrell Ford 007</h4>
+								<div class="scale">1:43</div>
+								<div class="description">
+									<p>We believe that you should be able to create your own space, make it an expression of who you are, and share it with those around you.</p>
+								</div>
+								<a href="#" class="button">5678 <small>р</small></a>
+							</div>
+						</li>
+						<li>
+							<img src="dist/img/temp/image-01.jpg" alt="Tyrrell Ford 007">
+							<div class="slide-content">
+								<h4>Tyrrell Ford 007</h4>
+								<div class="scale">1:43</div>
+								<div class="description">
+									<p>We believe that you should be able to create your own space, make it an expression of who you are, and share it with those around you.</p>
+								</div>
+								<a href="#" class="button">5678 <small>р</small></a>
+							</div>
+						</li>
+						<li>
+							<img src="dist/img/temp/image-01.jpg" alt="Tyrrell Ford 007">
+							<div class="slide-content">
+								<h4>Tyrrell Ford 007</h4>
+								<div class="scale">1:43</div>
+								<div class="description">
+									<p>We believe that you should be able to create your own space, make it an expression of who you are, and share it with those around you.</p>
+								</div>
+								<a href="#" class="button">5678 <small>р</small></a>
+							</div>
+						</li>
+						<li>
+							<img src="dist/img/temp/image-01.jpg" alt="Tyrrell Ford 007">
+							<div class="slide-content">
+								<h4>Tyrrell Ford 007</h4>
+								<div class="scale">1:43</div>
+								<div class="description">
+									<p>We believe that you should be able to create your own space, make it an expression of who you are, and share it with those around you.</p>
+								</div>
+								<a href="#" class="button">5678 <small>р</small></a>
+							</div>
+						</li>
+					</ul>
+				</div><!-- /.promo-slider -->
+				<!-- <div class="blog-plugin">
+				    <div class="blog-plugin-header">
+				        <h2>Новости сайта</h2>
+				    </div>
+				    <div class="blog-plugin-list">
+				        <a href="/ru/blog/new_article/" class="item-news">
+				        	<img src="/media/cache/87/32/87329e258a4bf1077fc9b1a24cf56476.jpg">
+				            <div class="item-news_h4">
+				                <h4>Самая новая статья</h4>
+				                <span class="news-date">20.10.14</span>
+				            </div>
+				        </a>
+				        <a href="/ru/blog/hellcar/" class="item-news">
+				        	<img src="/media/cache/3a/3a/3a3a4bc3f5a53eaa12568e270e2cf314.jpg">
+				            <div class="item-news_h4">
+				                <h4>Прибыли машины</h4>
+				                <span class="news-date">20.10.14</span>
+				            </div>
+				        </a>
+				    </div>
+				    <a href="/ru/blog/" class="all_news">Новости сайта</a>
+				</div> -->
+			</div><!-- /.page-content -->
 
 		</div><!-- /.content-wrapper -->
 
-		<footer class="page-footer">
+		<footer class="site-footer">
 
 		</footer>
 
