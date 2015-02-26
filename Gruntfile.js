@@ -240,6 +240,7 @@ module.exports = function (grunt) {
 				src: [
 					'<%= config.bowerConf.directory %>/jquery/dist/jquery.js',
 					'<%= config.bowerConf.directory %>/flexslider/jquery.flexslider.js',
+					'<%= config.bowerConf.directory %>/select2-dist/dist/js/select2.js',
 
 					'<%= config.bowerConf.directory %>/bootstrap/js/transition.js',
 					'<%= config.bowerConf.directory %>/bootstrap/js/collapse.js',

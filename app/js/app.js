@@ -57,11 +57,7 @@ $(function () {
         }, 1660);
     });
 
-	// Packery
-	// $('.catalog-list').packery({
-	// 	itemSelector: 'li',
-	// 	gutter: 0,
-	// 	rowHeight: 'li:not(.first-item)'
-	// });
+	// Custom selects
+	$('select').select2();
 
 });

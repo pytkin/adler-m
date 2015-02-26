@@ -139,9 +139,27 @@ small,
 // -------------------------
 
 .page-header {
-  padding-bottom: ((@line-height-computed / 2) - 1);
-  margin: (@line-height-computed * 2) 0 @line-height-computed;
-  border-bottom: 1px solid @page-header-border-color;
+  margin: 22px 10px 18px;
+
+  h1 {
+    font-size: 24px;
+    line-height: 1;
+    font-weight: 100;
+    margin: 0;
+  }
+
+  @media (min-width: @screen-sm-min) {
+    margin: 42px 30px 48px;
+
+		h1 {
+      font-size: 44px;
+      line-height: 1.091; // 48px
+    }
+	}
+  @media (min-width: 1100px) {
+    margin-left: 30px;
+    margin-right: 30px;
+	}
 }
 
 

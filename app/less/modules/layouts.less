@@ -9,7 +9,7 @@
   padding-top: 100px;
 
   @media (max-width: @screen-xs-max) {
-    padding-top: 130px;
+    padding-top: 130px !important;
   }
 
   .fixed-part {
@@ -22,6 +22,7 @@
 
     @media (max-width: @screen-xs-max) {
       height: 130px;
+      box-shadow: 0 1px 3px rgba(0,0,0,.11);
     }
   }
 
@@ -591,7 +592,7 @@
     padding-top: 170px;
 
     .fixed-part {
-      box-shadow: 0 2px 6px rgba(0,0,0,.3);
+      box-shadow: 0 1px 3px rgba(0,0,0,.11);
     }
     .catalog-menu {
       position: fixed;
@@ -618,7 +619,7 @@
     }
     .mobile-header {
       background-color: @brand-primary;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.11);
+      box-shadow: 0 1px 3px rgba(0,0,0,.11);
 
       .bar {
         background-color: #fff;
