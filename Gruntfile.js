@@ -104,6 +104,15 @@ module.exports = function (grunt) {
 						'!<%= config.dist %>/.git*'
 					]
 				}]
+			},
+			distJS: {
+				files: [{
+					dot: true,
+					src: [
+						'<%= config.dist %>/js/*',
+						'!<%= config.dist %>/js/.git*'
+					]
+				}]
 			}
 		},
 
@@ -190,6 +199,7 @@ module.exports = function (grunt) {
 						'img/{,*/}*.webp',
 						'{,*/}*.{html}',
 						'fonts/{,*/}*.*',
+						'sound/{,*/}*.*',
 						'js/{,*/}*.js'
 					]
 				}]
@@ -231,9 +241,12 @@ module.exports = function (grunt) {
 					'<%= config.bowerConf.directory %>/jquery/dist/jquery.js',
 					'<%= config.bowerConf.directory %>/flexslider/jquery.flexslider.js',
 
+					'<%= config.bowerConf.directory %>/bootstrap/js/transition.js',
+					'<%= config.bowerConf.directory %>/bootstrap/js/collapse.js',
 					'<%= config.bowerConf.directory %>/bootstrap/js/affix.js',
+					'<%= config.bowerConf.directory %>/bootstrap/js/tab.js',
 
-					'<%= config.app %>/js/*.js',
+					'<%= config.app %>/js/{,*/}*.js',
 					'!<%= config.app %>/js/app.js'
 				],
 				dest: '<%= config.dist %>/js/scripts.js'
@@ -307,6 +320,12 @@ module.exports = function (grunt) {
 		'uglify',
 		'copy:dist',
 		'copy:styles'
+	]);
+
+	grunt.registerTask('dist-js', [
+		'clean:distJS',
+		'concat',
+		'uglify'
 	]);
 
 	grunt.registerTask('default', [
