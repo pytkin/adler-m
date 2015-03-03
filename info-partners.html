@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Масштабные модели</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+		<link href="dist/css/style.css" rel="stylesheet">
+		<link rel="shortcut icon" href="dist/img/favicon.ico" type="image/x-icon">
+		<link href="http://fonts.googleapis.com/css?family=Roboto:400,400italic,700,700italic,500,300,900&apm;subset=latin,cyrillic" rel="stylesheet">
+	</head>
+	<body>
+
+		<div class="content-wrapper">
+			<header class="site-header" data-spy="affix" data-offset-top="100">
+		        <div class="fixed-part" id="fixed-head">
+		          <div class="top-nav">
+					<ul class="nav menu">
+						<li><a href="#">О магазине</a></li>
+						<li><a href="#">Оплата и доставка</a></li>
+						<li><a href="#">FAQ</a></li>
+						<li><a href="#">Контакты</a></li>
+					</ul>
+					<ul class="nav lang-chooser">
+						<li class="active"><a href="/ru/" title="Change to language: ru">ru</a></li>
+						<li><a href="/en/" title="Change to language: en">en</a></li>
+					</ul>
+					<ul class="nav header-social">
+						<li><a class="blog" href="#">Блог</a></li>
+						<li><a class="vk" href="#">ВКонтакте</a></li>
+					</ul>
+					<ul class="nav auth">
+						<li><a class="signin open-popup" href="#">Вход</a></li>
+						<!-- <li><span class="signed">Здравствуй, <a href="#">Василий</a></span></li> -->
+						<li class="divider"></li>
+						<li><a class="register open-popup" href="#">Регистрация</a></li>
+					</ul>
+				  </div><!-- /.top-nav -->
+		          <div class="bottom-nav">
+		          	<div class="nav-header">
+						<span class="logo">
+							<img src="dist/img/logo.png" alt="">
+						</span>
+						<a href="#" class="catalog-menu-toggle" id="show-catalog-menu">
+							<span class="bar"></span>
+							<span class="bar"></span>
+							<span class="bar"></span>
+						</a>
+		          	</div>
+					<span class="slogan">Лучшие коллекционные модели<br>автомобилей со всего мира!</span>
+
+					<div class="pull-right">
+						<div class="contacts">
+							<span class="contact-phone">8 (800) 700 62 53</span>
+							<span class="contact-link"><a href="#">Напишите нам</a></span>
+						</div>
+						<span class="mobile-separator visible-xs-block"></span>
+						<div class="mobile-header visible-xs-block">
+							<a href="#" class="catalog-menu-toggle-mobile" id="show-catalog-menu-modile">
+								<span class="bar"></span>
+								<span class="bar"></span>
+								<span class="bar"></span>
+							</a>
+						</div>
+						<div class="pull-right">
+							<form class="search-form" method="get" action="/ru/catalog/">
+								<input id="id_q" name="q" class="form-control" placeholder="Найти" type="search" autocomplete="off">
+								<button type="submit">найти!</button>
+								<button type="button" class="show-search visible-xs-block visible-sm-block">Найти</button>
+							</form>
+							<div class="cart">
+								<a class="cart-link" href="/ru/personal/cart/">Корзина<span class="count">1</span></a>
+							</div>
+						</div>
+					</div>
+		          </div>
+		        </div>
+		        <nav class="catalog-menu" id="catalog-menu">
+					<ul>
+						<li><a href="#">Весь каталог</a></li>
+						<li><a href="#">Новинки</a></li>
+						<li><a href="#">Предзаказ</a></li>
+						<li><a href="#">Акции и распродажи</a></li>
+						<li><a href="#">Снова в продаже</a></li>
+						<li><a href="#">Аксессуары</a></li>
+						<li><a href="#">Литература</a></li>
+					</ul>
+		        </nav>
+			</header>
+
+			<div class="page-content">
+
+				<ul class="section-menu">
+					<li><a href="#">О нас</a></li>
+					<li><a href="#">Производители моделей</a></li>
+					<li><a href="#">Отзывы</a></li>
+					<li class="active"><span>Партнёры</span></li>
+				</ul>
+
+				<div class="page-header">
+					<h1>Партнеры</h1>
+				</div>
+
+				<div class="partners-block">
+					<form action="#" class="select-city">
+						<div class="form-group">
+							<label for="select-city">Ваш город:</label>
+							<select name="celect-city" id="select-city">
+								<option value="1" selected="">Санкт-Петербург</option>
+				                <option value="2">Москва</option>
+				                <option value="3">Кострома</option>
+				                <option value="4">Ростов-на-Дону</option>
+				                <option value="5">Екатеринбург</option>
+				                <option value="6">Красноярск</option>
+				                <option value="7">Омск</option>
+				                <option value="8">Нижний Новгород</option>
+				                <option value="9">Воронеж</option>
+				                <option value="10">Саратов</option>
+				                <option value="11">Ставрополь</option>
+				                <option value="12">Краснодар</option>
+				                <option value="13">Набережные Челны (Татарстан)</option>
+				                <option value="14">Запорожье (Украина)</option>
+							</select>
+						</div>
+					</form>
+					<ul class="partners-list selected" data-city="1">
+				        <li>
+				            <div class="name">Интернет-магазин &quot;Машинки.ру&quot;</div>
+				            <div class="phone">телефон +7 (812) 7405541</div>
+				            <div class="email">e-mail <a href="mailto:info@mashinki.ru">info@mashinki.ru</a></div>
+				            <div class="website">сайт <a target="_blank" href="http://www.mashinki.ru">www.mashinki.ru</a></div>
+				        </li>
+				        <li>
+				            <div class="name">Магазин &quot;МАШИНКИ&quot;</div>
+				            <div class="phone">телефон +7 (812) 5798362</div>
+				            <div class="address">адрес ул. Моховая, д. 31 (метро: "Чернышевская" или "Гостиный двор")</div>
+				        </li>
+				        <li>
+				            <div class="name">Филиал магазина &quot;МАШИНКИ&quot;</div>
+				            <div class="address">адрес главный зал Московского Вокзала (метро: "Площадь Восстания" или "Маяковская")</div>
+				        </li>
+				        <li>
+				            <div class="name">Магазин &quot;Die-Cast.ru&quot;</div>
+				            <div class="phone">телефон +7 (904) 6479397</div>
+				            <div class="address">адрес Малый пр. П.С., д. 1-А</div>
+				            <div class="website">сайт <a target="_blank" href="http://www.die-cast.ru">www.die-cast.ru</a></div>
+				        </li>
+				        <li>
+				            <div class="name">Интернет-магазин &quot;Model Cars Heritage&quot;</div>
+				            <div class="phone">телефон +7 (921) 5922960</div>
+				            <div class="website">сайт <a target="_blank" href="http://www.modelcarsheritage.ru">www.modelcarsheritage.ru</a></div>
+				        </li>
+				        <li>
+				            <div class="name">Интернет-магазин &quot;ScaleCar.ru&quot;</div>
+				            <div class="phone">телефон + 7 (812) 3341843, +7 (495) 2121843</div>
+				            <div class="website">сайт <a target="_blank" href="http://www.scalecar.ru">www.scalecar.ru</a></div>
+				        </li>
+				        <li>
+				            <div class="name">Интернет-магазин &quot;Model-car.ru&quot;</div>
+				            <div class="phone">телефон +7 (911) 2522810</div>
+				            <div class="website">сайт <a target="_blank" href="http://www.model-car.ru">www.model-car.ru</a></div>
+				        </li>
+				        <li>
+				            <div class="name">Интернет-магазин &quot;Автомобильчик&quot;</div>
+				            <div class="website">сайт <a target="_blank" href="http:// www.m43.ru"> www.m43.ru</a></div>
+				        </li>
+				        <li>
+				            <div class="name">Интернет-магазин &quot;7 моделей&quot;</div>
+				            <div class="phone">телефон +7 (921) 6569927</div>
+				            <div class="website">сайт <a target="_blank" href="http://sevenmodels.net.ru">sevenmodels.net.ru</a></div>
+				        </li>
+				    </ul>
+				    <ul class="partners-list" data-city="2">
+				        <li>
+				            <div class="name">Интернет-магазин &quot;1001automodel&quot;</div>
+				            <div class="phone">телефон +7 (495) 6171008, +7 (985) 7625674</div>
+				            <div class="email">e-mail <a href="mailto:info@1001automodel.ru">info@1001automodel.ru</a></div>
+				            <div class="website">сайт <a target="_blank" href="http://www.1001automodel.ru">www.1001automodel.ru</a></div>
+				        </li>
+				        <li>
+				            <div class="name">Магазин &quot;На Протопоповском&quot;</div>
+				            <div class="phone">телефон +7 (495) 6801561, моб.: +7 (926) 2373335</div>
+				            <div class="address">адрес Протопоповский пер., д.9. Метро "Пр.Мира"<br>пн.-пт. - 10:30 - 17:00<br>суббота - 11:00 - 16:00<br>воскресенье - выходной</div>
+				        </li>
+				        <li>
+				            <div class="name">Интернет-магазин &quot;ScaleAuto.ru&quot;</div>
+				            <div class="phone">телефон +7 (495) 5060950</div>
+				            <div class="email">e-mail <a href="mailto:info@scaleauto.ru">info@scaleauto.ru</a></div>
+				            <div class="website">сайт <a target="_blank" href="http://www.scaleauto.ru">www.scaleauto.ru</a></div>
+				        </li>
+				        <li>
+				            <div class="name">Интернет-магазин &quot;Mини-Колесо&quot;</div>
+				            <div class="phone">телефон +7 (495) 5653736,  +7 (800) 5550736</div>
+				            <div class="email">e-mail <a href="mailto:info@mini-koleso.ru">info@mini-koleso.ru</a></div>
+				            <div class="website">сайт <a target="_blank" href="http://www.mini-koleso.ru">www.mini-koleso.ru</a></div>
+				        </li>
+				        <li>
+				            <div class="name">Maгазин-клуб &quot;Техника Молодежи&quot;</div>
+				            <div class="phone">телефон +7 (495) 9336441</div>
+				            <div class="address">адрес СК "Олимпийский" (ст.метро "Проспект Мира"), Олимпийский пр. д.16, Торговый дом Новый Колизей 7,8,9 подъезды, павильон 1/8<br>Режим работы: с 10.00 до 20-30 без перерывов и выходных</div>
+				            <div class="email">e-mail <a href="mailto:info@clubtm.ru, anna@clubtm.ru">info@clubtm.ru, anna@clubtm.ru</a></div>
+				            <div class="website">сайт <a target="_blank" href="http://www.club-tm.ru">www.club-tm.ru</a></div>
+				        </li>
+				        <li>
+				            <div class="name">ТК &quot;Зенит&quot;</div>
+				            <div class="phone">телефон +7 (499) 2698810; +7 (903) 6744327</div>
+				            <div class="address">адрес Сокольническая площадь, д.9 кор. 1</div>
+				        </li>
+				        <li>
+				            <div class="name">Интернет-магазин &quot;Mир Ф1&quot;</div>
+				            <div class="phone">телефон +7 (929) 9862822</div>
+				            <div class="email">e-mail <a href="mailto:mirf1@mirf1.ru">mirf1@mirf1.ru</a></div>
+				            <div class="website">сайт <a target="_blank" href="http://www.mirf1.ru">www.mirf1.ru</a></div>
+				        </li>
+				    </ul>
+				    <ul class="partners-list" data-city="3">
+				        <li>
+				            <div class="name">Интернет-магазин Ритмонекс.ру</div>
+				            <div class="website">сайт <a target="_blank" href="http://www.ritmonexx.ru">www.ritmonexx.ru</a></div>
+				        </li>
+				    </ul>
+				    <ul class="partners-list" data-city="4">
+				        <li>
+				            <div class="name">Абуев Анатолий Ервандович</div>
+				            <div class="phone">телефон +7 (8632) 595043, моб.: +7 (928) 1548511</div>
+				            <div class="email">e-mail <a href="mailto:aearostov@yandex.ru">aearostov@yandex.ru</a></div>
+				        </li>
+				        <li>
+				            <div class="name">Магазин &quot;Олимпик&quot;</div>
+				            <div class="phone">телефон +7 (863) 2340073</div>
+				            <div class="address">адрес  ул.Красноармейская д. 87</div>
+				        </li>
+				    </ul>
+				    <ul class="partners-list" data-city="5">
+				        <li>
+				            <div class="name">Магазин &quot;МасШТАБ&quot;</div>
+				            <div class="phone">телефон +7 (922) 2087605</div>
+				            <div class="address">адрес ул.Гагарина д.33</div>
+				            <div class="email">e-mail <a href="mailto:info@mashtab-ural.ru">info@mashtab-ural.ru</a></div>
+				            <div class="website">сайт <a target="_blank" href="http://www.mashtab-ural.ru">www.mashtab-ural.ru</a></div>
+				        </li>
+				    </ul>
+				    <ul class="partners-list" data-city="6">
+				        <li>
+				            <div class="name">г-н Татарченко Геннадий</div>
+				            <div class="phone">телефон +7 (3912) 616784, моб.: +7 (950) 4004846</div>
+				            <div class="email">e-mail <a href="mailto:autopolkovnik@mail.ru">autopolkovnik@mail.ru</a></div>
+				        </li>
+				    </ul>
+				    <ul class="partners-list" data-city="7">
+				        <li>
+				            <div class="name">г-н Боровик Станислав, Интернет-магазин:&quot;Euro-Model Омск&quot;</div>
+				            <div class="phone">телефон  +7 (908) 1199319</div>
+				            <div class="website">сайт <a target="_blank" href="http://www.euromodel.appee.ru, euromodel.torgg.com">www.euromodel.appee.ru, euromodel.torgg.com</a></div>
+				        </li>
+				        <li>
+				            <div class="name">Магазин &quot;ART Модел&quot;</div>
+				            <div class="phone">телефон +7 (3812) 593166</div>
+				            <div class="address">адрес пр. Мира, д. 42, корпус 1, ТК "Европа", 4 этаж</div>
+				            <div class="email">e-mail <a href="mailto:www.artmodel55.ru">www.artmodel55.ru</a></div>
+				        </li>
+				    </ul>
+				    <ul class="partners-list" data-city="8">
+				        <li>
+				            <div class="name">г-н Максимов Николай</div>
+				            <div class="phone">телефон +7 (8312) 693105, моб.: +7 (905) 6601083</div>
+				            <div class="email">e-mail <a href="mailto:makc_@mail.ru">makc_@mail.ru</a></div>
+				        </li>
+				    </ul>
+				    <ul class="partners-list" data-city="9">
+				        <li>
+				            <div class="name">Хобби-центр &quot;Илья-Муромец&quot;</div>
+				            <div class="phone">телефон +7 (4732) 918721, моб.: +7 (908) 132 09 24</div>
+				            <div class="address">адрес ул. Среднемосковская 32-б (Торговый центр "Поиск", 1 этаж)<br>Время работы - ежедневно с 10:00 до 21:00.</div>
+				            <div class="email">e-mail <a href="mailto:ilia-murometz@mail.ru">ilia-murometz@mail.ru</a></div>
+				        </li>
+				    </ul>
+				    <ul class="partners-list" data-city="10">
+				        <li>
+				            <div class="name">&quot;Автомобиль на ладони&quot;</div>
+				            <div class="phone">телефон (8452) 723520, 530636</div>
+				            <div class="address">адрес ул. Б.Горная, д. 324</div>
+				            <div class="email">e-mail <a href="mailto:principp@mail.ru">principp@mail.ru</a></div>
+				        </li>
+				    </ul>
+				    <ul class="partners-list" data-city="11">
+				        <li>
+				            <div class="name">&quot;Автомир в миниатюре&quot;</div>
+				            <div class="phone">телефон +7-928-905-95-99</div>
+				            <div class="website">сайт <a target="_blank" href="http://www.copymodel.ru">www.copymodel.ru</a></div>
+				        </li>
+				    </ul>
+				    <ul class="partners-list" data-city="12">
+				        <li>
+				            <div class="name">&quot;Дом Книги&quot;</div>
+				            <div class="phone">телефон +7-918-467-46-67</div>
+				            <div class="address">адрес ул. Красная 43, 1 этаж</div>
+				        </li>
+				    </ul>
+				    <ul class="partners-list" data-city="13">
+				        <li>
+				            <div class="name">магазин &quot;МОДЕЛЬКИ&quot;</div>
+				            <div class="phone">телефон +7 (960) 0627171, +7 (917) 3966271</div>
+				            <div class="address">адрес пр. Вахитова 30/10а, Торговый Центр «Глобус», цокольный этаж</div>
+				            <div class="email">e-mail <a href="mailto:info@models-online.ru">info@models-online.ru</a></div>
+				            <div class="website">сайт <a target="_blank" href="http://www.models-online.ru">www.models-online.ru</a></div>
+				        </li>
+				    </ul>
+				    <ul class="partners-list" data-city="14">
+				        <li>
+				            <div class="name">Никифоров Владимир</div>
+				            <div class="phone">телефон +380-979569819, +380-612706127</div>
+				            <div class="email">e-mail <a href="mailto:vova_nik@mail.zp.ua">vova_nik@mail.zp.ua</a></div>
+				        </li>
+				    </ul>
+				</div><!-- /.partners-block -->
+
+
+			</div><!-- /.page-content -->
+
+		</div><!-- /.content-wrapper -->
+
+		<footer class="site-footer">
+			<div class="road">
+				<div class="car-holder">
+					<div class="car" id="footer-car">
+		                <audio id="car-sound" src="dist/sound/car_sound.mp3" preload="auto"></audio>
+		            </div>
+				</div>
+			</div>
+			<div class="footer-content">
+				<div class="top-panel">
+					<div class="footer-slogan">Лучшие коллекционные<br>модели автомобилей<br>со всего мира!</div>
+		            <div class="pay-info">
+		                <h5 class="title">Мы принимаем к оплате:</h5>
+		                <ul class="pay-systems-list">
+		                    <li class="visa">Visa</li>
+		                    <li class="mastercard">Mastercard</li>
+		                    <li class="qiwi">Qiwi</li>
+		                    <li class="separator"></li>
+		                    <li class="webmoney">WebMoney</li>
+		                    <li class="yandex">Яндекс.Деньги</li>
+		                </ul>
+		            </div>
+		            <div class="delivery-info">
+		                <h5 class="title">Мы доставляем:</h5>
+				        <ul class="menu">
+					        <li><a href="#">Пункты выдачи</a></li>
+					        <li><a href="#">Курьерская доставка</a></li>
+					        <li><a href="#">Почтовая доставка</a></li>
+				        </ul>
+		            </div>
+		            <div class="footer-social">
+		                <a class="blog" href="#">Блог</a>
+		                <a class="vk" href="#">ВКонтакте</a>
+		                <a class="contact" href="#">Напишите нам</a>
+		            </div>
+		            <div class="footer-about">
+				        <ul class="menu">
+					        <li><a href="#">О магазине</a></li>
+					        <li><a href="#">Оплата и доставка</a></li>
+					        <li><a href="#">FAQ</a></li>
+					        <li><a href="#">Контакты</a></li>
+				        </ul>
+		            </div>
+				</div>
+				<div class="bottom-panel">
+					<div class="copyright">
+		                © 2015 ООО «Адлер»
+		            </div>
+		            <div class="developer-info">
+						Разработано в <a href="http://irbis.ru/" target="_blank">Irbis</a>
+		            </div>
+				</div>
+			</div>
+		</footer>
+
+		<script src="dist/js/scripts.min.js"></script>
+		<script src="dist/js/app.js"></script>
+	</body>
+</html>

@@ -90,7 +90,7 @@
 			<div class="page-content">
 
 				<div class="page-header">
-					<h1>Весь каталог</h1>
+					<h1>Предзаказ</h1>
 				</div>
 
 				<form action="#" class="catalog-filter">
@@ -679,7 +679,8 @@
 							<label for="material" class="checkbox-inline"><input type="checkbox" name="material" value="прочие"><i class="checkbox-replace"></i>Прочие</label>
 						</div>
 						<div class="form-group">
-							<label for="material" class="checkbox-inline"><input type="checkbox" name="show_not_available" value="true"><i class="checkbox-replace"></i>Показывать проданные товары</label>
+							<label for="aditional" class="checkbox-inline"><input type="checkbox" name="aditional" value="впути"><i class="checkbox-replace"></i>Модели в пути</label>
+							<label for="aditional" class="checkbox-inline"><input type="checkbox" name="aditional" value="попредзаказу"><i class="checkbox-replace"></i>Модели по предзаказу</label>
 						</div>
 						<div class="form-actions">
 							<button class="reset-btn" id="filter-reset" type="reset">Сбросить все поля</button>
@@ -708,7 +709,6 @@
 								</div>
 								<div class="item-main-image">
 									<a href="#"></a>
-									<div class="item-status new">Новинка</div>
 									<div class="image-holder">
 										<img src="dist/img/temp/0ef2a7eab30c7b6cf42641c0605daed3.jpg">
 									</div>
@@ -747,7 +747,6 @@
 								</div>
 								<div class="item-main-image">
 									<a href="#"></a>
-									<div class="item-status preorder">Предзаказ</div>
 									<div class="image-holder">
 										<img src="dist/img/temp/00f7e5ab6e6e909119e78405096f5fcf.jpg">
 									</div>
@@ -787,7 +786,6 @@
 								</div>
 								<div class="item-main-image">
 									<a href="#"></a>
-									<div class="item-status backinstock">Вновь в наличии</div>
 									<div class="image-holder">
 										<img src="dist/img/temp/4e31c33367992127188e7062643ff82c.jpg">
 									</div>
@@ -826,7 +824,6 @@
 								</div>
 								<div class="item-main-image">
 									<a href="#"></a>
-									<div class="item-status sale">Акция</div>
 									<div class="image-holder">
 										<img src="dist/img/temp/8f1162cb474d8627fd263e09242b27d3.jpg">
 									</div>
@@ -866,7 +863,6 @@
 								</div>
 								<div class="item-main-image">
 									<a href="#"></a>
-									<div class="item-status ontheway">Скоро в продаже</div>
 									<div class="image-holder">
 										<img src="dist/img/temp/12b0890abd1e03dd1048a60d9f6cef34.jpg">
 									</div>
@@ -1098,6 +1094,29 @@
 					    <input type="text" class="strict-page-input" name="page" value="2">
 					</form>
 				</nav><!-- /.pageer -->
+
+				<div class="subscription-block">
+					<form action="#" class="subscribe-form">
+						<label>Уведомлять о новых поступлениях</label>
+					    <input type="email" name="email" class="subscription-input" placeholder="e-mail">
+					    <button type="submit" class="button">Подписаться</button>
+					</form>
+				</div><!-- /.subscription-block -->
+
+				<section class="about-market">
+					<div class="block-header">
+						<h2>О магазине</h2>
+					</div>
+					<div class="block-body">
+						<p>Интернет-магазин Adler-m – один из ведущих магазинов, предлагающий коллекционные модели автомобилей 1:18, 1:43 и других масштабов. Здесь вы найдете копии не только легковых автомобилей, но и грузовиков, внедорожников, мотоциклов, троллейбусов, автобусов, сельхозтехники и прочих видов транспорта. Вы сможете приобрести модель отечественного автомобиля и иномарки.</p>
+						<div class="collapse" id="about-extended-info">
+							<p>В магазине широко представлены модели машин в 1:43 масштабе. Масштабные модели 1:43 наиболее популярны, поскольку позволяют уместить внушительную коллекцию в довольно ограниченном пространстве. Модели машин 1:18 занимают значительно больше места и отлично подходят не только для коллекции, но и для подарка. Такие модели имеют более подробную детализацию, а также подвижные элементы (открываются двери, багажник, капот, поворачиваются колеса, руль).</p>
+							<p>Масштабные модели автомобилей 1:18, 1:43 и др. изготовлены по разным технологиям – как из металла (по технологии die-cast), так и из специальной смолы.<br>В некоторых масштабных моделях 1:18 и 1:12 используются натуральная кожа, дерево и ткань.</p>
+							<p>В нашем магазине собраны коллекционные модели автомобилей 1:43, 1:18 и других масштабов, привезенные со всего мира: из США (Hot Wheels Elite, True Scale Miniatures), Германии (модели Minichamps и Premium ClassiXXs),  Японии (Kyosho, J-Collection), Китая (Spark, Frontiart, DiP Models) и других стран. Adler-m - официальный дистрибьютор AUTOart, BBR, Bizarre, Century Dragon, CMC, DiP Models, Frontiart, Highway 61, Hot Wheels Elite, KYOSHO, Luxury Collectibles, Premium ClassiXXs, Spark, TrueScaleMiniatures в России.</p>
+						</div>
+						<a href="#about-extended-info" data-toggle="collapse" class="show-more-link visible-xs-inline">Узнать больше</a>
+					</div>
+				</section><!-- /.about-market -->
 
 			</div><!-- /.page-content -->
 

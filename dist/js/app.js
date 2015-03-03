@@ -60,4 +60,25 @@ $(function () {
 	// Custom selects
 	$('select').select2();
 
+	// Faq questions
+	$('.question').on('click', function () {
+		var $answer = $(this).siblings('.answer');
+		var $answerContent = $answer.children('.answer-content');
+		var animationDuration = 600;
+
+		if ($answerContent.hasClass('display')) {
+			$answer.stop().slideUp(animationDuration);
+			$answerContent.removeClass('display');
+		} else {
+			$answer.stop().slideDown(animationDuration);
+			$answerContent.addClass('display');
+		}
+	});
+
+	// Partners - select city
+	$('#select-city').on('change', function () {
+      var cID = $(this).val();
+      $('.partners-list').removeClass('selected').filter('[data-city="' + cID + '"]').addClass('selected');
+    });
+
 });
