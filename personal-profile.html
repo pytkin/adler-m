@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Масштабные модели</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+		<link href="dist/css/style.css" rel="stylesheet">
+		<link rel="shortcut icon" href="dist/img/favicon.ico" type="image/x-icon">
+		<link href="http://fonts.googleapis.com/css?family=Roboto:400,400italic,700,700italic,500,300,900&apm;subset=latin,cyrillic" rel="stylesheet">
+	</head>
+	<body>
+
+		<div class="content-wrapper">
+			<header class="site-header" data-spy="affix" data-offset-top="100">
+		        <div class="fixed-part" id="fixed-head">
+		          <div class="top-nav">
+					<ul class="nav menu">
+						<li><a href="#">О магазине</a></li>
+						<li><a href="#">Оплата и доставка</a></li>
+						<li><a href="#">FAQ</a></li>
+						<li><a href="#">Контакты</a></li>
+					</ul>
+					<ul class="nav lang-chooser">
+						<li class="active"><a href="/ru/" title="Change to language: ru">ru</a></li>
+						<li><a href="/en/" title="Change to language: en">en</a></li>
+					</ul>
+					<ul class="nav header-social">
+						<li><a class="blog" href="#">Блог</a></li>
+						<li><a class="vk" href="#">ВКонтакте</a></li>
+					</ul>
+					<ul class="nav auth">
+						<li><a class="signin open-popup" href="#">Вход</a></li>
+						<!-- <li><span class="signed">Здравствуй, <a href="#">Василий</a></span></li> -->
+						<li class="divider"></li>
+						<li><a class="register open-popup" href="#">Регистрация</a></li>
+					</ul>
+				  </div><!-- /.top-nav -->
+		          <div class="bottom-nav">
+		          	<div class="nav-header">
+						<span class="logo">
+							<img src="dist/img/logo.png" alt="">
+						</span>
+						<a href="#" class="catalog-menu-toggle" id="show-catalog-menu">
+							<span class="bar"></span>
+							<span class="bar"></span>
+							<span class="bar"></span>
+						</a>
+		          	</div>
+					<span class="slogan">Лучшие коллекционные модели<br>автомобилей со всего мира!</span>
+
+					<div class="pull-right">
+						<div class="contacts">
+							<span class="contact-phone">8 (800) 700 62 53</span>
+							<span class="contact-link"><a href="#">Напишите нам</a></span>
+						</div>
+						<span class="mobile-separator visible-xs-block"></span>
+						<div class="mobile-header visible-xs-block">
+							<a href="#" class="catalog-menu-toggle-mobile" id="show-catalog-menu-modile">
+								<span class="bar"></span>
+								<span class="bar"></span>
+								<span class="bar"></span>
+							</a>
+						</div>
+						<div class="pull-right">
+							<form class="search-form" method="get" action="/ru/catalog/">
+								<input id="id_q" name="q" class="form-control" placeholder="Найти" type="search" autocomplete="off">
+								<button type="submit">найти!</button>
+								<button type="button" class="show-search visible-xs-block visible-sm-block">Найти</button>
+							</form>
+							<div class="cart">
+								<a class="cart-link" href="/ru/personal/cart/">Корзина<span class="count">1</span></a>
+							</div>
+						</div>
+					</div>
+		          </div>
+		        </div>
+		        <nav class="catalog-menu" id="catalog-menu">
+					<ul>
+						<li><a href="#">Весь каталог</a></li>
+						<li><a href="#">Новинки</a></li>
+						<li><a href="#">Предзаказ</a></li>
+						<li><a href="#">Акции и распродажи</a></li>
+						<li><a href="#">Снова в продаже</a></li>
+						<li><a href="#">Аксессуары</a></li>
+						<li><a href="#">Литература</a></li>
+					</ul>
+		        </nav>
+			</header>
+
+			<div class="page-content">
+
+				<ul class="section-menu">
+			        <li><a href="#">Корзина</a></li>
+			        <li><a href="#">Отложенные товары</a></li>
+			        <li><a href="#">Предзаказ</a></li>
+			        <li><a href="#">Мои заказы</a></li>
+					<li><a href="#">Моя коллекция</a></li>
+			        <li><a href="#">Мои подписки</a></li>
+			        <li class="active"><span>Персональные данные</span></li>
+		        </ul>
+
+				<div class="page-header">
+					<h1>Персональные данные</h1>
+				</div>
+
+				<form method="post" id="profile_edit_form" class="profile-edit-form" action="#">
+				    <input type="hidden" name="csrfmiddlewaretoken" value="n9SLf2bCamL2Szcr5Dr81SdjlolAGuot">
+
+					<ul class="personal-data-list">
+					  <li>
+					    <div class="usually-shown">
+					        <label for="id_first_name">Имя:</label>
+					        <span class="item-value">Василий</span>
+					        <button class="change-value">Изменить</button>
+					    </div>
+					    <div class="item-edit">
+							<input class="form-control" id="id_first_name" maxlength="64" name="first_name" type="text">
+					    </div>
+					  </li>
+					  <li>
+					    <div class="usually-shown">
+					        <label for="id_second_name">Отчество:</label>
+					        <span class="item-value">Иванов</span>
+					        <button class="change-value">Изменить</button>
+					    </div>
+					    <div class="item-edit">
+							<input class="form-control" id="id_second_name" maxlength="64" name="second_name" type="text">
+					    </div>
+					  </li>
+					  <li>
+					    <div class="usually-shown">
+					        <label for="id_last_name">Фамилия:</label>
+					        <span class="item-value">Иванович</span>
+					        <button class="change-value">Изменить</button>
+					    </div>
+					    <div class="item-edit">
+							<input class="form-control" id="id_last_name" maxlength="64" name="last_name" type="text">
+					    </div>
+					  </li>
+					  <li>
+					    <div class="usually-shown">
+					        <label for="id_email">E-mail:</label>
+					        <span class="item-value">vasya@mail.ru</span>
+					        <button class="change-value">Изменить</button>
+					    </div>
+					    <div class="item-edit">
+							<input class="form-control" id="id_email" maxlength="64" name="email" type="email">
+					    </div>
+					  </li>
+					  <li>
+					    <div class="usually-shown">
+					        <label for="id_zipcode">Почтовый индекс:</label>
+					        <span class="item-value">ул. Ленина</span>
+					        <button class="change-value">Изменить</button>
+					    </div>
+					    <div class="item-edit">
+							<input class="form-control" id="id_zipcode" maxlength="64" name="zipcode" type="text">
+					    </div>
+					  </li>
+					  <li>
+					    <div class="usually-shown">
+					        <label for="id_city">Город:</label>
+					        <span class="item-value">123</span>
+					        <button class="change-value">Изменить</button>
+					    </div>
+					    <div class="item-edit">
+							<input class="form-control" id="id_city" maxlength="64" name="city" type="text">
+					    </div>
+					  </li>
+					  <li>
+					    <div class="usually-shown">
+					        <label for="id_street">Улица:</label>
+					        <span class="item-value">—</span>
+					        <button class="change-value">Изменить</button>
+					    </div>
+					    <div class="item-edit">
+							<input class="form-control" id="id_street" maxlength="64" name="street" type="text">
+					    </div>
+					  </li>
+					  <li>
+					    <div class="usually-shown">
+					        <label for="id_house">Дом:</label>
+					        <span class="item-value">12</span>
+					        <button class="change-value">Изменить</button>
+					    </div>
+					    <div class="item-edit">
+							<input class="form-control" id="id_house" maxlength="64" name="house" type="text">
+					    </div>
+					  </li>
+					  <li>
+					    <div class="usually-shown">
+					        <label for="id_building">Корпус:</label>
+					        <span class="item-value">1</span>
+					        <button class="change-value">Изменить</button>
+					    </div>
+					    <div class="item-edit">
+							<input class="form-control" id="id_building" maxlength="64" name="building" type="text">
+					    </div>
+					  </li>
+					  <li>
+					    <div class="usually-shown">
+					        <label for="id_apartment">Квартира:</label>
+					        <span class="item-value">49</span>
+					        <button class="change-value">Изменить</button>
+					    </div>
+					    <div class="item-edit">
+							<input class="form-control" id="id_apartment" maxlength="64" name="apartment" type="text">
+					    </div>
+					  </li>
+					  <li>
+					    <div class="usually-shown">
+					        <label for="id_phone">Телефон:</label>
+					        <span class="item-value">+7 (999) 999-99-99</span>
+					        <button class="change-value">Изменить</button>
+					    </div>
+					    <div class="item-edit">
+							<input class="maskedinput form-control" id="id_phone" maxlength="64" name="phone" type="text">
+					    </div>
+					  </li>
+					  <li>
+					    <div class="usually-shown">
+					        <label for="id_old_ID">Old ID:</label>
+					        <span class="item-value"></span>
+					        <button class="change-value">Изменить</button>
+					    </div>
+					    <div class="item-edit">
+							<input class="form-control" id="id_old_ID" max="9223372036854775807" min="-9223372036854775808" name="old_ID" type="number">
+					    </div>
+					  </li>
+					</ul>
+					<div class="form-group">
+					    <a href="/ru/accounts/password/change/">Изменить пароль</a>
+					</div>
+					<div class="form-group">
+					    <a href="/ru/personal/profile/delete/">Удалить аккаунт</a>
+					</div>
+	                <div class="form-actions">
+	                    <button type="submit" class="btn btn-primary submit-btn">Сохранить</button>
+	                    <span id="event_signup_result" class="event-signup-result"></span>
+	                </div>
+				</form>
+
+			</div><!-- /.page-content -->
+
+		</div><!-- /.content-wrapper -->
+
+		<footer class="site-footer">
+			<div class="road">
+				<div class="car-holder">
+					<div class="car" id="footer-car">
+		                <audio id="car-sound" src="dist/sound/car_sound.mp3" preload="auto"></audio>
+		            </div>
+				</div>
+			</div>
+			<div class="footer-content">
+				<div class="top-panel">
+					<div class="footer-slogan">Лучшие коллекционные<br>модели автомобилей<br>со всего мира!</div>
+		            <div class="pay-info">
+		                <h5 class="title">Мы принимаем к оплате:</h5>
+		                <ul class="pay-systems-list">
+		                    <li class="visa">Visa</li>
+		                    <li class="mastercard">Mastercard</li>
+		                    <li class="qiwi">Qiwi</li>
+		                    <li class="separator"></li>
+		                    <li class="webmoney">WebMoney</li>
+		                    <li class="yandex">Яндекс.Деньги</li>
+		                </ul>
+		            </div>
+		            <div class="delivery-info">
+		                <h5 class="title">Мы доставляем:</h5>
+				        <ul class="menu">
+					        <li><a href="#">Пункты выдачи</a></li>
+					        <li><a href="#">Курьерская доставка</a></li>
+					        <li><a href="#">Почтовая доставка</a></li>
+				        </ul>
+		            </div>
+		            <div class="footer-social">
+		                <a class="blog" href="#">Блог</a>
+		                <a class="vk" href="#">ВКонтакте</a>
+		                <a class="contact" href="#">Напишите нам</a>
+		            </div>
+		            <div class="footer-about">
+				        <ul class="menu">
+					        <li><a href="#">О магазине</a></li>
+					        <li><a href="#">Оплата и доставка</a></li>
+					        <li><a href="#">FAQ</a></li>
+					        <li><a href="#">Контакты</a></li>
+				        </ul>
+		            </div>
+				</div>
+				<div class="bottom-panel">
+					<div class="copyright">
+		                © 2015 ООО «Адлер»
+		            </div>
+		            <div class="developer-info">
+						Разработано в <a href="http://irbis.ru/" target="_blank">Irbis</a>
+		            </div>
+				</div>
+			</div>
+		</footer>
+
+		<script src="dist/js/scripts.min.js"></script>
+		<script src="dist/js/app.js"></script>
+	</body>
+</html>

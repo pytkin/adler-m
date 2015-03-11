@@ -45,7 +45,15 @@ h6, .h6 {
 }
 
 h1, .h1 { font-size: @font-size-h1; }
-h2, .h2 { font-size: @font-size-h2; }
+h2, .h2 {
+  font-size: @font-size-h2;
+  font-weight: normal;
+
+  @media (max-width: @screen-xs-max) {
+    font-size: @font-size-h2-xs;
+    margin-top: 0;
+  }
+}
 h3, .h3 { font-size: @font-size-h3; }
 h4, .h4 { font-size: @font-size-h4; }
 h5, .h5 { font-size: @font-size-h5; }
@@ -140,12 +148,20 @@ small,
 
 .page-header {
   margin: 22px 10px 18px;
+  &:extend(.clearfix all);
 
   h1 {
     font-size: 24px;
     line-height: 1;
     font-weight: 100;
     margin: 0;
+    float: left;
+    width: 70%;
+
+    @media (max-width: (@screen-xs - 1)) {
+      width: 100%;
+      float: none;
+    }
   }
 
   @media (min-width: @screen-sm-min) {
@@ -156,6 +172,23 @@ small,
       line-height: 1.091; // 48px
     }
 	}
+  @media (min-width: 1100px) {
+		margin-right: 50px;
+		margin-left: 50px;
+	}
+
+  .our-filter-is-cool {
+    float: right;
+    text-align: right;
+    width: 30%;
+    font-size: 12px;
+    color: #abbfd0;
+    line-height: 21px;
+
+    @media (max-width: (@screen-xs - 1)) {
+      display: none;
+    }
+  }
 }
 
 

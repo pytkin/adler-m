@@ -125,7 +125,8 @@ module.exports = function (grunt) {
 			all: [
 				'Gruntfile.js',
 				'<%= config.app %>/js/{,*/}*.js',
-				'!<%= config.app %>/js/vendor/*'
+				'!<%= config.app %>/js/vendor/*',
+				'!<%= config.app %>/js/offices.js'
 			]
 		},
 
@@ -140,8 +141,9 @@ module.exports = function (grunt) {
 				src: 'Gruntfile.js'
 			},
 			src: [
-			'<%= config.app %>/js/{,*/}*.js',
-			'!<%= config.app %>/js/vendor/*'
+				'<%= config.app %>/js/{,*/}*.js',
+				'!<%= config.app %>/js/vendor/*',
+				'!<%= config.app %>/js/offices.js'
 			]
 		},
 
@@ -248,7 +250,8 @@ module.exports = function (grunt) {
 					'<%= config.bowerConf.directory %>/bootstrap/js/tab.js',
 
 					'<%= config.app %>/js/{,*/}*.js',
-					'!<%= config.app %>/js/app.js'
+					'!<%= config.app %>/js/app.js',
+					'!<%= config.app %>/js/offices.js'
 				],
 				dest: '<%= config.dist %>/js/scripts.js'
 			}

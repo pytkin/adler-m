@@ -198,7 +198,6 @@ input[type="search"] {
 .checkbox {
   position: relative;
   display: block;
-  margin-top: 10px;
   margin-bottom: 10px;
   min-height: 20px;
   font-size: 14px;
@@ -241,6 +240,32 @@ input[type="search"] {
     }
   }
 }
+.radio,
+.radio-inline {
+  .radio-replace {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAABJElEQVR4Aa2VzUrDUBBGC4I+n9q4iS/UbvUZ3NiVD+AuunEpaMwiESsE/Fk0lca0yfgduHRxabUmGTgg05nTn5mMg01xdZftixNxIVLxLQrx4HKBqxn4+Ak4FMlNnFv2Vti8XFrdNAb8TY7XqBFHvwn3xOj6/tXeZwv7K6ihlh56NwlH0WNuy1Vtuwa1EZ8WqScc8m4Vsn8GPfTiEOsBvHwUpbUN9SKc4kIY3j7l1jXkQHqK8PJZk+saciCcIMxYh66BAxfCkh3rGjh4ABDOGH+fwrhYVH1+5f6H0vvadF7sz/l6sQ8QQtDDoxf4x2Ecxa2Pw3jb+Tprcb7O/fPlcywSfmQm9+UO7KpujPUi5waQiOEuFxsYVCgmIhWVI3W5cNu/gB8OcHyt/c3hHAAAAABJRU5ErkJggg==);
+
+    &:before {
+      content: '';
+      display: block;
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      top: 6px;
+      left: 6px;
+      background-color: @brand-primary;
+      border-radius: 50%;
+      opacity: 0;
+      transition: opacity .3s;
+    }
+  }
+}
 .radio input[type="radio"],
 .radio-inline input[type="radio"],
 .checkbox input[type="checkbox"],
@@ -258,11 +283,6 @@ input[type="search"] {
       opacity: 1;
     }
   }
-}
-
-.radio + .radio,
-.checkbox + .checkbox {
-  margin-top: -5px; // Move up sibling radios or checkboxes for tighter spacing
 }
 
 // Radios and checkboxes on same line

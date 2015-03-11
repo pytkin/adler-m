@@ -28,7 +28,7 @@ $(function () {
 
 
 	// Main page, brand slider
-	$('.brands-slider').iosSlider({
+	$('.brands-slider, #item-gallery[data-gallery-init="true"]').iosSlider({
       snapToChildren: true,
       desktopClickDrag: true,
       infiniteSlider: true,
@@ -80,5 +80,32 @@ $(function () {
       var cID = $(this).val();
       $('.partners-list').removeClass('selected').filter('[data-city="' + cID + '"]').addClass('selected');
     });
+
+
+	// Персональные данные
+	$('.personal-data-list').on('click', '.change-value', function (e) {
+		var $this = $(this);
+		e.preventDefault();
+		$this.closest('li').find('.item-edit').show().find('.form-control').focus();
+		$this.hide().closest('li').find('.item-value').hide();
+	});
+
+
+	// How2Buy
+	if ($('.how2buy-block').length) {
+		$('#country-select').on('change', function () {
+			var countryID = $(this).val();
+			$('.city-select').removeClass('selected').filter('[data-country=' + countryID + ']').addClass('selected');
+		});
+		$('#city-select').on('change', function () {
+			var cityID = $(this).val();
+			$('.delivery-variant').removeClass('selected').filter('[data-city=' + cityID + ']').addClass('selected');
+		});
+	}
+
+	// My orders
+	$('.order-listing-toggle').on('click', function () {
+		$(this).toggleClass('active');
+	});
 
 });
