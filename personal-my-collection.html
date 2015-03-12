@@ -29,10 +29,11 @@
 						<li><a class="vk" href="#">ВКонтакте</a></li>
 					</ul>
 					<ul class="nav auth">
-						<li><a class="signin open-popup" href="#">Вход</a></li>
-						<!-- <li><span class="signed">Здравствуй, <a href="#">Василий</a></span></li> -->
+						<!-- <li><a class="signin open-popup" href="#">Вход</a></li> -->
+						<li><span class="signed">Здравствуй, <a href="#">Username</a></span></li>
 						<li class="divider"></li>
-						<li><a class="register open-popup" href="#">Регистрация</a></li>
+						<li><a class="signout" href="#">Выйти</a></li>
+						<!-- <li><a class="register open-popup" href="#">Регистрация</a></li> -->
 					</ul>
 				  </div><!-- /.top-nav -->
 		          <div class="bottom-nav">
@@ -837,7 +838,7 @@
 					<div class="clearfix visible-md visible-xs"></div>
 				</section><!-- /.collection-list -->
 
-				<div class="uploaded-models">
+				<section class="uploaded-models">
 					<h2>Загруженные модели</h2>
 
 					<section class="uploaded-collection">
@@ -846,6 +847,10 @@
 								<a href="#"></a>
 								<div class="image-holder">
 									<img src="dist/img/temp/0ef2a7eab30c7b6cf42641c0605daed3.jpg">
+									<ul class="edit-actions">
+										<li><a href="modals/edit-model.html" class="edit-model open-modal"></a></li>
+										<li><a href="#" class="delete-model"></a></li>
+									</ul>
 								</div>
 							</div>
 							<h4 class="item-title"><a href="#">Chrysler Imperial CG Club Sedan 1931, L.e. 299 pcs.</a></h4>
@@ -859,6 +864,10 @@
 								<a href="#"></a>
 								<div class="image-holder">
 									<img src="dist/img/temp/00f7e5ab6e6e909119e78405096f5fcf.jpg">
+									<ul class="edit-actions">
+										<li><a href="modals/edit-model.html" class="edit-model open-modal"></a></li>
+										<li><a href="#" class="delete-model"></a></li>
+									</ul>
 								</div>
 							</div>
 							<h4 class="item-title"><a href="#">Cadillac Series 62 Sedan 1948, L.e. 299 pcs.</a></h4>
@@ -869,26 +878,27 @@
 						</div><!-- /.item -->
 					</section><!-- /.uploaded-collection -->
 					<div class="add-item-holder">
-					    <a href="#" class="btn btn-primary" id="upload-collection-item">Загрузить модель</a>
+					    <a href="modals/upload-model.html" class="btn btn-primary open-modal">Загрузить модель</a>
 					</div>
-					<div class="share-actions">
-						<div class="share-socials">
-					        <label>Поделиться:</label>
-					        <script type="text/javascript" src="//yandex.st/share/share.js" charset="utf-8"></script>
-							<div class="yashare-auto-init" data-yasharel10n="ru" data-yasharetype="none" data-yasharequickservices="vkontakte,twitter,facebook">
-								<span class="b-share">
-									<a rel="nofollow" target="_blank" title="ВКонтакте" class="b-share__handle b-share__link b-share-btn__vkontakte" href="http://share.yandex.ru/go.xml?service=vkontakte&amp;url=http%3A%2F%2Fbeta.adler-m.ru%2Fru%2Fpersonal%2Fcollection%2F&amp;title=%D0%9C%D0%BE%D1%8F%20%D0%BA%D0%BE%D0%BB%D0%BB%D0%B5%D0%BA%D1%86%D0%B8%D1%8F" data-service="vkontakte"><span class="b-share-icon b-share-icon_vkontakte"></span></a>
-									<a rel="nofollow" target="_blank" title="Twitter" class="b-share__handle b-share__link b-share-btn__twitter" href="http://share.yandex.ru/go.xml?service=twitter&amp;url=http%3A%2F%2Fbeta.adler-m.ru%2Fru%2Fpersonal%2Fcollection%2F&amp;title=%D0%9C%D0%BE%D1%8F%20%D0%BA%D0%BE%D0%BB%D0%BB%D0%B5%D0%BA%D1%86%D0%B8%D1%8F" data-service="twitter"><span class="b-share-icon b-share-icon_twitter"></span></a>
-									<a rel="nofollow" target="_blank" title="Facebook" class="b-share__handle b-share__link b-share-btn__facebook" href="http://share.yandex.ru/go.xml?service=facebook&amp;url=http%3A%2F%2Fbeta.adler-m.ru%2Fru%2Fpersonal%2Fcollection%2F&amp;title=%D0%9C%D0%BE%D1%8F%20%D0%BA%D0%BE%D0%BB%D0%BB%D0%B5%D0%BA%D1%86%D0%B8%D1%8F" data-service="facebook"><span class="b-share-icon b-share-icon_facebook"></span></a>
-								</span>
-							</div>
+				</section><!-- /.uploaded-models -->
+
+				<section class="share-actions">
+					<div class="share-socials">
+						<label>Поделиться:</label>
+						<script type="text/javascript" src="//yandex.st/share/share.js" charset="utf-8"></script>
+						<div class="yashare-auto-init" data-yasharel10n="ru" data-yasharetype="none" data-yasharequickservices="vkontakte,twitter,facebook">
+							<span class="b-share">
+								<a rel="nofollow" target="_blank" title="ВКонтакте" class="b-share__handle b-share__link b-share-btn__vkontakte" href="http://share.yandex.ru/go.xml?service=vkontakte&amp;url=http%3A%2F%2Fbeta.adler-m.ru%2Fru%2Fpersonal%2Fcollection%2F&amp;title=%D0%9C%D0%BE%D1%8F%20%D0%BA%D0%BE%D0%BB%D0%BB%D0%B5%D0%BA%D1%86%D0%B8%D1%8F" data-service="vkontakte"><span class="b-share-icon b-share-icon_vkontakte"></span></a>
+								<a rel="nofollow" target="_blank" title="Twitter" class="b-share__handle b-share__link b-share-btn__twitter" href="http://share.yandex.ru/go.xml?service=twitter&amp;url=http%3A%2F%2Fbeta.adler-m.ru%2Fru%2Fpersonal%2Fcollection%2F&amp;title=%D0%9C%D0%BE%D1%8F%20%D0%BA%D0%BE%D0%BB%D0%BB%D0%B5%D0%BA%D1%86%D0%B8%D1%8F" data-service="twitter"><span class="b-share-icon b-share-icon_twitter"></span></a>
+								<a rel="nofollow" target="_blank" title="Facebook" class="b-share__handle b-share__link b-share-btn__facebook" href="http://share.yandex.ru/go.xml?service=facebook&amp;url=http%3A%2F%2Fbeta.adler-m.ru%2Fru%2Fpersonal%2Fcollection%2F&amp;title=%D0%9C%D0%BE%D1%8F%20%D0%BA%D0%BE%D0%BB%D0%BB%D0%B5%D0%BA%D1%86%D0%B8%D1%8F" data-service="facebook"><span class="b-share-icon b-share-icon_facebook"></span></a>
+							</span>
 						</div>
-					    <div class="share-link">
-					        <label>Ссылка:</label>
-					        <a href="/ru/collection/11971081902014749456/">adler-m.ru/ru/collection/11971081902014749456/</a>
-					    </div>
 					</div>
-				</div><!-- /.uploaded-models -->
+					<div class="share-link">
+						<label>Ссылка:</label>
+						<a href="/ru/collection/11971081902014749456/">adler-m.ru/ru/collection/11971081902014749456/</a>
+					</div>
+				</section>
 
 			</div><!-- /.page-content -->
 

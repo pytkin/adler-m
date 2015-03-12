@@ -17,7 +17,12 @@ $(function () {
 
 	$('#show-catalog-menu-modile').on('click', function (e) {
 		e.preventDefault();
-		$('.site-header').toggleClass('display-catalog-menu-mobile');
+		$('.site-header').removeClass('display-search-form').toggleClass('display-catalog-menu-mobile');
+	});
+
+	$('#show-search-form').on('click', function (e) {
+		e.preventDefault();
+		$('.site-header').removeClass('display-catalog-menu-mobile').toggleClass('display-search-form');
 	});
 
 	// Main page, promo slider
@@ -41,6 +46,11 @@ $(function () {
 		$(this).next('.show-more-link').text('Скрыть подробное описание');
 	}).on('hidden.bs.collapse', function () {
 		$(this).next('.show-more-link').text('Узнать больше');
+	});
+
+	// Catalog card, extended similar models
+	$('#similar-models-extended').on('shown.bs.collapse', function () {
+		$(this).next('.show-more-link').addClass('hidden');
 	});
 
 	// Footer car
@@ -107,5 +117,33 @@ $(function () {
 	$('.order-listing-toggle').on('click', function () {
 		$(this).toggleClass('active');
 	});
+
+
+	// Modals
+	$(document).on('click', '.open-modal', function (e) {
+		e.preventDefault();
+		$.fancybox({
+            href: $(this).attr('href'),
+            padding: 20,
+			margin: 10,
+            wrapCSS: 'fancybox-form',
+            fitToView: false,
+            type: 'ajax',
+            helpers: {
+                overlay: {
+                    css: {
+                        background: 'rgba(0,0,0,.21)'
+                    },
+                    locked: false
+                }
+            }
+        });
+	});
+
+
+	// Endless pagenation
+	if ($('.endless-container').length) {
+		$.endlessPaginate();
+	}
 
 });

@@ -1,0 +1,18 @@
+<form class="modal-form" method="POST" action="/ru/accounts/login/">
+    <input type="hidden" name="csrfmiddlewaretoken" value="n9SLf2bCamL2Szcr5Dr81SdjlolAGuot">
+
+	<p>Если вы ещё не создали аккаунт, пожалуйста <a href="#">зарегистрируйтесь</a>.</p>
+
+    <div class="form-group">
+        <label for="id_login">E-mail</label>
+        <input autofocus="autofocus" class="form-control" id="id_login" name="login" placeholder="E-mail адрес" required type="email">
+    </div>
+    <div class="form-group">
+        <label for="id_password">Пароль</label>
+        <input class="form-control" id="id_password" name="password" placeholder="Пароль" required type="password">
+    </div>
+    <div class="form-group">
+		<label for="id_remember" class="checkbox-inline"><input type="checkbox" name="remember" id="id_remember"><i class="checkbox-replace"></i>Запомнить меня</label>
+    </div>
+	<button class="btn btn-primary" type="submit">Войти</button>
+</form>

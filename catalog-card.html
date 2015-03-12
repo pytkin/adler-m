@@ -29,10 +29,11 @@
 						<li><a class="vk" href="#">ВКонтакте</a></li>
 					</ul>
 					<ul class="nav auth">
-						<li><a class="signin open-popup" href="#">Вход</a></li>
-						<!-- <li><span class="signed">Здравствуй, <a href="#">Василий</a></span></li> -->
+						<li><a class="signin open-modal" href="modals/login.html">Вход</a></li>
+						<!-- <li><span class="signed">Здравствуй, <a href="#">Username</a></span></li> -->
 						<li class="divider"></li>
-						<li><a class="register open-popup" href="#">Регистрация</a></li>
+						<!-- <li><a class="signout" href="#">Выйти</a></li> -->
+						<li><a class="register open-modal" href="modals/signup.html">Регистрация</a></li>
 					</ul>
 				  </div><!-- /.top-nav -->
 		          <div class="bottom-nav">
@@ -261,49 +262,52 @@
 								</form>
 							</div>
 						</div><!-- /.item -->
-						<div class="item">
-							<div class="item-card">
-								<div class="item-gallery">
-									<div class="slider-wrap">
-										<div class="gallery-slider item-gallery">
-											<div class="gallery-slider-list">
-												<div class="slide">
-													<img src="dist/img/temp/image-05.jpg">
+						<div class="collapse" id="similar-models-extended" aria-expanded="false">
+							<div class="item">
+								<div class="item-card">
+									<div class="item-gallery">
+										<div class="slider-wrap">
+											<div class="gallery-slider item-gallery">
+												<div class="gallery-slider-list">
+													<div class="slide">
+														<img src="dist/img/temp/image-05.jpg">
+													</div>
+													<div class="slide">
+														<img src="dist/img/temp/image-05.jpg">
+													</div>
 												</div>
-												<div class="slide">
-													<img src="dist/img/temp/image-05.jpg">
-												</div>
+												<button type="button" class="gallery-button prev"></button>
+												<button type="button" class="gallery-button next"></button>
 											</div>
-											<button type="button" class="gallery-button prev"></button>
-											<button type="button" class="gallery-button next"></button>
+										</div>
+										<div class="item-main-image">
+											<a href="#"></a>
+											<div class="image-holder">
+												<img src="dist/img/temp/c2e4e5c42e53aee19dcb4fa52e1b42ea.jpg">
+											</div>
 										</div>
 									</div>
-									<div class="item-main-image">
-										<a href="#"></a>
-										<div class="image-holder">
-											<img src="dist/img/temp/c2e4e5c42e53aee19dcb4fa52e1b42ea.jpg">
-										</div>
+									<h4 class="item-title"><a href="#">Lola T294 #21 LM 1978</a></h4>
+									<div class="item-props">
+										<div class="prop-manufacturer">GLM</div>
+										<div class="prop-article">GLM43101302</div>
+										<div class="prop-scale">1:43</div>
 									</div>
+									<div class="item-price">4300 р</div>
+									<form class="buy-form" action="#" method="post">
+										<input type="hidden" name="csrfmiddlewaretoken" value="lRKZKVWz9S9VsqXYvp3MZZi34AeHRo3r">
+										<input type="hidden" name="item_id" value="823">
+										<button class="buy-button">Купить</button>
+									</form>
 								</div>
-								<h4 class="item-title"><a href="#">Lola T294 #21 LM 1978</a></h4>
-								<div class="item-props">
-									<div class="prop-manufacturer">GLM</div>
-									<div class="prop-article">GLM43101302</div>
-									<div class="prop-scale">1:43</div>
-								</div>
-								<div class="item-price">4300 р</div>
-								<form class="buy-form" action="#" method="post">
-									<input type="hidden" name="csrfmiddlewaretoken" value="lRKZKVWz9S9VsqXYvp3MZZi34AeHRo3r">
-									<input type="hidden" name="item_id" value="823">
-									<button class="buy-button">Купить</button>
-								</form>
-							</div>
-						</div><!-- /.item -->
+							</div><!-- /.item -->
+						</div><!-- /.collapse -->
+						<a href="#similar-models-extended" data-toggle="collapse" class="show-more-link visible-xs-block collapsed" aria-expanded="false">Все похожие модели</a>
 					</section><!-- /.catalog-list -->
 				</section><!-- /.similar-models -->
 
 				<section class="comments-block">
-					<h2>Обсуждение модели</h2>
+					<h2>Комментарии</h2>
 
 					<ul class="comments-list">
 						<li class="comment">
@@ -313,7 +317,7 @@
 				                    <p>У меня есть такая модель!<br> Классная!</p>
 
 									<div class="replay-link-holder">
-										<a href="#" class="replay-link">Ответить</a>
+										<a href="modals/add-comment.html" class="replay-link open-modal">Ответить</a>
 									</div>
 				                </div>
 				                <div class="name admin">Иван Иванович</div>
@@ -327,7 +331,7 @@
 									<p>У меня тоже!</p>
 
 									<div class="replay-link-holder">
-										<a href="#" class="replay-link">Ответить</a>
+										<a href="modals/add-comment.html" class="replay-link open-modal">Ответить</a>
 									</div>
 				                </div>
 				                <div class="name">Вениамин Александрович</div>
@@ -341,7 +345,7 @@
 									<p>И у меня тоже!</p>
 
 									<div class="replay-link-holder">
-										<a href="#" class="replay-link">Ответить</a>
+										<a href="modals/add-comment.html" class="replay-link open-modal">Ответить</a>
 									</div>
 				                </div>
 				                <div class="name">Улюлюшечка</div>
@@ -355,7 +359,7 @@
 									<p>И у меня тоже!</p>
 
 									<div class="replay-link-holder">
-										<a href="#" class="replay-link">Ответить</a>
+										<a href="modals/add-comment.html" class="replay-link open-modal">Ответить</a>
 									</div>
 				                </div>
 				                <div class="name">Улюлюшечка</div>
@@ -369,7 +373,7 @@
 				                    <p>У меня есть такая модель!<br> Классная!</p>
 
 									<div class="replay-link-holder">
-										<a href="#" class="replay-link">Ответить</a>
+										<a href="modals/add-comment.html" class="replay-link open-modal">Ответить</a>
 									</div>
 				                </div>
 				                <div class="name admin">Иван Иванович</div>
@@ -377,7 +381,7 @@
 				            </div>
 						</li>
 					</ul>
-					<a href="#" class="btn btn-primary add-comment">Добавить комментарий</a>
+					<a href="modals/add-comment.html" class="btn btn-primary add-comment open-modal">Добавить комментарий</a>
 				</section>
 
 			</div><!-- /.page-content -->

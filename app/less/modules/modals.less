@@ -2,96 +2,60 @@
 // Modals
 // --------------------------------------------------
 
-.overlay-content {
-	display: none;
-}
 
-// Container that the modal scrolls within
-.modal {
-	display: none;
-	overflow: hidden;
-	position: fixed;
-	z-index: @zindex-modal;
-	-webkit-overflow-scrolling: touch;
-	outline: 0;
-	width: @modal-width;
-	background-color: @modal-content-bg;
-	background-clip: padding-box;
-	outline: 0;
-}
+// Modal form - base
 
-.modal-dialog {
-	display: none;
-}
+.modal-form {
+	width: 492px;
+	padding: 20px 25px;
 
-// Modal background
-.ui-widget-overlay {
-	@color-rgba: rgba(red(@modal-backdrop-bg), green(@modal-backdrop-bg), blue(@modal-backdrop-bg), @modal-backdrop-opacity);
-	background-color: @color-rgba;
-	position: fixed;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	z-index: 1000;
-}
+	@media (max-width: @screen-xs-min) {
+		width: 260px;
+	}
 
-// Modal header
-// Top section of the modal w/ title and dismiss
-.modal-header {
-	padding: @modal-title-padding;
-}
+	p {
+		text-align: center;
+	}
 
-.ui-dialog-titlebar {
-	display: none;
-}
-// Close icon
-.modal-header .close {
-	display: block;
-	position: absolute;
-	top: 0;
-	right: 0;
-	width: 41px;
-	height: 39px;
-	border: none;
-	border-bottom: 3px solid #345780;
-	background: #466fa0 linear-gradient(to bottom, #4e77a9, #3e6798);
+	label {
+		font-weight: normal;
+	}
 
-	outline: 0;
+	a {
+		text-decoration: underline;
 
-	&:after {
-		position: absolute;
-		display: block;
-		content: ' ';
-		width: 41px;
-		height: 36px;
-		top: 0;
-		right: 0;
-		background: url(../img/modal-close-icon.png) 14px 12px no-repeat transparent;
+		&:hover,
+		&:focus {
+			text-decoration: none;
+		}
+	}
+
+	.btn[type="submit"] {
+		.padding-horizontal(40px);
 	}
 }
 
-// Title text within header
-.modal-title {
-	margin: 0;
+
+// Delete account form
+
+.delete-account {
 	text-align: center;
-	font-size: 18px;
-	text-transform: uppercase;
-	line-height: @modal-title-line-height;
 }
 
-// Modal body
-// Where all modal content resides (sibling of .modal-header and .modal-footer)
-.modal-body {
-	position: relative;
-	padding: @modal-inner-padding;
-}
 
-// Measure scrollbar width for padding body during modal show/hide
-.modal-scrollbar-measure {
-	position: absolute;
-	top: -9999px;
-	width: 50px;
-	height: 50px;
-	overflow: scroll;
+// Edit model
+
+.edit-model {
+	.image-holder {
+		display: block;
+
+		.remove {
+			display: inline-block;
+			margin-left: 11px;
+			vertical-align: top;
+			background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAAiklEQVQoz2P4z8AgAcSngPgcEKszYAFA8XIgfgrEVSBOPBD/h+Jn6JqA/CYk+ZcMUBseYNOEphiEm2CmKADxfTRNU9EU96C7E10TbsVomj6gKZ7LgAtgcTPMeRrEKP6EUxMWxT04AkIDpNgDlwexaLoMEvRFEujGERAwTTdgggEgjCcwxIE4C4gVAaiPrf80eJS6AAAAAElFTkSuQmCC) no-repeat 0 0;
+			width: 12px;
+			height: 12px;
+		}
+	}
 }

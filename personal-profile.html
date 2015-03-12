@@ -29,10 +29,11 @@
 						<li><a class="vk" href="#">ВКонтакте</a></li>
 					</ul>
 					<ul class="nav auth">
-						<li><a class="signin open-popup" href="#">Вход</a></li>
-						<!-- <li><span class="signed">Здравствуй, <a href="#">Василий</a></span></li> -->
+						<!-- <li><a class="signin open-popup" href="#">Вход</a></li> -->
+						<li><span class="signed">Здравствуй, <a href="#">Username</a></span></li>
 						<li class="divider"></li>
-						<li><a class="register open-popup" href="#">Регистрация</a></li>
+						<li><a class="signout" href="#">Выйти</a></li>
+						<!-- <li><a class="register open-popup" href="#">Регистрация</a></li> -->
 					</ul>
 				  </div><!-- /.top-nav -->
 		          <div class="bottom-nav">
@@ -103,136 +104,58 @@
 					<h1>Персональные данные</h1>
 				</div>
 
-				<form method="post" id="profile_edit_form" class="profile-edit-form" action="#">
+				<form method="post" id="profile_edit_form" class="profile-block" action="#">
 				    <input type="hidden" name="csrfmiddlewaretoken" value="n9SLf2bCamL2Szcr5Dr81SdjlolAGuot">
 
-					<ul class="personal-data-list">
-					  <li>
-					    <div class="usually-shown">
-					        <label for="id_first_name">Имя:</label>
-					        <span class="item-value">Василий</span>
-					        <button class="change-value">Изменить</button>
-					    </div>
-					    <div class="item-edit">
-							<input class="form-control" id="id_first_name" maxlength="64" name="first_name" type="text">
-					    </div>
-					  </li>
-					  <li>
-					    <div class="usually-shown">
-					        <label for="id_second_name">Отчество:</label>
-					        <span class="item-value">Иванов</span>
-					        <button class="change-value">Изменить</button>
-					    </div>
-					    <div class="item-edit">
-							<input class="form-control" id="id_second_name" maxlength="64" name="second_name" type="text">
-					    </div>
-					  </li>
-					  <li>
-					    <div class="usually-shown">
-					        <label for="id_last_name">Фамилия:</label>
-					        <span class="item-value">Иванович</span>
-					        <button class="change-value">Изменить</button>
-					    </div>
-					    <div class="item-edit">
-							<input class="form-control" id="id_last_name" maxlength="64" name="last_name" type="text">
-					    </div>
-					  </li>
-					  <li>
-					    <div class="usually-shown">
-					        <label for="id_email">E-mail:</label>
-					        <span class="item-value">vasya@mail.ru</span>
-					        <button class="change-value">Изменить</button>
-					    </div>
-					    <div class="item-edit">
-							<input class="form-control" id="id_email" maxlength="64" name="email" type="email">
-					    </div>
-					  </li>
-					  <li>
-					    <div class="usually-shown">
-					        <label for="id_zipcode">Почтовый индекс:</label>
-					        <span class="item-value">ул. Ленина</span>
-					        <button class="change-value">Изменить</button>
-					    </div>
-					    <div class="item-edit">
-							<input class="form-control" id="id_zipcode" maxlength="64" name="zipcode" type="text">
-					    </div>
-					  </li>
-					  <li>
-					    <div class="usually-shown">
-					        <label for="id_city">Город:</label>
-					        <span class="item-value">123</span>
-					        <button class="change-value">Изменить</button>
-					    </div>
-					    <div class="item-edit">
-							<input class="form-control" id="id_city" maxlength="64" name="city" type="text">
-					    </div>
-					  </li>
-					  <li>
-					    <div class="usually-shown">
-					        <label for="id_street">Улица:</label>
-					        <span class="item-value">—</span>
-					        <button class="change-value">Изменить</button>
-					    </div>
-					    <div class="item-edit">
-							<input class="form-control" id="id_street" maxlength="64" name="street" type="text">
-					    </div>
-					  </li>
-					  <li>
-					    <div class="usually-shown">
-					        <label for="id_house">Дом:</label>
-					        <span class="item-value">12</span>
-					        <button class="change-value">Изменить</button>
-					    </div>
-					    <div class="item-edit">
-							<input class="form-control" id="id_house" maxlength="64" name="house" type="text">
-					    </div>
-					  </li>
-					  <li>
-					    <div class="usually-shown">
-					        <label for="id_building">Корпус:</label>
-					        <span class="item-value">1</span>
-					        <button class="change-value">Изменить</button>
-					    </div>
-					    <div class="item-edit">
-							<input class="form-control" id="id_building" maxlength="64" name="building" type="text">
-					    </div>
-					  </li>
-					  <li>
-					    <div class="usually-shown">
-					        <label for="id_apartment">Квартира:</label>
-					        <span class="item-value">49</span>
-					        <button class="change-value">Изменить</button>
-					    </div>
-					    <div class="item-edit">
-							<input class="form-control" id="id_apartment" maxlength="64" name="apartment" type="text">
-					    </div>
-					  </li>
-					  <li>
-					    <div class="usually-shown">
-					        <label for="id_phone">Телефон:</label>
-					        <span class="item-value">+7 (999) 999-99-99</span>
-					        <button class="change-value">Изменить</button>
-					    </div>
-					    <div class="item-edit">
-							<input class="maskedinput form-control" id="id_phone" maxlength="64" name="phone" type="text">
-					    </div>
-					  </li>
-					  <li>
-					    <div class="usually-shown">
-					        <label for="id_old_ID">Old ID:</label>
-					        <span class="item-value"></span>
-					        <button class="change-value">Изменить</button>
-					    </div>
-					    <div class="item-edit">
-							<input class="form-control" id="id_old_ID" max="9223372036854775807" min="-9223372036854775808" name="old_ID" type="number">
-					    </div>
-					  </li>
-					</ul>
 					<div class="form-group">
-					    <a href="/ru/accounts/password/change/">Изменить пароль</a>
+						<label for="id_first_name">Имя:</label>
+						<input class="form-control" id="id_first_name" maxlength="64" name="first_name" type="text" value="Василий">
 					</div>
 					<div class="form-group">
-					    <a href="/ru/personal/profile/delete/">Удалить аккаунт</a>
+						<label for="id_second_name">Отчество:</label>
+						<input class="form-control" id="id_second_name" maxlength="64" name="second_name" type="text" value="Иванов">
+					</div>
+					<div class="form-group">
+						<label for="id_last_name">Фамилия:</label>
+						<input class="form-control" id="id_last_name" maxlength="64" name="last_name" type="text" value="Иванович">
+					</div>
+					<div class="form-group">
+						<label for="id_email">E-mail:</label>
+						<input class="form-control" id="id_email" maxlength="64" name="email" type="email" value="vasya@mail.ru">
+					</div>
+					<div class="form-group">
+						<label for="id_zipcode">Почтовый индекс:</label>
+						<input class="form-control" id="id_zipcode" maxlength="64" name="zipcode" type="text" value="123">
+					</div>
+					<div class="form-group">
+						<label for="id_city">Город:</label>
+						<input class="form-control" id="id_city" maxlength="64" name="city" type="text" value="-">
+					</div>
+					<div class="form-group">
+						<label for="id_street">Улица:</label>
+						<input class="form-control" id="id_street" maxlength="64" name="street" type="text">
+					</div>
+					<div class="form-group">
+						<label for="id_house">Дом:</label>
+						<input class="form-control" id="id_house" maxlength="64" name="house" type="text">
+					</div>
+					<div class="form-group">
+						<label for="id_building">Корпус:</label>
+						<input class="form-control" id="id_building" maxlength="64" name="building" type="text" value="12">
+					</div>
+					<div class="form-group">
+						<label for="id_apartment">Квартира:</label>
+						<input class="form-control" id="id_apartment" maxlength="64" name="apartment" type="text">
+					</div>
+					<div class="form-group">
+						<label for="id_phone">Телефон:</label>
+						<input class="maskedinput form-control" id="id_phone" maxlength="64" name="phone" type="text" value="+7 (999) 999-99-99">
+					</div>
+					<div class="form-group">
+					    <a href="modals/change-pass.html" class="open-modal">Изменить пароль</a>
+					</div>
+					<div class="form-group">
+					    <a href="modals/delete-account.html" class="open-modal">Удалить аккаунт</a>
 					</div>
 	                <div class="form-actions">
 	                    <button type="submit" class="btn btn-primary submit-btn">Сохранить</button>
