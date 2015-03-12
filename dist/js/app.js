@@ -70,6 +70,10 @@ $(function () {
 	// Custom selects
 	$('select').select2();
 
+	$('#filter-reset').on('click', function () {
+        $(this).closest('form').find('select').val('').trigger('change');
+    });
+
 	// Faq questions
 	$('.question').on('click', function () {
 		var $answer = $(this).siblings('.answer');
@@ -145,5 +149,76 @@ $(function () {
 	if ($('.endless-container').length) {
 		$.endlessPaginate();
 	}
+
+
+	// Card actions
+	$('.card-actions').on('click', '.collection', function (e) {
+		e.preventDefault();
+		$(this).toggleClass('added');
+		if ($(this).text() === 'Добавить в коллекцию') {
+			$(this).html('Добавлено<br> в коллекцию');
+		} else {
+			$(this).html('Добавить<br> в коллекцию');
+		}
+	});
+	$('.card-actions').on('click', '.favorites', function (e) {
+		e.preventDefault();
+		$(this).toggleClass('added');
+		if ($(this).text() === 'В отложенные товары') {
+			$(this).html('В отложенных<br> товарах');
+		} else {
+			$(this).html('В отложенные<br> товары');
+		}
+	});
+
+
+	// Order. select/deselect all checkboxes
+	$('#orders-select-all').on('click', function (e) {
+		e.preventDefault();
+		$('.archive-table input:checkbox').attr('checked', true).prop('checked', true);
+	});
+	$('#orders-cancel-all').on('click', function (e) {
+		e.preventDefault();
+		$('.archive-table input:checkbox').prop('checked', false).removeAttr('checked');
+	});
+
+
+	// Booking and Preorder. select/deselect all checkboxes
+	$('#booking-select-all, #preorder-select-all').on('click', function (e) {
+		e.preventDefault();
+		$(this).closest('form').find('.cart-table input:checkbox').attr('checked', true).prop('checked', true);
+	});
+	$('#booking-cancel-all, #preorder-cancel-all').on('click', function (e) {
+		e.preventDefault();
+		$(this).closest('form').find('.cart-table input:checkbox').prop('checked', false).removeAttr('checked');
+	});
+
+
+	// Favorites
+	$('.favorites-block #select-all-items').on('click', function (e) {
+		e.preventDefault();
+		if ($(this).text() === 'Выбрать все') {
+			$(this).text('Отменить все');
+			$('.cart-table input:checkbox').attr('checked', true).prop('checked', true);
+		} else {
+			$(this).text('Выбрать все');
+			$('.cart-table input:checkbox').prop('checked', false).removeAttr('checked');
+		}
+	});
+
+
+	// Add/remove fields for personal-my-subscriptions
+	$('.subscriptions-block').on('click', '#add-fields', function (e) {
+		e.preventDefault();
+
+		$(this).closest('form').find('fieldset:last').clone().insertAfter($(this).closest('form').find('fieldset:last')).prepend('<button class="remove-fields-btn"></button>');
+	}).on('click', '.remove-fields-btn', function (e) {
+		e.preventDefault();
+		$(this).closest('fieldset').remove();
+	});
+
+
+	// Init tooltips
+	$('[data-toggle="tooltip"]').tooltip();
 
 });
