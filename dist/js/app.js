@@ -31,15 +31,34 @@ $(function () {
 		nextText: ''
 	});
 
-
 	// Main page, brand slider
-	$('.brands-slider, #item-gallery[data-gallery-init="true"]').iosSlider({
-      snapToChildren: true,
-      desktopClickDrag: true,
-      infiniteSlider: true,
-      navNextSelector: $('.slider-button.next'),
-      navPrevSelector: $('.slider-button.prev')
+	$('.brands-slider').iosSlider({
+		snapToChildren: true,
+		desktopClickDrag: true,
+		infiniteSlider: true,
+		navNextSelector: $('.slider-button.next'),
+		navPrevSelector: $('.slider-button.prev')
     });
+
+	// Init sliders for catalog-index/catalog-list on main page
+	$('.catalog-index-list, .catalog-list').one('mouseenter', 'li, .item', function () {
+		$(this).find('.gallery-slider').iosSlider({
+			snapToChildren: true,
+			desktopClickDrag: true,
+			infiniteSlider: true,
+			navNextSelector: $('.slider-button.next'),
+			navPrevSelector: $('.slider-button.prev')
+		});
+	});
+
+	// Change main image for items (catalog-index/catalog-list)
+	$('.catalog-index-list, .catalog-list').on('mouseenter', '.slide img', function () {
+		var newSrc = $(this).data('hover-image');
+		$(this).closest('li, .item').find('.image-holder img').attr('src', newSrc);
+	}).on('mouseleave', 'li, .item', function () {
+		var newSrc = $(this).find('.image-holder img').data('original-image');
+		$(this).find('.image-holder img').attr('src', newSrc);
+	});
 
 	// Main page, extended about
 	$('#about-extended-info').on('shown.bs.collapse', function () {
@@ -220,5 +239,54 @@ $(function () {
 
 	// Init tooltips
 	$('[data-toggle="tooltip"]').tooltip();
+
+
+	// Catalog card galleryes
+
+	var $itemGallery = $('#item-gallery');
+	var $mainPhoto = $('#main-photo');
+	var after = function (ms, cb) {
+		return setTimeout(cb, ms);
+    };
+	var currentPhotoIndex = 0;
+	var photoUrls = $itemGallery.find('.slide').map(function () {
+		return $(this).attr('href');
+    }).get();
+
+    $itemGallery.iosSlider({
+		snapToChildren: true,
+		desktopClickDrag: true,
+		infiniteSlider: true,
+		navNextSelector: $('.slider-button.next'),
+		navPrevSelector: $('.slider-button.prev')
+    }).on('click', '.slide', function (e) {
+		var $newImage;
+		var $oldImage = $mainPhoto.children('img');
+		var photoUrl = $(this).attr('href');
+		e.preventDefault();
+		currentPhotoIndex = parseInt($(this).data('index'));
+		$oldImage.addClass('old');
+		after(1000, function () {
+			$oldImage.remove();
+		});
+		$newImage = $('<img src="' + photoUrl + '">').load(function () {
+			$(this).addClass('new').prependTo($mainPhoto);
+			after(1, function () {
+				$newImage.removeClass('new');
+			});
+		});
+    });
+    $(window).resize(function () {
+      $('#item-gallery').iosSlider('update');
+    });
+    $mainPhoto.on('click', 'img', function () {
+		$.fancybox.open(photoUrls, {
+		index: currentPhotoIndex,
+		helpers: {
+			overlay: {
+				locked: false
+			}
+		}});
+    });
 
 });

@@ -202,7 +202,9 @@ module.exports = function (grunt) {
 						'{,*/}*.{html}',
 						'fonts/{,*/}*.*',
 						'sound/{,*/}*.*',
-						'js/{,*/}*.js'
+						'js/{,*/}*.js',
+						'!js/vendor',
+						'!js/vendor/*.js',
 					]
 				}]
 			},
