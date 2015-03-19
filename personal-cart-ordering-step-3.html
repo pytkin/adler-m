@@ -94,7 +94,7 @@
 
 				<nav class="section-menu">
 					<div class="menu-header">
-						<span class="section-header">Отложенные товары</span>
+						<span class="section-header">Корзина</span>
 						<button type="button" class="menu-toggle" data-toggle="collapse" data-target="#section-menu-collapse">
 							<span class="sr-only">Toggle navigation</span>
 							<span class="icon-bar"></span>
@@ -104,8 +104,8 @@
 					</div>
 					<div class="collapse section-menu-collapse" id="section-menu-collapse">
 						<ul class="section-menu-nav">
-							<li><a href="personal-cart.html">Корзина</a></li>
-							<li class="active"><span>Отложенные товары</span></li>
+							<li class="active"><span>Корзина</span></li>
+							<li><a href="personal-favorites.html">Отложенные товары</a></li>
 							<li><a href="personal-preorder.html">Предзаказ</a></li>
 							<li><a href="personal-my-orders.html">Мои заказы</a></li>
 							<li><a href="personal-my-collection.html">Моя коллекция</a></li>
@@ -116,17 +116,20 @@
 				</nav>
 
 				<div class="page-header">
-					<h1>Отложенные товары</h1>
+					<h1>Корзина</h1>
 				</div>
 
-				<form class="favorites-block">
+				<form class="cart-block">
 					<div class="cart-table">
 						<div class="table-header">
 							<div class="th-item photo">Фото</div>
 							<div class="th-item name">Наименование товара</div>
 							<div class="th-item status">Статус</div>
 							<div class="th-item price">Цена</div>
-							<div class="th-item check"><span class="select-all" id="select-all-items">Выбрать все</span></div>
+							<div class="th-item quantity">Количество</div>
+							<div class="th-item discount">Скидка <span class="helper" data-toggle="tooltip" data-placement="right" title="Интернет-магазин Adler-m – один из ведущих магазинов."></span></div>
+							<div class="th-item sum">Сумма</div>
+							<div class="th-item check">&nbsp;</div>
 						</div>
 						<div class="table-body">
 							<div class="table-row">
@@ -141,48 +144,15 @@
 										<li class="article"><span>Артикул:</span> 4887564</li>
 									</ul>
 								</div>
-								<div class="tb-item status"><span class="in-stock hidden-xs">Есть в наличии</span> <button type="submit" name="add-item-to-cart" class="btn btn-primary btn-sm visible-xs-inline-block" data-id="6">Добавить в корзину</button></div>
+								<div class="tb-item status"><span class="in-stock hidden-xs">Есть в наличии</span></div>
 								<div class="tb-item price">2900 р</div>
+								<div class="tb-item quantity">
+									<span class="visible-xs-inline-block">Кол-во</span>
+									<input class="form-control" data-id="188" data-min="1" data-max="5" name="quantity[188]" value="1">
+								</div>
+								<div class="tb-item discount">2%</div>
+								<div class="tb-item sum">3200 р</div>
 								<div class="tb-item check">
-									<label class="checkbox-inline" for="item-960"><input type="checkbox" name="item-960" id="item-960" value="960"><i class="checkbox-replace"></i></label>
-									<button type="button" class="remove" data-id="6"></button>
-								</div>
-							</div>
-							<div class="table-row">
-								<div class="tb-item photo">
-									<img src="dist/img/temp/bf9db0b351dbf5ed8001e9358c5c13d3.jpg" alt="">
-								</div>
-								<div class="tb-item name">
-									<h5 class="item-title"><a href="#">Challenger 1 record 1959</a></h5>
-									<ul class="item-props">
-										<li class="manufacturer"><span>Производитель:</span> Minichamps</li>
-										<li class="scale"><span>Масштаб:</span> 1:43</li>
-										<li class="article"><span>Артикул:</span> 4887564</li>
-									</ul>
-								</div>
-								<div class="tb-item status"><span class="few hidden-xs">Несколько штук</span> <button type="submit" name="add-item-to-cart" class="btn btn-primary btn-sm visible-xs-inline-block" data-id="6">Добавить в корзину</button></div>
-								<div class="tb-item price">2900 р</div>
-								<div class="tb-item check">
-									<label class="checkbox-inline" for="item-960"><input type="checkbox" name="item-960" id="item-960" value="960"><i class="checkbox-replace"></i></label>
-									<button type="button" class="remove" data-id="6"></button>
-								</div>
-							</div>
-							<div class="table-row">
-								<div class="tb-item photo">
-									<img src="dist/img/temp/bf9db0b351dbf5ed8001e9358c5c13d3.jpg" alt="">
-								</div>
-								<div class="tb-item name">
-									<h5 class="item-title"><a href="#">Challenger 1 record 1959</a></h5>
-									<ul class="item-props">
-										<li class="manufacturer"><span>Производитель:</span> Minichamps</li>
-										<li class="scale"><span>Масштаб:</span> 1:43</li>
-										<li class="article"><span>Артикул:</span> 4887564</li>
-									</ul>
-								</div>
-								<div class="tb-item status"><span class="not-available hidden-xs">Нет в наличии</span></div>
-								<div class="tb-item price">2900 р</div>
-								<div class="tb-item check">
-									<label class="checkbox-inline" for="item-960"><input type="checkbox" name="item-960" id="item-960" value="960"><i class="checkbox-replace"></i></label>
 									<button type="button" class="remove" data-id="6"></button>
 								</div>
 							</div>
@@ -200,28 +170,175 @@
 								</div>
 								<div class="tb-item status"><span class="on-the-way hidden-xs">В пути</span></div>
 								<div class="tb-item price">2900 р</div>
+								<div class="tb-item quantity">
+									<span class="visible-xs-inline-block">Кол-во</span>
+									<input class="form-control" data-id="188" data-min="1" data-max="5" name="quantity[188]" value="1">
+								</div>
+								<div class="tb-item discount">2%</div>
+								<div class="tb-item sum">3200 р</div>
 								<div class="tb-item check">
-									<label class="checkbox-inline" for="item-960"><input type="checkbox" name="item-960" id="item-960" value="960"><i class="checkbox-replace"></i></label>
 									<button type="button" class="remove" data-id="6"></button>
 								</div>
 							</div>
 						</div><!-- /.table-body -->
 					</div><!-- /.cart-table -->
-					<div class="favorites-actions">
-						<div class="selected-items-actions">
-							Отмеченные товары:
-							<button type="submit" class="btn-link" name="remove-item">Удалить</button>
-							<span class="separator">|</span>
-							<button type="submit" class="btn-link" name="add-to-cart">Добавить в корзину</button>
-						</div>
-						<div class="visible-xs">
-							<button type="submit" class="btn btn-primary btn-block add-all-to-cart">Добавить все в корзину</button>
-							<div class="remove-all-wrap">
-								<button type="submit" class="btn-link remove-all" name="remove-items">Отменить все</a>
+					<div class="cart-actions">
+						<div class="links">
+							<a href="#" class="back">Вернуться к покупкам</a>
+							<div>
+								<a href="#" class="discounts-info-trigger"><span>Информация о накопительных скидках</span></a>
+								<div class="discounts-info">
+									<p style="margin: 10px 0px 0px; padding: 0px; font-family: Arial, sans-serif; font-size: 14px; line-height: 20px;">от 15.000 рублей скидка&nbsp;<strong>3%</strong>&nbsp;от суммы заказа</p>
+									<p style="margin: 10px 0px 0px; padding: 0px; font-family: Arial, sans-serif; font-size: 14px; line-height: 20px;">от 30.000 рублей -&nbsp;<strong>5%</strong></p>
+									<p style="margin: 10px 0px 0px; padding: 0px; font-family: Arial, sans-serif; font-size: 14px; line-height: 20px;">от 50.000 рублей -&nbsp;<strong>7%</strong></p>
+									<p style="margin: 10px 0px 0px; padding: 0px; font-family: Arial, sans-serif; font-size: 14px; line-height: 20px;">от 100.000 рублей -&nbsp;<strong>10%</strong></p>
+									<p style="margin: 10px 0px 0px; padding: 0px; font-family: Arial, sans-serif; font-size: 14px; line-height: 20px;">Накопительная скидка&nbsp;<strong>не распространяется</strong>&nbsp;на комплекты из нескольких моделей и&nbsp;<strong>на модели со скидкой</strong>, но данные модели учитываются при увеличении накопительной скидки.</p>
+								</div>
 							</div>
 						</div>
+						<div class="total">
+							<div class="total-price">Общая сумма товаров: <strong><span id="total-price">8800</span> р<span class="visible-xs-inline">ублей</span></strong></div>
+							<button type="submit" class="btn btn-primary">Оформить заказ</button>
+						</div>
 					</div>
-				</form><!-- /.favorites-block -->
+				</form><!-- /.cart-block -->
+
+				<div class="page-header">
+					<h1>Оформление заказа</h1>
+				</div>
+
+				<section class="order-final">
+					<ul class="order-steps">
+						<li class="active"><span>Шаг 1.</span>Инициализация</li>
+						<li><span>Шаг 2.</span>Заполнение данных</li>
+						<li><span>Шаг 3.</span>Завершение</li>
+					</ul>
+
+					<div class="thank-notification">
+						<h3>Спасибо!<br><small>Ваш заказ оформлен успешно.</small></h3>
+					</div>
+				</section>
+
+				<section class="recommended-block">
+					<h2>Рекомендуемые товары</h2>
+
+					<section class="catalog-list">
+						<div class="item">
+							<div class="item-card">
+								<div class="item-gallery">
+									<div class="slider-wrap">
+										<div class="gallery-slider item-gallery">
+											<div class="gallery-slider-list">
+												<div class="slide">
+													<img src="dist/img/temp/image-05.jpg">
+												</div>
+												<div class="slide">
+													<img src="dist/img/temp/image-05.jpg">
+												</div>
+											</div>
+											<button type="button" class="gallery-button prev"></button>
+											<button type="button" class="gallery-button next"></button>
+										</div>
+									</div>
+									<div class="item-main-image">
+										<a href="#"></a>
+										<div class="image-holder">
+											<img src="dist/img/temp/82f313591c4bb9aecb7ad6336d82610f.jpg">
+										</div>
+									</div>
+								</div>
+								<h4 class="item-title"><a href="#">Peugeot WM P77 #77 LM 1978</a></h4>
+								<div class="item-props">
+									<div class="prop-manufacturer">GLM</div>
+									<div class="prop-article">GLM43101302</div>
+									<div class="prop-scale">1:43</div>
+								</div>
+								<div class="item-price">4300 р</div>
+								<form class="buy-form" action="#" method="post">
+
+									<input type="hidden" name="item_id" value="823">
+									<button class="buy-button">Купить</button>
+								</form>
+							</div>
+						</div><!-- /.item -->
+						<div class="item">
+							<div class="item-card">
+								<div class="item-gallery">
+									<div class="slider-wrap">
+										<div class="gallery-slider item-gallery">
+											<div class="gallery-slider-list">
+												<div class="slide">
+													<img src="dist/img/temp/image-05.jpg">
+												</div>
+												<div class="slide">
+													<img src="dist/img/temp/image-05.jpg">
+												</div>
+											</div>
+											<button type="button" class="gallery-button prev"></button>
+											<button type="button" class="gallery-button next"></button>
+										</div>
+									</div>
+									<div class="item-main-image">
+										<a href="#"></a>
+										<div class="image-holder">
+											<img src="dist/img/temp/13967776fc00f11511f3d55fd65e8cba.jpg">
+										</div>
+									</div>
+								</div>
+								<h4 class="item-title"><a href="#">Matra Djet 5S #236 Monte Carlo 1966</a></h4>
+								<div class="item-props">
+									<div class="prop-manufacturer">GLM</div>
+									<div class="prop-article">GLM43101302</div>
+									<div class="prop-scale">1:43</div>
+								</div>
+								<div class="item-price">4300 р</div>
+								<form class="buy-form" action="#" method="post">
+
+									<input type="hidden" name="item_id" value="823">
+									<button class="buy-button">Купить</button>
+								</form>
+							</div>
+						</div><!-- /.item -->
+						<div class="item">
+							<div class="item-card">
+								<div class="item-gallery">
+									<div class="slider-wrap">
+										<div class="gallery-slider item-gallery">
+											<div class="gallery-slider-list">
+												<div class="slide">
+													<img src="dist/img/temp/image-05.jpg">
+												</div>
+												<div class="slide">
+													<img src="dist/img/temp/image-05.jpg">
+												</div>
+											</div>
+											<button type="button" class="gallery-button prev"></button>
+											<button type="button" class="gallery-button next"></button>
+										</div>
+									</div>
+									<div class="item-main-image">
+										<a href="#"></a>
+										<div class="image-holder">
+											<img src="dist/img/temp/c2e4e5c42e53aee19dcb4fa52e1b42ea.jpg">
+										</div>
+									</div>
+								</div>
+								<h4 class="item-title"><a href="#">Lola T294 #21 LM 1978</a></h4>
+								<div class="item-props">
+									<div class="prop-manufacturer">GLM</div>
+									<div class="prop-article">GLM43101302</div>
+									<div class="prop-scale">1:43</div>
+								</div>
+								<div class="item-price">4300 р</div>
+								<form class="buy-form" action="#" method="post">
+
+									<input type="hidden" name="item_id" value="823">
+									<button class="buy-button">Купить</button>
+								</form>
+							</div>
+						</div><!-- /.item -->
+					</section><!-- /.catalog-list -->
+				</section><!-- /.recommended-block -->
 
 			</div><!-- /.page-content -->
 

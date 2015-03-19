@@ -204,7 +204,7 @@ module.exports = function (grunt) {
 						'sound/{,*/}*.*',
 						'js/{,*/}*.js',
 						'!js/vendor',
-						'!js/vendor/*.js',
+						'!js/vendor/*.js'
 					]
 				}]
 			},

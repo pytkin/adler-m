@@ -1,8 +1,6 @@
 $(function () {
 	'use strict';
 
-	var $carSound = $('#car-sound');
-
 	// Header menu
 	$('#show-catalog-menu').on('click', function (e) {
 		e.preventDefault();
@@ -41,7 +39,7 @@ $(function () {
     });
 
 	// Init sliders for catalog-index/catalog-list on main page
-	$('.catalog-index-list, .catalog-list').one('mouseenter', 'li, .item', function () {
+	$('.catalog-index-list, .catalog-list').on('mouseenter', 'li, .item', function () {
 		$(this).find('.gallery-slider').iosSlider({
 			snapToChildren: true,
 			desktopClickDrag: true,
@@ -77,13 +75,10 @@ $(function () {
         var $car = $(this);
         // var pathLength = $(window).width();
 
-        $carSound[0].play();
+        $car.addClass('starts');
         setTimeout(function () {
-            $car.addClass('starts');
-            setTimeout(function () {
-                $car.removeClass('starts');
-            }, 29000);
-        }, 1660);
+            $car.removeClass('starts');
+        }, 29000);
     });
 
 	// Custom selects
