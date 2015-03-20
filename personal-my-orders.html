@@ -10,6 +10,14 @@
 	</head>
 	<body>
 
+		<div class="modal fade" id="modal" tabindex="-1">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<!-- modal-content -->
+				</div>
+			</div>
+		</div>
+
 		<div class="content-wrapper">
 			<header class="site-header" data-spy="affix" data-offset-top="100">
 				<div class="fixed-part" id="fixed-head">
@@ -142,7 +150,7 @@
 							<div class="tb-item carrier">Почта России</div>
 							<div class="tb-item mail-number"><strong>321654987</strong><a href="#">Проверить<span class="hidden-xs"> статус</span></a></div>
 							<div class="tb-item status">Отправлен</div>
-							<div class="tb-item question"><a href="modals/add-question.html" class="open-modal">Задать вопрос</a></div>
+							<div class="tb-item question"><a href="modals/add-question.html" data-toggle="modal" data-target="#modal">Задать вопрос</a></div>
 							<div class="tb-item check"><label class="checkbox-inline" for="order-960"><input type="checkbox" name="order-960" id="order-960" value="960"><i class="checkbox-replace"></i></label></div>
 						</div>
 					</div><!-- /.archive-table -->
@@ -225,7 +233,7 @@
 							<div class="tb-item carrier">Почта России</div>
 							<div class="tb-item mail-number"><strong>321654987</strong><a href="#">Проверить<span class="hidden-xs"> статус</span></a></div>
 							<div class="tb-item status">Отправлен</div>
-							<div class="tb-item question"><a href="modals/add-question.html" class="open-modal">Задать вопрос</a></div>
+							<div class="tb-item question"><a href="modals/add-question.html" data-toggle="modal" data-target="#modal">Задать вопрос</a></div>
 							<div class="tb-item check"><label class="checkbox-inline" for="order-960"><input type="checkbox" name="order-960" id="order-960" value="960"><i class="checkbox-replace"></i></label></div>
 						</div>
 					</div><!-- /.archive-table -->

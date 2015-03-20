@@ -137,28 +137,6 @@ $(function () {
 	});
 
 
-	// Modals
-	$(document).on('click', '.open-modal', function (e) {
-		e.preventDefault();
-		$.fancybox({
-            href: $(this).attr('href'),
-            padding: 20,
-			margin: 10,
-            wrapCSS: 'fancybox-form',
-            fitToView: false,
-            type: 'ajax',
-            helpers: {
-                overlay: {
-                    css: {
-                        background: 'rgba(0,0,0,.21)'
-                    },
-                    locked: false
-                }
-            }
-        });
-	});
-
-
 	// Endless pagenation
 	if ($('.endless-container').length) {
 		$.endlessPaginate();

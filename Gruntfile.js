@@ -252,6 +252,7 @@ module.exports = function (grunt) {
 					'<%= config.bowerConf.directory %>/bootstrap/js/affix.js',
 					'<%= config.bowerConf.directory %>/bootstrap/js/tab.js',
 					'<%= config.bowerConf.directory %>/bootstrap/js/tooltip.js',
+					'<%= config.bowerConf.directory %>/bootstrap/js/modal.js',
 
 					'<%= config.app %>/js/{,*/}*.js',
 					'!<%= config.app %>/js/app.js',

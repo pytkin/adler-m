@@ -10,6 +10,14 @@
 	</head>
 	<body>
 
+		<div class="modal fade" id="modal" tabindex="-1">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<!-- modal-content -->
+				</div>
+			</div>
+		</div>
+
 		<div class="content-wrapper">
 			<header class="site-header" data-spy="affix" data-offset-top="100">
 				<div class="fixed-part" id="fixed-head">
@@ -29,11 +37,11 @@
 						<li><a class="vk" href="#">ВКонтакте</a></li>
 					</ul>
 					<ul class="nav auth">
-						<li><a class="signin open-modal" href="modals/login.html">Вход</a></li>
+						<li><a class="signin" data-toggle="modal" data-target="#modal" href="modals/login.html">Вход</a></li>
 						<!-- <li><span class="signed">Здравствуй, <a href="#">Username</a></span></li> -->
 						<li class="divider"></li>
 						<!-- <li><a class="signout" href="#">Выйти</a></li> -->
-						<li><a class="register open-modal" href="modals/signup.html">Регистрация</a></li>
+						<li><a class="register" data-toggle="modal" data-target="#modal" href="modals/signup.html">Регистрация</a></li>
 					</ul>
 				  </div><!-- /.top-nav -->
 				  <div class="bottom-nav">
@@ -110,22 +118,22 @@
 								<div class="gallery-slider" id="item-gallery">
 									<div class="gallery-slider-list">
 										<a href="dist/img/temp/73ebf71fc1c8633d268da8303393f950.jpg" class="slide" data-index="0">
-											<img src="dist/img/temp/73ebf71fc1c8633d268da8303393f950.jpg" alt="">
+											<img src="dist/img/temp/73ebf71fc1c8633d268da8303393f950.jpg">
 										</a>
 										<a href="dist/img/temp/853ae78442dd7005127c44907de356d2.jpg" class="slide" data-index="1">
-											<img src="dist/img/temp/853ae78442dd7005127c44907de356d2.jpg" alt="">
+											<img src="dist/img/temp/853ae78442dd7005127c44907de356d2.jpg">
 										</a>
 										<a href="dist/img/temp/87086a694a08b39b028e05f3ce21052f.jpg" class="slide" data-index="2">
-											<img src="dist/img/temp/87086a694a08b39b028e05f3ce21052f.jpg" alt="">
+											<img src="dist/img/temp/87086a694a08b39b028e05f3ce21052f.jpg">
 										</a>
 										<a href="dist/img/temp/bf9db0b351dbf5ed8001e9358c5c13d3.jpg" class="slide" data-index="3">
-											<img src="dist/img/temp/bf9db0b351dbf5ed8001e9358c5c13d3.jpg" alt="">
+											<img src="dist/img/temp/bf9db0b351dbf5ed8001e9358c5c13d3.jpg">
 										</a>
 										<a href="dist/img/temp/e7430864f5fe24ad84f7d9181beb087d.jpg" class="slide" data-index="4">
-											<img src="dist/img/temp/e7430864f5fe24ad84f7d9181beb087d.jpg" alt="">
+											<img src="dist/img/temp/e7430864f5fe24ad84f7d9181beb087d.jpg">
 										</a>
 										<a href="dist/img/temp/73ebf71fc1c8633d268da8303393f950.jpg" class="slide" data-index="5">
-											<img src="dist/img/temp/73ebf71fc1c8633d268da8303393f950.jpg" alt="">
+											<img src="dist/img/temp/73ebf71fc1c8633d268da8303393f950.jpg">
 										</a>
 									</div>
 								</div>
@@ -319,7 +327,7 @@
 									<p>У меня есть такая модель!<br> Классная!</p>
 
 									<div class="replay-link-holder">
-										<a href="modals/add-comment.html" class="replay-link open-modal">Ответить</a>
+										<a href="modals/add-comment.html" data-toggle="modal" data-target="#modal" class="replay-link">Ответить</a>
 									</div>
 								</div>
 								<div class="name admin">Иван Иванович</div>
@@ -333,7 +341,7 @@
 									<p>У меня тоже!</p>
 
 									<div class="replay-link-holder">
-										<a href="modals/add-comment.html" class="replay-link open-modal">Ответить</a>
+										<a href="modals/add-comment.html" data-toggle="modal" data-target="#modal" class="replay-link">Ответить</a>
 									</div>
 								</div>
 								<div class="name">Вениамин Александрович</div>
@@ -347,7 +355,7 @@
 									<p>И у меня тоже!</p>
 
 									<div class="replay-link-holder">
-										<a href="modals/add-comment.html" class="replay-link open-modal">Ответить</a>
+										<a href="modals/add-comment.html" data-toggle="modal" data-target="#modal" class="replay-link">Ответить</a>
 									</div>
 								</div>
 								<div class="name">Улюлюшечка</div>
@@ -361,7 +369,7 @@
 									<p>И у меня тоже!</p>
 
 									<div class="replay-link-holder">
-										<a href="modals/add-comment.html" class="replay-link open-modal">Ответить</a>
+										<a href="modals/add-comment.html" data-toggle="modal" data-target="#modal" class="replay-link">Ответить</a>
 									</div>
 								</div>
 								<div class="name">Улюлюшечка</div>
@@ -375,7 +383,7 @@
 									<p>У меня есть такая модель!<br> Классная!</p>
 
 									<div class="replay-link-holder">
-										<a href="modals/add-comment.html" class="replay-link open-modal">Ответить</a>
+										<a href="modals/add-comment.html" data-toggle="modal" data-target="#modal" class="replay-link">Ответить</a>
 									</div>
 								</div>
 								<div class="name admin">Иван Иванович</div>
@@ -383,7 +391,7 @@
 							</div>
 						</li>
 					</ul>
-					<a href="modals/add-comment.html" class="btn btn-primary add-comment open-modal">Добавить комментарий</a>
+					<a href="modals/add-comment.html" data-toggle="modal" data-target="#modal" class="btn btn-primary add-comment">Добавить комментарий</a>
 				</section>
 
 			</div><!-- /.page-content -->

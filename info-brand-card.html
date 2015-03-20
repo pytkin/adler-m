@@ -10,6 +10,14 @@
 	</head>
 	<body>
 
+		<div class="modal fade" id="modal" tabindex="-1">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<!-- modal-content -->
+				</div>
+			</div>
+		</div>
+
 		<div class="content-wrapper">
 			<header class="site-header" data-spy="affix" data-offset-top="100">
 				<div class="fixed-part" id="fixed-head">
@@ -29,11 +37,11 @@
 						<li><a class="vk" href="#">ВКонтакте</a></li>
 					</ul>
 					<ul class="nav auth">
-						<li><a class="signin open-modal" href="modals/login.html">Вход</a></li>
+						<li><a class="signin" data-toggle="modal" data-target="#modal" href="modals/login.html">Вход</a></li>
 						<!-- <li><span class="signed">Здравствуй, <a href="#">Username</a></span></li> -->
 						<li class="divider"></li>
 						<!-- <li><a class="signout" href="#">Выйти</a></li> -->
-						<li><a class="register open-modal" href="modals/signup.html">Регистрация</a></li>
+						<li><a class="register" data-toggle="modal" data-target="#modal" href="modals/signup.html">Регистрация</a></li>
 					</ul>
 				  </div><!-- /.top-nav -->
 				  <div class="bottom-nav">
@@ -125,7 +133,7 @@
 						<p>AUTOart имеет представительства примерно в тридцати странах мира, среди них Австралия, Германия, Новая Зеландия, Норвегия, Россия и так далее.</p>
 						<p>В основном компания выпускает модели AUTOart в масштабе 1:12, 1:18 и 1:43. Все они делаются из металла, по технологии die-cast. Некоторые модели автомобилей выходят ограниченными тиражами и стоят свыше семи тысяч рублей. Рекомендуем коллекционерам, а также в качестве великолепного подарка.</p>
             			<a href="#">к списку производителей</a>
-					</div>					
+					</div>
 				</section>
 
 			</div><!-- /.page-content -->

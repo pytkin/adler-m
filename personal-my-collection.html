@@ -10,6 +10,14 @@
 	</head>
 	<body>
 
+		<div class="modal fade" id="modal" tabindex="-1">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<!-- modal-content -->
+				</div>
+			</div>
+		</div>
+
 		<div class="content-wrapper">
 			<header class="site-header" data-spy="affix" data-offset-top="100">
 				<div class="fixed-part" id="fixed-head">
@@ -862,7 +870,7 @@
 								<div class="image-holder">
 									<img src="dist/img/temp/0ef2a7eab30c7b6cf42641c0605daed3.jpg">
 									<ul class="edit-actions">
-										<li><a href="modals/edit-model.html" class="edit-model open-modal"></a></li>
+										<li><a href="modals/edit-model.html" data-toggle="modal" data-target="#modal" class="edit-model"></a></li>
 										<li><a href="#" class="delete-model"></a></li>
 									</ul>
 								</div>
@@ -879,7 +887,7 @@
 								<div class="image-holder">
 									<img src="dist/img/temp/00f7e5ab6e6e909119e78405096f5fcf.jpg">
 									<ul class="edit-actions">
-										<li><a href="modals/edit-model.html" class="edit-model open-modal"></a></li>
+										<li><a href="modals/edit-model.html" data-toggle="modal" data-target="#modal" class="edit-model"></a></li>
 										<li><a href="#" class="delete-model"></a></li>
 									</ul>
 								</div>
@@ -892,7 +900,7 @@
 						</div><!-- /.item -->
 					</section><!-- /.uploaded-collection -->
 					<div class="add-item-holder">
-						<a href="modals/upload-model.html" class="btn btn-primary open-modal">Загрузить модель</a>
+						<a href="modals/upload-model.html" data-toggle="modal" data-target="#modal" class="btn btn-primary">Загрузить модель</a>
 					</div>
 				</section><!-- /.uploaded-models -->
 

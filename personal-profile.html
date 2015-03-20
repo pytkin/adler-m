@@ -10,6 +10,14 @@
 	</head>
 	<body>
 
+		<div class="modal fade" id="modal" tabindex="-1">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<!-- modal-content -->
+				</div>
+			</div>
+		</div>
+
 		<div class="content-wrapper">
 			<header class="site-header" data-spy="affix" data-offset-top="100">
 				<div class="fixed-part" id="fixed-head">
@@ -166,10 +174,10 @@
 						<input class="maskedinput form-control" id="id_phone" maxlength="64" name="phone" type="text" value="+7 (999) 999-99-99">
 					</div>
 					<div class="form-group">
-						<a href="modals/change-pass.html" class="open-modal">Изменить пароль</a>
+						<a href="modals/change-pass.html" data-toggle="modal" data-target="#modal">Изменить пароль</a>
 					</div>
 					<div class="form-group">
-						<a href="modals/delete-account.html" class="open-modal">Удалить аккаунт</a>
+						<a href="modals/delete-account.html" data-toggle="modal" data-target="#modal">Удалить аккаунт</a>
 					</div>
 					<div class="form-actions">
 						<button type="submit" class="btn btn-primary submit-btn">Сохранить</button>

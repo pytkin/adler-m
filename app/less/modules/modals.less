@@ -2,17 +2,111 @@
 // Modals
 // --------------------------------------------------
 
+// Kill the scroll on the body
+.modal-open {
+  overflow: hidden;
+}
+
+// Container that the modal scrolls within
+.modal {
+  display: none;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: @zindex-modal;
+  -webkit-overflow-scrolling: touch;
+
+  // Prevent Chrome on Windows from adding a focus outline. For details, see
+  // https://github.com/twbs/bootstrap/pull/10951.
+  outline: 0;
+
+  // When fading in the modal, animate it to slide down
+  &.fade .modal-dialog {
+		transform: translate(0,-25%);
+    transition: .3s ease-out;
+  }
+  &.in .modal-dialog { transform: translate(0,0) }
+}
+.modal-open .modal {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+// Shell div to position the modal with bottom padding
+.modal-dialog {
+  position: relative;
+  width: auto;
+  margin: 10px;
+}
+
+// Actual modal
+.modal-content {
+  position: relative;
+  background-color: @modal-content-bg;
+  outline: 0;
+}
+
+.modal-close {
+	position: absolute;
+	display: block;
+	top: 20px;
+	right: 20px;
+	width: 19px;
+	height: 19px;
+	cursor: pointer;
+	background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAATCAYAAACdkl3yAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyRpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoTWFjaW50b3NoKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo2MUJDMjE2NURBQjIxMUUzOUY5MEE1MkY3NDc2MzdDQSIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo2MUJDMjE2NkRBQjIxMUUzOUY5MEE1MkY3NDc2MzdDQSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjYxQkMyMTYzREFCMjExRTM5RjkwQTUyRjc0NzYzN0NBIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjYxQkMyMTY0REFCMjExRTM5RjkwQTUyRjc0NzYzN0NBIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+Gg+MhgAAAuFJREFUeNqE089P01AcAPBv27X71Y72rTMSkI3NCBiJJp48eDAhBjwoIUYwRI2KiR7Uo/+CMV7Q+IOoBxEQSAQhGo8mRsOJePAAJGBYgMTDkP3oNtetnd/XMOzq0Jd8k63f9/309b3vYx4OvTjC88IwyzLRUqk0quv6zds3runwjzH45JlXEIQhnud7DcNc0PVCPzMyOf1NlKRDLp6HfC4HqVTyQ1bTum9dH6iJPXj63CuJ0mxAlju8Xh8UizpomfQ8qxCllZAgEEJADe0BVQ11iaI0jQVCDcQTkAKzJBTqoHOxFmitopB2trmpsci5XMCyHHg8HpAVAkFVPeXEKCIhoqhqhywr4Ha7rRpaG2lqKDKGYdxdXInfSWk5TLBQLpehUChAcusnbCYS7zUt04MOi8gMUdWTFYRhGDBNE2TJDy3RpnsMFnJmuTyyuLzaVwtLJrfeISTgSv9CFEQOxMIvWYa5SiG6coqNItbrxHLZrPVpPr9/VwTTRgWqwtLZvFVAc7SIDorvIAFEouFhRK5QhObtUAUbQ+xcBbMPG/IKkcsVpBYEHz/PeQW3d4XhXPUcx1XlsGGxwFgr5PMtJ44fy9tzrKNPhPjaxlQqnanfrauTqcy++PrGuLPPWDuCvTOjKEqnXxStPXEOukKawzmnce4kXhWhCqog2IidtCGrTicgWr1Ct4A+ozk6hwSDZ7C3JioYR/Y2UuQtIl1OZLvZxohct5TWsgcLetHK0ZXxgoC/odU0zPZPX+amXbjUx7sisfBr/H8RHzFtsTAsLK+ezeR+7axMwXuGoxsYuM/ihbtU5+jYOslnIXjEF7aPuIR7dr5tf+SN5PNUfybWKrIywAYJYd1u4Q8i+qA1Fhm3ITunj1gfYlN2TEAsGCQ8s7mV/L66/qPZKNO2FyEabpxApN+B2AePLxxfia/3JLUsuPB0Iw31S1Q+ivEVI4ExSC8xfdt/gsd4tF0zj3H4twADALy/gkyBvL/dAAAAAElFTkSuQmCC) no-repeat 0 0;
+	z-index: 2;
+}
+
+// Modal background
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: @zindex-modal-background;
+  background-color: @modal-backdrop-bg;
+  // Fade for backdrop
+  &.fade { opacity: 0; }
+  &.in { opacity: @modal-backdrop-opacity; }
+}
+
+// Modal body
+// Where all modal content resides (sibling of .modal-header and .modal-footer)
+.modal-body {
+  position: relative;
+  padding: @modal-inner-padding;
+}
+
+// Measure scrollbar width for padding body during modal show/hide
+.modal-scrollbar-measure {
+  position: absolute;
+  top: -9999px;
+  width: 50px;
+  height: 50px;
+  overflow: scroll;
+}
+
+// Scale up the modal
+@media (min-width: @screen-sm-min) {
+  // Automatically set modal's width for larger viewports
+  .modal-dialog {
+    width: @modal-width;
+    margin: 30px auto;
+  }
+  .modal-content {
+    box-shadow: 0 0 8px rgba(0,0,0,.4);
+  }
+}
+
 
 // Modal form - base
 
 .modal-form {
-	width: 492px;
-	padding: 20px 25px;
-
-	@media (max-width: @screen-xs-min) {
-		width: 260px;
-	}
-
 	p {
 		text-align: center;
 	}

@@ -10,6 +10,14 @@
 	</head>
 	<body>
 
+		<div class="modal fade" id="modal" tabindex="-1">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<!-- modal-content -->
+				</div>
+			</div>
+		</div>
+
 		<div class="content-wrapper">
 			<header class="site-header" data-spy="affix" data-offset-top="100">
 				<div class="fixed-part" id="fixed-head">
@@ -29,11 +37,11 @@
 						<li><a class="vk" href="#">ВКонтакте</a></li>
 					</ul>
 					<ul class="nav auth">
-						<li><a class="signin open-modal" href="modals/login.html">Вход</a></li>
+						<li><a class="signin" data-toggle="modal" data-target="#modal" href="modals/login.html">Вход</a></li>
 						<!-- <li><span class="signed">Здравствуй, <a href="#">Username</a></span></li> -->
 						<li class="divider"></li>
 						<!-- <li><a class="signout" href="#">Выйти</a></li> -->
-						<li><a class="register open-modal" href="modals/signup.html">Регистрация</a></li>
+						<li><a class="register" data-toggle="modal" data-target="#modal" href="modals/signup.html">Регистрация</a></li>
 					</ul>
 				  </div><!-- /.top-nav -->
 				  <div class="bottom-nav">
@@ -117,7 +125,7 @@
 				</div>
 
 				<section class="reviews-block">
-					<a href="modals/add-comment.html" class="btn btn-primary add-review open-modal">Оставить отзыв</a>
+					<a href="modals/add-comment.html" data-toggle="modal" data-target="#modal" class="btn btn-primary add-review">Оставить отзыв</a>
 					<ul class="reviews-list">
 						<li class="review">
 							<div class="photo"></div>
@@ -126,7 +134,7 @@
 									<p>У меня есть такая модель!<br> Классная!</p>
 
 									<div class="replay-link-holder">
-										<a href="modals/add-comment.html" class="replay-link open-modal">Ответить</a>
+										<a href="modals/add-comment.html" data-toggle="modal" data-target="#modal" class="replay-link">Ответить</a>
 									</div>
 								</div>
 								<div class="name admin">Иван Иванович</div>
@@ -140,7 +148,7 @@
 									<p>У меня тоже!</p>
 
 									<div class="replay-link-holder">
-										<a href="modals/add-comment.html" class="replay-link open-modal">Ответить</a>
+										<a href="modals/add-comment.html" data-toggle="modal" data-target="#modal" class="replay-link">Ответить</a>
 									</div>
 								</div>
 								<div class="name">Вениамин Александрович</div>
@@ -154,7 +162,7 @@
 									<p>И у меня тоже!</p>
 
 									<div class="replay-link-holder">
-										<a href="modals/add-comment.html" class="replay-link open-modal">Ответить</a>
+										<a href="modals/add-comment.html" data-toggle="modal" data-target="#modal" class="replay-link">Ответить</a>
 									</div>
 								</div>
 								<div class="name">Улюлюшечка</div>
@@ -168,7 +176,7 @@
 									<p>И у меня тоже!</p>
 
 									<div class="replay-link-holder">
-										<a href="modals/add-comment.html" class="replay-link open-modal">Ответить</a>
+										<a href="modals/add-comment.html" data-toggle="modal" data-target="#modal" class="replay-link">Ответить</a>
 									</div>
 								</div>
 								<div class="name">Улюлюшечка</div>
@@ -182,7 +190,7 @@
 									<p>У меня есть такая модель!<br> Классная!</p>
 
 									<div class="replay-link-holder">
-										<a href="modals/add-comment.html" class="replay-link open-modal">Ответить</a>
+										<a href="modals/add-comment.html" data-toggle="modal" data-target="#modal" class="replay-link">Ответить</a>
 									</div>
 								</div>
 								<div class="name admin">Иван Иванович</div>
