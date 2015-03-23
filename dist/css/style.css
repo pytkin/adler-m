@@ -5543,7 +5543,7 @@ a.pswp__share--download:hover {
   margin-top: 0;
   font-size: 18px;
   color: #000;
-  font-weight: bold;
+  font-weight: 500;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 @media (min-width: 768px) {
@@ -5715,7 +5715,7 @@ a.pswp__share--download:hover {
   line-height: 1;
   margin-bottom: 18px;
   color: #000;
-  font-weight: bold;
+  font-weight: 500;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 @media (min-width: 768px) {
@@ -5786,7 +5786,7 @@ a.pswp__share--download:hover {
   text-align: left;
   color: #000;
   margin: 0;
-  font-weight: bold;
+  font-weight: 500;
   display: none;
 }
 @media (min-width: 992px) {
