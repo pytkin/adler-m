@@ -1,6 +1,9 @@
 $(function () {
 	'use strict';
 
+	var substibtionIndex = 1;
+	var _ = window._;
+
 	// Header menu
 	$('#show-catalog-menu').on('click', function (e) {
 		e.preventDefault();
@@ -213,7 +216,12 @@ $(function () {
 	$('.subscriptions-block').on('click', '#add-fields', function (e) {
 		e.preventDefault();
 
-		$(this).closest('form').find('fieldset:last').clone().insertAfter($(this).closest('form').find('fieldset:last')).prepend('<button class="remove-fields-btn"></button>');
+		var row = _.template($('#params-row-template').html());
+		var template = row({ index: ++substibtionIndex });
+
+		$(this).closest('form').find('fieldset:last').after(template);
+		$(this).closest('form').find('select').select2();
+
 	}).on('click', '.remove-fields-btn', function (e) {
 		e.preventDefault();
 		$(this).closest('fieldset').remove();

@@ -252,6 +252,8 @@ module.exports = function (grunt) {
 					'<%= config.bowerConf.directory %>/bootstrap/js/tooltip.js',
 					'<%= config.bowerConf.directory %>/bootstrap/js/modal.js',
 
+					'<%= config.bowerConf.directory %>/underscore/underscore.js',
+
 					'<%= config.app %>/js/vendor/*.js'
 				],
 				dest: '<%= config.dist %>/js/scripts.js'
