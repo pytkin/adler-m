@@ -239,4 +239,22 @@ $(function () {
 		}
 	});
 
+
+	// Catalog index results preloading
+	$('#catalog-index-fetch-trigger').on('click', function (e) {
+		e.preventDefault();
+		var $this = $(this);
+		var url = $this.attr('href');
+		var curPaneList = $('.catalog-index .tab-pane.active .catalog-index-list');
+
+		$this.closest('.content-actions').addClass('hide');
+
+		$.ajax(url, {
+			dataType: 'html'
+		}).done(function (data) {
+			$(curPaneList).append(data);
+			$this.closest('.content-actions').removeClass('hide');
+		});
+	});
+
 });

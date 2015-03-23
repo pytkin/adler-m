@@ -6026,6 +6026,7 @@ a.pswp__share--download:hover {
   padding: 18px 0 0;
   margin: 0;
   text-align: center;
+  transition: opacity .15s;
 }
 @media (min-width: 768px) {
   .catalog-index .content-actions {
@@ -6043,6 +6044,9 @@ a.pswp__share--download:hover {
   .catalog-index .content-actions {
     left: 50px;
   }
+}
+.catalog-index .content-actions.hide {
+  opacity: 0;
 }
 .catalog-index .content-actions li {
   margin: 0 10px;

@@ -501,6 +501,7 @@
 		padding: 18px 0 0;
 		margin: 0;
 		text-align: center;
+		transition: opacity .15s;
 
 		@media (min-width: @screen-sm-min) {
 			position: absolute;
@@ -512,6 +513,10 @@
 		}
 		@media (min-width: @screen-lg-min) {
 			left: 50px;
+		}
+
+		&.hide {
+			opacity: 0;
 		}
 
 		li {
