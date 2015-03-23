@@ -88,6 +88,16 @@ $(function () {
         $(this).closest('form').find('select').val('').trigger('change');
     });
 
+
+	// Modals
+	$('[data-toggle="modal"]').on('click', function (e) {
+		e.preventDefault();
+		e.stopPropagation();
+		$('#modal .modal-content').load($(this).attr('href'), function () {
+			$('#modal').modal('show');
+		});
+	});
+
 	// Faq questions
 	$('.question').on('click', function () {
 		var $answer = $(this).siblings('.answer');
@@ -214,52 +224,19 @@ $(function () {
 	$('[data-toggle="tooltip"]').tooltip();
 
 
-	// Catalog card galleryes
-
-	var $itemGallery = $('#item-gallery');
-	var $mainPhoto = $('#main-photo');
-	var after = function (ms, cb) {
-		return setTimeout(cb, ms);
-    };
-	var currentPhotoIndex = 0;
-	var photoUrls = $itemGallery.find('.slide').map(function () {
-		return $(this).attr('href');
-    }).get();
-
-    $itemGallery.iosSlider({
-		snapToChildren: true,
-		desktopClickDrag: true,
-		infiniteSlider: true,
-		navNextSelector: $('.slider-button.next'),
-		navPrevSelector: $('.slider-button.prev')
-    }).on('click', '.slide', function (e) {
-		var $newImage;
-		var $oldImage = $mainPhoto.children('img');
-		var photoUrl = $(this).attr('href');
+	// Cart discount info
+	$('.discounts-info-trigger').on('click', function (e) {
 		e.preventDefault();
-		currentPhotoIndex = parseInt($(this).data('index'));
-		$oldImage.addClass('old');
-		after(1000, function () {
-			$oldImage.remove();
-		});
-		$newImage = $('<img src="' + photoUrl + '">').load(function () {
-			$(this).addClass('new').prependTo($mainPhoto);
-			after(1, function () {
-				$newImage.removeClass('new');
-			});
-		});
-    });
-    $(window).resize(function () {
-      $('#item-gallery').iosSlider('update');
-    });
-    $mainPhoto.on('click', 'img', function () {
-		$.fancybox.open(photoUrls, {
-		index: currentPhotoIndex,
-		helpers: {
-			overlay: {
-				locked: false
-			}
-		}});
-    });
+		var $content = $(this).siblings('.discounts-info');
+		var animationDuration = 600;
+
+		if ($content.hasClass('show')) {
+			$content.stop().slideUp(animationDuration);
+			$content.removeClass('show');
+		} else {
+			$content.stop().slideDown(animationDuration);
+			$content.addClass('show');
+		}
+	});
 
 });

@@ -132,12 +132,10 @@ module.exports = function (grunt) {
 
 		jscs: {
 			options: {
-				config: '<%= config.app %>/js/.jscs.json'
+				config: '<%= config.app %>/js/.jscs.json',
+				requireCamelCaseOrUpperCaseIdentifiers: null
 			},
 			grunt: {
-				options: {
-					requireCamelCaseOrUpperCaseIdentifiers: null
-				},
 				src: 'Gruntfile.js'
 			},
 			src: [
@@ -245,7 +243,8 @@ module.exports = function (grunt) {
 					'<%= config.bowerConf.directory %>/jquery/dist/jquery.js',
 					'<%= config.bowerConf.directory %>/flexslider/jquery.flexslider.js',
 					'<%= config.bowerConf.directory %>/select2-dist/dist/js/select2.js',
-					'<%= config.bowerConf.directory %>/fancybox/source/jquery.fancybox.js',
+					'<%= config.bowerConf.directory %>/photo.swipe/dist/photoswipe.js',
+					'<%= config.bowerConf.directory %>/photo.swipe/dist/photoswipe-ui-default.js',
 
 					'<%= config.bowerConf.directory %>/bootstrap/js/transition.js',
 					'<%= config.bowerConf.directory %>/bootstrap/js/collapse.js',
@@ -254,9 +253,7 @@ module.exports = function (grunt) {
 					'<%= config.bowerConf.directory %>/bootstrap/js/tooltip.js',
 					'<%= config.bowerConf.directory %>/bootstrap/js/modal.js',
 
-					'<%= config.app %>/js/{,*/}*.js',
-					'!<%= config.app %>/js/app.js',
-					'!<%= config.app %>/js/offices.js'
+					'<%= config.app %>/js/vendor/*.js'
 				],
 				dest: '<%= config.dist %>/js/scripts.js'
 			}

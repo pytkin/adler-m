@@ -29,11 +29,11 @@
 						<li><a href="info-contacts.html">Контакты</a></li>
 					</ul>
 					<ul class="nav lang-chooser">
-						<li class="active"><a href="/ru/" title="Change to language: ru">ru</a></li>
-						<li><a href="/en/" title="Change to language: en">en</a></li>
+						<li class="active"><a href="#" title="Change to language: ru">ru</a></li>
+						<li><a href="#" title="Change to language: en">en</a></li>
 					</ul>
 					<ul class="nav header-social">
-						<li><a class="blog" href="#">Блог</a></li>
+						<li><a class="blog" href="blog.html">Блог</a></li>
 						<li><a class="vk" href="#">ВКонтакте</a></li>
 					</ul>
 					<ul class="nav auth">
@@ -46,9 +46,9 @@
 				  </div><!-- /.top-nav -->
 				  <div class="bottom-nav">
 					<div class="nav-header">
-						<span class="logo">
+						<a href="/" class="logo">
 							<img src="dist/img/logo.png" alt="">
-						</span>
+						</a>
 						<a href="#" class="catalog-menu-toggle" id="show-catalog-menu">
 							<span class="bar"></span>
 							<span class="bar"></span>
@@ -79,7 +79,7 @@
 								<button type="submit">найти!</button>
 							</form>
 							<div class="cart">
-								<a class="cart-link" href="/ru/personal/cart/">Корзина<span class="count">1</span></a>
+								<span class="cart-link">Корзина<span class="count">1</span></span>
 							</div>
 						</div>
 					</div>
@@ -215,8 +215,7 @@
 					<h1>Оформление заказа</h1>
 				</div>
 
-				<form class="make-order">
-					<input type="hidden" name="csrfmiddlewaretoken" value="n9SLf2bCamL2Szcr5Dr81SdjlolAGuot">
+				<form class="make-order" action="personal-cart-ordering-step-3.html">
 
 					<ul class="order-steps">
 						<li><span>Шаг 1.</span><a href="personal-cart-ordering-step-1.html">Инициализация</a></li>
@@ -233,7 +232,7 @@
 						<div class="form-group">
 							<label for="id_client_name">Имя</label>
 							<div class="form-field">
-								<input class="form-control" id="id_client_name" maxlength="32" name="client_name" required type="text" value="Василий">
+								<input class="form-control" id="id_client_name" maxlength="32" name="client_name" type="text">
 							</div>
 						</div>
 						<div class="form-group">
@@ -245,7 +244,7 @@
 						<div class="form-group">
 							<label for="id_client_last_name">Фамилия</label>
 							<div class="form-field">
-								<input class="form-control" id="id_client_last_name" maxlength="32" name="client_last_name" required type="text">
+								<input class="form-control" id="id_client_last_name" maxlength="32" name="client_last_name" type="text">
 							</div>
 						</div>
 						<div class="form-group">
@@ -266,20 +265,20 @@
 						<div class="form-group">
 							<label for="id_address_zipcode">Индекс:</label>
 							<div class="form-field">
-								<input class="form-control zipcode" id="id_address_zipcode" maxlength="32" name="address_zipcode" placeholder="Индекс" type="text">
+								<input class="form-control zipcode" id="id_address_zipcode" maxlength="32" name="address_zipcode" type="text">
 								<span class="zipcode-help">Поле обязательно к заполнению<br>только в случае почтовой доставки.</span>
 							</div>
 						</div>
 						<div class="form-group">
 							<label for="id_phone">Телефон</label>
 							<div class="form-field">
-								<input class="maskedinput form-control" id="id_phone" maxlength="32" name="phone" required type="text">
+								<input class="maskedinput form-control" id="id_phone" maxlength="32" name="phone" type="text">
 							</div>
 						</div>
 						<div class="form-group">
 							<label for="id_email">E-mail</label>
 							<div class="form-field">
-								<input class="form-control" id="id_email" maxlength="75" name="email" required type="email">
+								<input class="form-control" id="id_email" maxlength="75" name="email" type="email">
 							</div>
 						</div>
 					</fieldset>
@@ -521,7 +520,7 @@
 						</ul>
 					</div>
 					<div class="footer-social">
-						<a class="blog" href="#">Блог</a>
+						<a class="blog" href="blog.html">Блог</a>
 						<a class="vk" href="#">ВКонтакте</a>
 						<a class="contact" href="#">Напишите нам</a>
 					</div>

@@ -29,11 +29,11 @@
 						<li><a href="info-contacts.html">Контакты</a></li>
 					</ul>
 					<ul class="nav lang-chooser">
-						<li class="active"><a href="/ru/" title="Change to language: ru">ru</a></li>
-						<li><a href="/en/" title="Change to language: en">en</a></li>
+						<li class="active"><a href="#" title="Change to language: ru">ru</a></li>
+						<li><a href="#" title="Change to language: en">en</a></li>
 					</ul>
 					<ul class="nav header-social">
-						<li><a class="blog" href="#">Блог</a></li>
+						<li><a class="blog" href="blog.html">Блог</a></li>
 						<li><a class="vk" href="#">ВКонтакте</a></li>
 					</ul>
 					<ul class="nav auth">
@@ -46,9 +46,9 @@
 				  </div><!-- /.top-nav -->
 				  <div class="bottom-nav">
 					<div class="nav-header">
-						<span class="logo">
+						<a href="/" class="logo">
 							<img src="dist/img/logo.png" alt="">
-						</span>
+						</a>
 						<a href="#" class="catalog-menu-toggle" id="show-catalog-menu">
 							<span class="bar"></span>
 							<span class="bar"></span>
@@ -79,7 +79,7 @@
 								<button type="submit">найти!</button>
 							</form>
 							<div class="cart">
-								<a class="cart-link" href="/ru/personal/cart/">Корзина<span class="count">1</span></a>
+								<a class="cart-link" href="personal-cart.html">Корзина<span class="count">1</span></a>
 							</div>
 						</div>
 					</div>
@@ -127,31 +127,30 @@
 					<h1>Персональные данные</h1>
 				</div>
 
-				<form method="post" id="profile_edit_form" class="profile-block" action="#">
-
+				<form id="profile_edit_form" class="profile-block" action="personal-cart-ordering-step-3.html">
 					<div class="form-group">
 						<label for="id_first_name">Имя:</label>
-						<input class="form-control" id="id_first_name" maxlength="64" name="first_name" type="text" value="Василий">
+						<input class="form-control" id="id_first_name" maxlength="64" name="first_name" type="text">
 					</div>
 					<div class="form-group">
 						<label for="id_second_name">Отчество:</label>
-						<input class="form-control" id="id_second_name" maxlength="64" name="second_name" type="text" value="Иванов">
+						<input class="form-control" id="id_second_name" maxlength="64" name="second_name" type="text">
 					</div>
 					<div class="form-group">
 						<label for="id_last_name">Фамилия:</label>
-						<input class="form-control" id="id_last_name" maxlength="64" name="last_name" type="text" value="Иванович">
+						<input class="form-control" id="id_last_name" maxlength="64" name="last_name" type="text">
 					</div>
 					<div class="form-group">
 						<label for="id_email">E-mail:</label>
-						<input class="form-control" id="id_email" maxlength="64" name="email" type="email" value="vasya@mail.ru">
+						<input class="form-control" id="id_email" maxlength="64" name="email" type="email">
 					</div>
 					<div class="form-group">
 						<label for="id_zipcode">Почтовый индекс:</label>
-						<input class="form-control" id="id_zipcode" maxlength="64" name="zipcode" type="text" value="123">
+						<input class="form-control" id="id_zipcode" maxlength="64" name="zipcode" type="text">
 					</div>
 					<div class="form-group">
 						<label for="id_city">Город:</label>
-						<input class="form-control" id="id_city" maxlength="64" name="city" type="text" value="-">
+						<input class="form-control" id="id_city" maxlength="64" name="city" type="text">
 					</div>
 					<div class="form-group">
 						<label for="id_street">Улица:</label>
@@ -163,7 +162,7 @@
 					</div>
 					<div class="form-group">
 						<label for="id_building">Корпус:</label>
-						<input class="form-control" id="id_building" maxlength="64" name="building" type="text" value="12">
+						<input class="form-control" id="id_building" maxlength="64" name="building" type="text">
 					</div>
 					<div class="form-group">
 						<label for="id_apartment">Квартира:</label>
@@ -171,7 +170,7 @@
 					</div>
 					<div class="form-group">
 						<label for="id_phone">Телефон:</label>
-						<input class="maskedinput form-control" id="id_phone" maxlength="64" name="phone" type="text" value="+7 (999) 999-99-99">
+						<input class="maskedinput form-control" id="id_phone" maxlength="64" name="phone" type="text">
 					</div>
 					<div class="form-group">
 						<a href="modals/change-pass.html" data-toggle="modal" data-target="#modal">Изменить пароль</a>
@@ -218,7 +217,7 @@
 						</ul>
 					</div>
 					<div class="footer-social">
-						<a class="blog" href="#">Блог</a>
+						<a class="blog" href="blog.html">Блог</a>
 						<a class="vk" href="#">ВКонтакте</a>
 						<a class="contact" href="#">Напишите нам</a>
 					</div>

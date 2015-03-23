@@ -1451,6 +1451,9 @@
 			@media (min-width: @screen-sm-min) {
 				margin-right: 8px;
 			}
+			&:focus {
+				outline: 0;
+			}
 		}
 	}
 }
@@ -2173,6 +2176,7 @@
 		select,
 		.select2-container {
 			max-width: 45%;
+			width: 100% !important;
 		}
 		textarea.form-control {
 			max-width: 60%;
@@ -2196,8 +2200,9 @@
 	.select2-container {
 		display: block;
 
-		@media (min-width: @screen-xs-max) {
+		@media (max-width: @screen-xs-max) {
 			min-width: 100%;
+			max-width: 100%;
 		}
 	}
 	.form-control,
@@ -2261,6 +2266,12 @@
 			padding-left: 10px;
 			padding-right: 10px;
 		}
+		&:hover {
+			.edit-actions {
+				display: block;
+			}
+		}
+
 		.item-image {
 			position: relative;
 
@@ -2307,6 +2318,44 @@
 			}
 			@media (min-width: 1100px) {
 				line-height: 20px;
+			}
+		}
+	}
+	.edit-actions {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		position: absolute;
+		top: 0;
+		right: 0;
+		display: none;
+		z-index: 5;
+		background-color: #ebebeb;
+		height: 40px;
+		&:extend(.clearfix all);
+
+		@media (max-width: @screen-xs-max) {
+			display: block;
+		}
+
+		li {
+			display: block;
+			float: left;
+			width: 40px;
+			height: 40px;
+		}
+		a {
+			display: block;
+			width: 40px;
+			height: 40px;
+			background-position: center;
+			background-repeat: no-repeat;
+
+			&.edit-model {
+				background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAATCAMAAACnUt2HAAABrVBMVEWOlJiPlJmQlZqQlpqRl5uSmJyTmZ2TmZ6Ump+Vm5+XnaGYnqOaoKT///+QlZqQlZqQlpr///+QlpqRl5v////T19i0uLz5+fr///+SmJz///+TmZ3///+epKiTmZ3///////+TmZ6Vm5/9/f2TmZ2Ump////+TmZ2epar+/v7////e4OKVm5////////////////+XnaGTmZ2Ump+fpqr///////////+Zn6Sdo6iZn6Sgpqv///+aoKTv8PGepKmboqb+/v7+/v7///+epaqdo6jM0NP9/f37+/yfpaqXnaH5+vqgpquWnKD5+vqiqK329/ejqa6jqq/z9PXy8/Skq7Ckq7Dv8PKjqq/t7vDAxsrW2t2mrbKnrrPq7O7r7e+epKmnrrOpsLWrsress7ittLmutbqvtruwuL2yub+0u8C1vMK2vcO3vsS4v8S4wMW7wsi8wsi8xMm+xcu/xsy/x83AyM7Byc7Cyc/DytDDy9HEy9HFy8/FzdPGztPGztTHzdPHz9XI0NXI0NbK0dbQ1drQ1trU2d3V2t7Z3eHe4uTf4uXl6Orm6ev///8C4U44AAAAYHRSTlMAAAAAAAAAAAAAAAAAAAECAwMGCgoLDRAREhkcHCAkKSovNDU2OTo8Q0RETE9PYGRrbm9zdXl/g4WIjpGZmp2gq6ywt7i8vcHGy8zU1tfY4+Xs7vDy9Pj4+vv8/P7+/v4+dy/HAAAA+UlEQVQY02Pg5WVAAEZ1XxVGoAiyIKNSREqYDpogv3J0aX6MIbIgk7GXrHlvdUGSFUKQzyIxJUhDL7Kh0A0uKGCbUlSeG2uiGRJvABMUckgtrm+uLUi2VtCCmSnsml5a39zcXFdjxwGzXdIzo6wRKNbY6ifDAhFklPbJLAeLtXtIsEEczyjnn1UBEqvvdBJhZWAACyoGZleCxbptBFkYIIKqoTlVILG6HjMeZgaooHZUFVCouSlOn5uJASpoJOXdBlTYFK7LBREDCSZYirt31LcEq3EyMsAF01LsRR27AuQ5YGIgwbySNBcxUxl2uBhIsK+vz1mEFxUAAHoTQrUnXwwVAAAAAElFTkSuQmCC);
+			}
+			&.delete-model {
+				background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAATCAMAAACqTK3AAAABNVBMVEX///////////////+QlpqRl5uRl5uQlpqRl5u+wsa+w8aSmJz///+TmZ3////9/f39/f3///+dpKj///+WnKCco6f9/v79/v6WnKD9/v7+/v79/v79/v79/v79/v79/f39/f79/f39/f2do6ido6ifpqugp6udo6ido6ico6edo6ido6ifpquepKmgp6uepKmeo6ifpKmkqq7///////+YnqOYnqOkqq/u7/Ht7/DFy8/Eys////+aoKTV2duutLnW2tyboaW1u8CttLm1vMDBx8vAxsursress7ivtruwt7ywuL20vMG1vMK2vcO/xsy/x83AyM7Cyc/EzNLFzdPGztPGztTHz9XI0NbK0tbN09jO1NjU2d3U2t7V2t7V297W29/X29/X3N/Y3eHZ3uLa3uHb3+KAM698AAAAR3RSTlMAAwQFBgYICQkJCSsvMDOIiZGSlZmcoKGioqWmp6ipq6usra+wsbO0tba2t7e5ubq7u8zNz9DS09je4ubs9PT29vn5+/v7/WGqPdkAAADwSURBVBjTRc7nVsJAEIbh2cDGLvZCUcCCBbtiQ7FhCQZY3GwCKiKW+78EJ7MJzs/nnDnfCyOFi6koBNc3d300BMfW88M619K/+2hb+3DXcOrWGpm5VxFO4waupOcKMnOnIlxPXkKsrXzLcXPLF9UZA5bUtrpN8jnDAFiKrFrtCZnruVKidGeZ3mYLaHiqO8/CwsFz6dPL2UAoPG9rsleCZr5pCXrE3eXov6jvL9wQT0tofIOkE0+/hzatJcGMxTeyCbito3wkcN3I+FYrwb3jqXaSeowsmizDaav5mwoKI9mf5usJjB4Wx3vNkcniwfAf7ZJBaq8MrYIAAAAASUVORK5CYII=);
 			}
 		}
 	}
@@ -4233,6 +4282,9 @@
 		.gallery-slider-list {
 			width: 100%;
 			height: 100%;
+			list-style: none;
+			margin: 0;
+			padding: 0;
 		}
 		.slide {
 			float: left;
@@ -5589,7 +5641,7 @@
 			margin-right: 20px;
 		}
 		.article-text-content {
-			margin-left: 210px;
+			float: left;
 
 			h3 {
 				font-size: 16px;
@@ -5641,6 +5693,7 @@
 						background-color: #0061ca;
 						color: #fff;
 						background-image: linear-gradient(to bottom, #0072ee 0, #0061ca 100%);
+						text-decoration: none;
 					}
 					&:active {
 						color: #fff;
@@ -5660,6 +5713,9 @@
 		@media (min-width: @screen-sm-min) {
 			float: right;
 			width: 33.33333333%;
+		}
+		@media (max-width: @screen-xs-max) {
+			margin-bottom: 20px;
 		}
 
 		h3 {

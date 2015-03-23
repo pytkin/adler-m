@@ -29,11 +29,11 @@
 						<li><a href="info-contacts.html">Контакты</a></li>
 					</ul>
 					<ul class="nav lang-chooser">
-						<li class="active"><a href="/ru/" title="Change to language: ru">ru</a></li>
-						<li><a href="/en/" title="Change to language: en">en</a></li>
+						<li class="active"><a href="#" title="Change to language: ru">ru</a></li>
+						<li><a href="#" title="Change to language: en">en</a></li>
 					</ul>
 					<ul class="nav header-social">
-						<li><a class="blog" href="#">Блог</a></li>
+						<li><a class="blog" href="blog.html">Блог</a></li>
 						<li><a class="vk" href="#">ВКонтакте</a></li>
 					</ul>
 					<ul class="nav auth">
@@ -46,9 +46,9 @@
 				  </div><!-- /.top-nav -->
 				  <div class="bottom-nav">
 					<div class="nav-header">
-						<span class="logo">
+						<a href="/" class="logo">
 							<img src="dist/img/logo.png" alt="">
-						</span>
+						</a>
 						<a href="#" class="catalog-menu-toggle" id="show-catalog-menu">
 							<span class="bar"></span>
 							<span class="bar"></span>
@@ -79,7 +79,7 @@
 								<button type="submit">найти!</button>
 							</form>
 							<div class="cart">
-								<a class="cart-link" href="/ru/personal/cart/">Корзина<span class="count">1</span></a>
+								<a class="cart-link" href="personal-cart.html">Корзина<span class="count">1</span></a>
 							</div>
 						</div>
 					</div>
@@ -102,7 +102,7 @@
 
 				<section class="catalog-card">
 					<nav class="back-to-catalog">
-						<a href="#">Назад <br class="visible-md visible-lg">в каталог</a>
+						<a href="catalog.html">Назад <br class="visible-md visible-lg">в каталог</a>
 					</nav>
 					<noindex>
 						<div class="card-title visible-xs-block">
@@ -111,35 +111,74 @@
 					</noindex>
 					<div class="card-view">
 						<div class="view-gallery">
-							<div class="main-photo" id="main-photo">
+							<div class="main-photo" data-slide-id="0">
 								<img src="dist/img/temp/5ae30291fcbc542bd2e912bf0876eb9c.jpg">
 							</div>
 							<div class="gallery">
 								<div class="gallery-slider" id="item-gallery">
-									<div class="gallery-slider-list">
-										<a href="dist/img/temp/73ebf71fc1c8633d268da8303393f950.jpg" class="slide" data-index="0">
+									<ul class="gallery-slider-list">
+										<li class="slide" data-slide-id="1">
 											<img src="dist/img/temp/73ebf71fc1c8633d268da8303393f950.jpg">
-										</a>
-										<a href="dist/img/temp/853ae78442dd7005127c44907de356d2.jpg" class="slide" data-index="1">
+										</li>
+										<li class="slide" data-slide-id="2">
 											<img src="dist/img/temp/853ae78442dd7005127c44907de356d2.jpg">
-										</a>
-										<a href="dist/img/temp/87086a694a08b39b028e05f3ce21052f.jpg" class="slide" data-index="2">
+										</li>
+										<li class="slide" data-slide-id="3">
 											<img src="dist/img/temp/87086a694a08b39b028e05f3ce21052f.jpg">
-										</a>
-										<a href="dist/img/temp/bf9db0b351dbf5ed8001e9358c5c13d3.jpg" class="slide" data-index="3">
+										</li>
+										<li class="slide" data-slide-id="4">
 											<img src="dist/img/temp/bf9db0b351dbf5ed8001e9358c5c13d3.jpg">
-										</a>
-										<a href="dist/img/temp/e7430864f5fe24ad84f7d9181beb087d.jpg" class="slide" data-index="4">
+										</li>
+										<li class="slide" data-slide-id="5">
 											<img src="dist/img/temp/e7430864f5fe24ad84f7d9181beb087d.jpg">
-										</a>
-										<a href="dist/img/temp/73ebf71fc1c8633d268da8303393f950.jpg" class="slide" data-index="5">
+										</li>
+										<li class="slide" data-slide-id="6">
 											<img src="dist/img/temp/73ebf71fc1c8633d268da8303393f950.jpg">
-										</a>
-									</div>
+										</li>
+									</ul>
 								</div>
 								<button type="button" class="slider-button prev"></button>
 								<button type="button" class="slider-button next"></button>
 							</div>
+							<script>
+								var CC_gallery_items = [
+									{
+										src: 'dist/img/temp/20842bf7-1879-11e4-b5e2-00224d843d5d-001.jpg',
+										w: 1020,
+										h: 720
+									},
+									{
+										src: 'dist/img/temp/20842bf7-1879-11e4-b5e2-00224d843d5d-002.jpg',
+										w: 1020,
+										h: 720
+									},
+									{
+										src: 'dist/img/temp/20842bf7-1879-11e4-b5e2-00224d843d5d-003.jpg',
+										w: 1020,
+										h: 720
+									},
+									{
+										src: 'dist/img/temp/20842bf7-1879-11e4-b5e2-00224d843d5d-004.jpg',
+										w: 1020,
+										h: 720
+									},
+									{
+										src: 'dist/img/temp/20842bf7-1879-11e4-b5e2-00224d843d5d-005.jpg',
+										w: 1020,
+										h: 720
+									},
+									{
+										src: 'dist/img/temp/20842bf7-1879-11e4-b5e2-00224d843d5d-006.jpg',
+										w: 1020,
+										h: 720
+									},
+									{
+										src: 'dist/img/temp/20842bf7-1879-11e4-b5e2-00224d843d5d-007.jpg',
+										w: 1020,
+										h: 720
+									}
+								];
+							</script>
 						</div>
 						<div class="view-tags">
 							<h4>Теги:</h4>
@@ -427,7 +466,7 @@
 						</ul>
 					</div>
 					<div class="footer-social">
-						<a class="blog" href="#">Блог</a>
+						<a class="blog" href="blog.html">Блог</a>
 						<a class="vk" href="#">ВКонтакте</a>
 						<a class="contact" href="#">Напишите нам</a>
 					</div>
@@ -447,7 +486,38 @@
 			</div>
 		</footer>
 
+		<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+		    <div class="pswp__bg"></div>
+		    <div class="pswp__scroll-wrap">
+		        <div class="pswp__container">
+		            <div class="pswp__item"></div>
+		            <div class="pswp__item"></div>
+		            <div class="pswp__item"></div>
+		        </div>
+
+		        <div class="pswp__ui pswp__ui--hidden">
+		            <div class="pswp__top-bar">
+		                <div class="pswp__counter"></div>
+		                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+		                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+		                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+		                <div class="pswp__preloader">
+		                    <div class="pswp__preloader__icn">
+		                      <div class="pswp__preloader__cut">
+		                        <div class="pswp__preloader__donut"></div>
+		                      </div>
+		                    </div>
+		                </div>
+		            </div>
+		            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+
+		            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+		        </div>
+		    </div>
+		</div>
+
 		<script src="dist/js/scripts.min.js"></script>
 		<script src="dist/js/app.js"></script>
+		<script src="dist/js/catalog-card.js"></script>
 	</body>
 </html>
