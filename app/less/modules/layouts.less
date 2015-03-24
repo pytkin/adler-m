@@ -30,6 +30,8 @@
       left: 0;
       display: none;
       background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAHCAQAAABjRe8fAAAAHUlEQVQIHWNgsGBg0GVgUGBgEGVg4GVgYGNgYAIACfQAsHpLMbwAAAAASUVORK5CYII=) repeat-x 0 0 transparent;
+      transition: opacity .15s;
+      opacity: 1;
     }
 
     @media (max-width: @screen-xs-max) {
@@ -758,6 +760,11 @@
   &.display-catalog-menu {
     .catalog-menu {
       top: 100px;
+    }
+    .fixed-part {
+      &:after {
+        opacity: 0;
+      }
     }
   }
   &.display-catalog-menu-mobile {

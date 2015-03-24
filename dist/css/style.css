@@ -4332,6 +4332,8 @@ a.pswp__share--download:hover {
   left: 0;
   display: none;
   background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAHCAQAAABjRe8fAAAAHUlEQVQIHWNgsGBg0GVgUGBgEGVg4GVgYGNgYAIACfQAsHpLMbwAAAAASUVORK5CYII=) repeat-x 0 0 transparent;
+  transition: opacity .15s;
+  opacity: 1;
 }
 @media (max-width: 767px) {
   .site-header .fixed-part {
@@ -5072,6 +5074,9 @@ a.pswp__share--download:hover {
 }
 .site-header.display-catalog-menu .catalog-menu {
   top: 100px;
+}
+.site-header.display-catalog-menu .fixed-part:after {
+  opacity: 0;
 }
 .site-header.display-catalog-menu-mobile .catalog-menu {
   display: block;
@@ -6659,6 +6664,7 @@ a.pswp__share--download:hover {
 @media (min-width: 768px) {
   .catalog-list .item {
     width: 25%;
+    min-height: 278px;
   }
 }
 @media (min-width: 992px) {
@@ -6668,7 +6674,6 @@ a.pswp__share--download:hover {
 }
 @media (min-width: 1100px) {
   .catalog-list .item {
-    min-height: 278px;
     padding-left: 10px;
     padding-right: 10px;
   }
@@ -7122,6 +7127,9 @@ a.pswp__share--download:hover {
   .brands-list .list-item {
     width: 16.66666667%;
   }
+}
+.brands-list .list-item a {
+  display: inline-block;
 }
 .brands-list .list-item img {
   max-width: 100%;
