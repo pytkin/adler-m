@@ -517,7 +517,7 @@
 			left: 50px;
 		}
 
-		&.hide {
+		&.fade {
 			opacity: 0;
 		}
 
@@ -880,15 +880,15 @@
 
 			display: block;
 			float: left;
-			width: 177px;
+			width: 100%;
 			margin-right: 10px;
 			font-weight: bold;
+			margin-bottom: 10px;
 
-			@media (min-width: 480px) {
-				width: 260px;
-			}
 			@media (min-width: @screen-sm-min) {
+				width: 260px;
 				margin-left: 20px;
+				margin-bottom: 0;
 				float: none;
 				display: inline-block;
 			}
@@ -900,6 +900,14 @@
 			&:extend(.btn all, .btn-primary all);
 			font-weight: bold;
 
+			@media (max-width: @screen-xs-max) {
+				display: block;
+				width: 100%;
+				font-size: 20px;
+				line-height: 27px;
+				height: 49px;
+				padding: 10px 15px;
+			}
 			@media (min-width: @screen-lg-min) {
 				.padding-horizontal(30px);
 			}

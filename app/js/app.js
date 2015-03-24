@@ -254,13 +254,13 @@ $(function () {
 		var url = $this.attr('href');
 		var curPaneList = $('.catalog-index .tab-pane.active .catalog-index-list');
 
-		$this.closest('.content-actions').addClass('hide');
+		$this.closest('.content-actions').addClass('fade');
 
 		$.ajax(url, {
 			dataType: 'html'
 		}).done(function (data) {
 			$(curPaneList).append(data);
-			$this.closest('.content-actions').removeClass('hide');
+			$this.closest('.content-actions').removeClass('fade');
 		});
 	});
 
