@@ -165,8 +165,7 @@ $(function () {
 		} else {
 			$(this).html('Добавить<br> в коллекцию');
 		}
-	});
-	$('.card-actions').on('click', '.favorites', function (e) {
+	}).on('click', '.favorites', function (e) {
 		e.preventDefault();
 		$(this).toggleClass('added');
 		if ($(this).text() === 'В отложенные товары') {
@@ -263,6 +262,40 @@ $(function () {
 			$(curPaneList).append(data);
 			$this.closest('.content-actions').removeClass('hide');
 		});
+	});
+
+
+	// Catalog card gallery
+
+	var PhotoSwipe = window.PhotoSwipe;
+	var PhotoSwipeUI_Default = window.PhotoSwipeUI_Default;
+	var CC_gallery_items = window.CC_gallery_items;
+	var pswpElement = document.querySelectorAll('.pswp')[0];
+	var gallery = {};
+	var options = {
+		index: 0,
+		shareEl: false,
+		captionEl: false
+	};
+	var $itemGallery = $('#item-gallery');
+
+	$itemGallery.iosSlider({
+		snapToChildren: true,
+		desktopClickDrag: true,
+		infiniteSlider: true,
+		navNextSelector: $('.slider-button.next'),
+		navPrevSelector: $('.slider-button.prev')
+	});
+
+	$('.card-view').on('click', '[data-slide-id]', function (e) {
+		e.preventDefault();
+
+		options.index = $(this).data('slide-id');
+
+		console.log(pswpElement, PhotoSwipeUI_Default, CC_gallery_items, options, PhotoSwipe);
+
+		gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, CC_gallery_items, options);
+		gallery.init();
 	});
 
 });

@@ -4965,6 +4965,22 @@ a.pswp__share--download:hover {
     height: 60px;
   }
 }
+@media (min-width: 768px) {
+  .site-header .catalog-menu > ul li:first-child {
+    padding-left: 5px;
+  }
+  .site-header .catalog-menu > ul li:last-child {
+    padding-right: 5px;
+  }
+}
+@media (min-width: 992px) {
+  .site-header .catalog-menu > ul li:first-child {
+    padding-left: 0;
+  }
+  .site-header .catalog-menu > ul li:last-child {
+    padding-right: 0;
+  }
+}
 .site-header .catalog-menu > ul a {
   color: #fff;
   font-size: 16px;
