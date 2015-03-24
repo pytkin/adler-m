@@ -2914,9 +2914,7 @@ html[xmlns] .promo-slider .slides {
   .flexslider .flex-direction-nav .flex-next,
   .promo-slider .flex-direction-nav .flex-prev,
   .promo-slider .flex-direction-nav .flex-next {
-    width: 34px;
-    height: 60px;
-    margin-top: -30px;
+    display: none;
   }
 }
 .flexslider .flex-direction-nav .flex-prev:focus,
@@ -4835,10 +4833,10 @@ a.pswp__share--download:hover {
 @media (max-width: 767px) {
   .site-header .bottom-nav .cart .count {
     font-size: 16px;
-    line-height: 22px;
+    line-height: 20px;
     height: 20px;
     min-width: 20px;
-    padding: 0 4px;
+    padding: 0 5px;
     border-radius: 10px;
     right: -10px;
     top: -3px;
@@ -6835,6 +6833,12 @@ a.pswp__share--download:hover {
 }
 .catalog-list .item .item-title a {
   color: #000;
+}
+.catalog-list .item .item-title a:hover {
+  text-decoration: underline;
+}
+.catalog-list .item .item-title a:focus {
+  text-decoration: none;
 }
 .catalog-list .item .item-props {
   color: #8193a1;
