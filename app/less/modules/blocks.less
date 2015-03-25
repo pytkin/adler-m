@@ -1315,14 +1315,17 @@
 			min-height: 2.143em;
 			font-weight: bold;
 
+			@media (max-width: @screen-xs-max) {
+				min-height: 48px;
+			}
+
 			a {
 				color: #000;
 
-				&:hover {
-					text-decoration: underline;
-				}
-				&:focus {
-					text-decoration: none;
+				@media (max-width: @screen-xs-max) {
+					&:hover {
+						text-decoration: none;
+					}
 				}
 			}
 		}
@@ -5662,12 +5665,28 @@
 			}
 		}
 		.article-photo {
-			float: left;
-			width: 190px;
-			margin-right: 20px;
+			margin-bottom: 10px;
+
+			@media (min-width: @screen-sm-min) {
+				float: left;
+				width: 45%;
+				margin-right: 20px;
+				margin-bottom: 0;
+			}
+
+			img {
+				display: block;
+				max-width: 100%;
+				width: 100%;
+				height: auto;
+			}
 		}
 		.article-text-content {
-			float: left;
+			@media (min-width: @screen-sm-min) {
+				float: left;
+				width: calc(55% - 20px);
+			  padding-right: 20px;
+			}
 
 			h3 {
 				font-size: 16px;
@@ -5865,21 +5884,23 @@
 			@media (min-width: @screen-sm-min) {
 				float: left;
 				width: 45%;
+				padding-right: 20px;
 			}
 
 
 			.image-holder {
 				width: 100%;
 				position: relative;
-				padding-top: 71%;
+				padding-bottom: 56.25%;
 			}
 			img {
-				max-width: 100%;
-				max-height: 100%;
-				margin: auto;
+				width: 100%;
+				height: 100%;
 				position: absolute;
 				top: 0;
 				left: 0;
+				bottom: 0;
+				right: 0;
 			}
 		}
 		.article-title {
