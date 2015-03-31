@@ -19,7 +19,7 @@
 		</div>
 
 		<div class="content-wrapper">
-			<header class="site-header" data-spy="affix" data-offset-top="100">
+			<header class="site-header" data-spy="affix" data-offset-top="70">
 				<div class="fixed-part" id="fixed-head">
 				  <div class="top-nav">
 					<ul class="nav menu">
@@ -37,11 +37,11 @@
 						<li><a class="vk" href="#">ВКонтакте</a></li>
 					</ul>
 					<ul class="nav auth">
-						<li><a class="signin" data-toggle="modal" data-target="#modal" href="modals/login.html">Вход</a></li>
+						<li><a class="signin" data-toggle="modals"href="modals/login.html">Вход</a></li>
 						<!-- <li><span class="signed">Здравствуй, <a href="#">Username</a></span></li> -->
 						<li class="divider"></li>
 						<!-- <li><a class="signout" href="#">Выйти</a></li> -->
-						<li><a class="register" data-toggle="modal" data-target="#modal" href="modals/signup.html">Регистрация</a></li>
+						<li><a class="register" data-toggle="modals"href="modals/signup.html">Регистрация</a></li>
 					</ul>
 				  </div><!-- /.top-nav -->
 				  <div class="bottom-nav">
@@ -165,11 +165,11 @@
 					<legend>Обратная связь</legend>
 					<div class="form-group">
 						<label for="id_name">Ваше имя</label>
-						<input class="form-control" id="id_name" maxlength="128" name="name" required type="text">
+						<input class="form-control" id="id_name" maxlength="128" name="name" type="text">
 					</div>
 					<div class="form-group">
 						<label for="id_city">Ваш город</label>
-						<select class="form-control" id="id_city" name="city" required>
+						<select class="form-control" id="id_city" name="city">
 							<option value="spb" selected="selected">Санкт-Петербург</option>
 							<option value="msk">Москва</option>
 							<option value="other">другой город</option>
@@ -186,7 +186,7 @@
 					</div>
 					<div class="form-group">
 						<label for="id_message">Текст сообщения</label>
-						<textarea class="form-control" id="id_message" name="message" required rows="10"></textarea>
+						<textarea class="form-control" id="id_message" name="message" rows="10"></textarea>
 					</div>
 					<div class="form-actions">
 						<button type="submit" class="btn btn-primary">Отправить</button>

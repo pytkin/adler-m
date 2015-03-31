@@ -2566,6 +2566,10 @@ tbody.collapse.in {
   padding-left: 40px;
   padding-right: 40px;
 }
+.modal-form .reset-password-link {
+  display: inline-block;
+  margin-top: 15px;
+}
 .delete-account {
   text-align: center;
 }
@@ -5009,7 +5013,7 @@ a.pswp__share--download:hover {
   }
 }
 .site-header .catalog-menu-toggle {
-  display: block;
+  display: none;
   position: absolute;
   width: 21px;
   height: 21px;
@@ -5017,8 +5021,6 @@ a.pswp__share--download:hover {
   left: 11px;
   padding: 9px;
   box-sizing: content-box;
-  opacity: 0;
-  transition: opacity .3s;
 }
 @media (max-width: 767px) {
   .site-header .catalog-menu-toggle {
@@ -5068,7 +5070,7 @@ a.pswp__share--download:hover {
   }
 }
 .site-header.affix .catalog-menu-toggle {
-  opacity: 1;
+  display: block;
 }
 .site-header.display-catalog-menu .catalog-menu {
   top: 100px;

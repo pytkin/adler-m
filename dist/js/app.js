@@ -93,16 +93,29 @@ $(function () {
 
 
 	// Modals
-	$('[data-toggle="modal"]').on('click', function (e) {
+	$(document).on('click', '[data-toggle="modals"]', function (e) {
 		e.preventDefault();
 		e.stopPropagation();
-		$('#modal .modal-content').load($(this).attr('href'), function () {
-			$('#modal').modal('show');
-		});
+		var link = $(this);
+		var modal = $('#modal');
+
+		if (modal.hasClass('in')) {
+			modal.modal('hide');
+
+			setTimeout(function () {
+				modal.find('.modal-content').load(link.attr('href'), function () {
+					modal.modal('show');
+				});
+			}, 600);
+		} else {
+			modal.find('.modal-content').load(link.attr('href'), function () {
+				modal.modal('show');
+			});
+		}
 	});
 
 	// Faq questions
-	$('.question').on('click', function () {
+	$('.faq-block').on('click', '.question', function () {
 		var $answer = $(this).siblings('.answer');
 		var $answerContent = $answer.children('.answer-content');
 		var animationDuration = 600;
