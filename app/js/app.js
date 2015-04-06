@@ -261,11 +261,11 @@ $(function () {
 
 
 	// Catalog index results preloading
-	$('#catalog-index-fetch-trigger').on('click', function (e) {
+	$('.js-fetch-trigger').on('click', function (e) {
 		e.preventDefault();
 		var $this = $(this);
 		var url = $this.attr('href');
-		var curPaneList = $('.catalog-index .tab-pane.active .catalog-index-list');
+		var curPaneList = $(this).closest('.tab-pane.active').find('.catalog-index-list');
 
 		$this.closest('.content-actions').addClass('fade');
 
@@ -304,8 +304,6 @@ $(function () {
 		e.preventDefault();
 
 		options.index = $(this).data('slide-id');
-
-		console.log(pswpElement, PhotoSwipeUI_Default, CC_gallery_items, options, PhotoSwipe);
 
 		gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, CC_gallery_items, options);
 		gallery.init();
