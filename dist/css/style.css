@@ -6165,9 +6165,8 @@ a.pswp__share--download:hover {
     line-height: 18px;
     }
   .catalog-index .catalog-index-list li:hover:not(.first-item) .item-price {
-    width: 70px;
     min-height: 0;
-    padding-top: 15px;
+    padding-top: 33px;
     font-size: 22px;
     }
   .catalog-index .catalog-index-list li:hover:not(.first-item) .slider-wrap,
@@ -6260,23 +6259,27 @@ a.pswp__share--download:hover {
   }
 .catalog-index .catalog-index-list li .item-props {
   float: left;
-  width: 75px;
+  width: 50%;
+  padding-right: 5px;
+  padding-left: 10px;
   margin-bottom: 8px;
-  margin-left: 10px;
   font-size: 11px;
   line-height: 12px;
   color: #8193a1;
+  white-space: nowrap;
   }
 .catalog-index .catalog-index-list li .item-price {
   float: right;
-  width: 60px;
+  width: 50%;
   min-height: 2.143em;
-  margin-right: 10px;
+  padding-right: 10px;
+  padding-left: 5px;
   font-size: 14px;
   font-weight: bold;
   line-height: 1;
   color: #000;
   text-align: right;
+  white-space: nowrap;
   }
 .catalog-index .catalog-index-list li .buy-form {
   display: none;
