@@ -6166,7 +6166,7 @@ a.pswp__share--download:hover {
     }
   .catalog-index .catalog-index-list li:hover:not(.first-item) .item-price {
     min-height: 0;
-    padding-top: 33px;
+    padding-top: 15px;
     font-size: 22px;
     }
   .catalog-index .catalog-index-list li:hover:not(.first-item) .slider-wrap,
