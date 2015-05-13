@@ -4334,6 +4334,9 @@ a.pswp__share--download:hover {
     padding-top: 130px !important;
     }
   }
+.admin-panel .site-header {
+  padding-top: 100px !important;
+  }
 .site-header .fixed-part {
   position: fixed;
   top: 0;
@@ -4364,6 +4367,10 @@ a.pswp__share--download:hover {
     display: block;
     background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAADCAQAAAD41K0JAAAAEUlEQVQIHWNgEGZg4GRgYAYAALUAIMd5epoAAAAASUVORK5CYII=);
     }
+  }
+.admin-panel .site-header .fixed-part {
+  position: absolute !important;
+  top: 0 !important;
   }
 .site-header .top-nav {
   position: relative;
@@ -4956,6 +4963,9 @@ a.pswp__share--download:hover {
     padding-bottom: 25px;
     background: linear-gradient(to bottom, #0072ee 0, #0061ca 100%);
     }
+  }
+.admin-panel .site-header .catalog-menu {
+  position: static !important;
   }
 .site-header .catalog-menu > ul {
   width: 100%;

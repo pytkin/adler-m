@@ -47,8 +47,8 @@ $(function () {
 			snapToChildren: true,
 			desktopClickDrag: true,
 			infiniteSlider: true,
-			navNextSelector: $('.slider-button.next'),
-			navPrevSelector: $('.slider-button.prev')
+			navNextSelector: $('.gallery-button.next'),
+			navPrevSelector: $('.gallery-button.prev')
 		});
 	});
 

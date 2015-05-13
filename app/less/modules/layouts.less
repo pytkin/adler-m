@@ -12,6 +12,11 @@
     padding-top: 130px !important;
   }
 
+  // fix под админ панель bitrix
+  .admin-panel & {
+    padding-top: 100px !important;
+  }
+
   .fixed-part {
     position: fixed;
     width: 100%;
@@ -42,6 +47,11 @@
         display: block;
         background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAADCAQAAAD41K0JAAAAEUlEQVQIHWNgEGZg4GRgYAYAALUAIMd5epoAAAAASUVORK5CYII=);
       }
+    }
+    // fix под админ панель bitrix
+    .admin-panel & {
+      position: absolute !important;
+      top: 0 !important;
     }
   }
 
@@ -623,6 +633,11 @@
       height: 70px;
       background: linear-gradient(to bottom, #0072ee 0, #0061ca 100%);
       .padding-vertical(25px);
+    }
+
+    // fix под админ панель bitrix
+    .admin-panel & {
+      position: static !important;
     }
 
     > ul {
