@@ -6117,6 +6117,7 @@ a.pswp__share--download:hover {
   }
 .catalog-index .catalog-index-list {
   display: block;
+  height: auto !important;
   padding: 0;
   margin: 0;
   list-style: none;
