@@ -6271,7 +6271,7 @@ a.pswp__share--download:hover {
   width: 100%;
   height: 18px;
   content: '';
-  background: linear-gradient(to bottom, transparent 0, white 92%);
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0, white 92%);
   }
 .catalog-index .catalog-index-list li .item-title a {
   color: #000;
@@ -6901,7 +6901,7 @@ a.pswp__share--download:hover {
   width: 100%;
   height: 18px;
   content: '';
-  background: linear-gradient(to bottom, transparent 0, white 92%);
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0, white 92%);
   }
 .catalog-list .item .item-title a {
   color: #000;
