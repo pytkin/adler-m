@@ -5052,7 +5052,7 @@ a.pswp__share--download:hover {
   }
 @media (max-width: 767px) {
   .site-header .catalog-menu-toggle {
-    display: none;
+    display: none !important;
     }
   }
 @media (min-width: 992px) {
@@ -8101,6 +8101,9 @@ a.pswp__share--download:hover {
   }
 .share-actions .share-link a {
   text-decoration: underline;
+  word-wrap: break-word;
+
+  overflow-wrap: break-word;
   }
 .share-actions .share-link a:hover,
 .share-actions .share-link a:focus {
