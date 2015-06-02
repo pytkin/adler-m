@@ -9964,6 +9964,7 @@ a.pswp__share--download:hover {
   }
 .catalog-card {
   margin-right: 10px;
+  margin-bottom: 34px;
   margin-left: 10px;
   }
 @media (min-width: 768px) {
@@ -10217,9 +10218,6 @@ a.pswp__share--download:hover {
     font-size: 44px;
     line-height: 48px;
     }
-  }
-.catalog-card .card-details {
-  margin-bottom: 34px;
   }
 @media (min-width: 768px) {
   .catalog-card .card-details {
