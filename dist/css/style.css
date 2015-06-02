@@ -10218,6 +10218,9 @@ a.pswp__share--download:hover {
     line-height: 48px;
     }
   }
+.catalog-card .card-details {
+  margin-bottom: 34px;
+  }
 @media (min-width: 768px) {
   .catalog-card .card-details {
     margin-left: 393px;
@@ -10457,7 +10460,6 @@ a.pswp__share--download:hover {
   display:         flex;
   float: left;
   width: 100%;
-  margin-bottom: 34px;
   }
 .catalog-card .card-actions a {
   display: -webkit-flex;
