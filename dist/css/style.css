@@ -40,10 +40,6 @@ template {
 a {
   background-color: transparent;
   }
-a:active,
-a:hover {
-  outline: 0;
-  }
 abbr[title] {
   border-bottom: 1px dotted;
   }
@@ -285,14 +281,16 @@ textarea {
 a {
   color: #0061ca;
   text-decoration: none;
+  outline: 0;
+  }
+.no-touch a {
   transition: color .3s ease-in-out, border-color .2s ease-in-out, background-color .3s ease-in-out;
   }
-a:hover,
-a:focus {
+.no-touch a:hover {
   color: #003c72;
   text-decoration: underline;
   }
-a:focus {
+.no-touch a:focus {
   outline: 0;
   }
 figure {
@@ -6151,11 +6149,11 @@ a.pswp__share--download:hover {
     width: 20%;
     }
   }
-.catalog-index .catalog-index-list li:hover:not(.first-item) {
+.no-touch .catalog-index .catalog-index-list li:hover:not(.first-item) {
   z-index: 4;
   }
 @media (min-width: 768px) {
-  .catalog-index .catalog-index-list li:hover:not(.first-item) .item-card {
+  .no-touch .catalog-index .catalog-index-list li:hover:not(.first-item) .item-card {
     position: absolute;
     top: -70px;
     left: 50%;
@@ -6165,23 +6163,27 @@ a.pswp__share--download:hover {
     background-color: #fff;
     box-shadow: 0 3px 18px rgba(0, 0, 0, .5);
     }
-  .catalog-index .catalog-index-list li:hover:not(.first-item) .item-title {
+  .no-touch .catalog-index .catalog-index-list li:hover:not(.first-item) .item-image a {
+    top: 60px;
+    bottom: 55px;
+    }
+  .no-touch .catalog-index .catalog-index-list li:hover:not(.first-item) .item-title {
     min-height: 2.143em;
     margin-top: 20px;
     font-size: 16px;
     line-height: 18px;
     }
-  .catalog-index .catalog-index-list li:hover:not(.first-item) .item-props {
+  .no-touch .catalog-index .catalog-index-list li:hover:not(.first-item) .item-props {
     margin-bottom: 16px;
     line-height: 18px;
     }
-  .catalog-index .catalog-index-list li:hover:not(.first-item) .item-price {
+  .no-touch .catalog-index .catalog-index-list li:hover:not(.first-item) .item-price {
     min-height: 0;
     padding-top: 15px;
     font-size: 22px;
     }
-  .catalog-index .catalog-index-list li:hover:not(.first-item) .slider-wrap,
-  .catalog-index .catalog-index-list li:hover:not(.first-item) .buy-form {
+  .no-touch .catalog-index .catalog-index-list li:hover:not(.first-item) .slider-wrap,
+  .no-touch .catalog-index .catalog-index-list li:hover:not(.first-item) .buy-form {
     display: block;
     }
   }
@@ -6244,14 +6246,17 @@ a.pswp__share--download:hover {
   }
 .catalog-index .catalog-index-list li .item-main-image a {
   position: absolute;
-  top: 60px;
+  top: 0;
   right: 0;
-  bottom: 55px;
+  bottom: 0;
   left: 0;
-  z-index: 2;
+  z-index: 3;
   display: block;
+
+  -ms-touch-action: initial;
+      touch-action: initial;
   }
-.catalog-index .catalog-index-list li .item-main-image a:focus {
+.no-touch .catalog-index .catalog-index-list li .item-main-image a:focus {
   outline: 0;
   }
 .catalog-index .catalog-index-list li .item-title {
@@ -6385,6 +6390,10 @@ a.pswp__share--download:hover {
     bottom: 0;
     height: 100%;
     }
+  }
+.catalog-index .catalog-index-list li.first-item .item-main-image a {
+  top: 0;
+  bottom: 0;
   }
 .catalog-index .catalog-index-list li.first-item .item-title {
   position: absolute;
@@ -6737,11 +6746,11 @@ a.pswp__share--download:hover {
     padding-left: 10px;
     }
   }
-.catalog-list .item:hover {
+.no-touch .catalog-list .item:hover {
   z-index: 4;
   }
 @media (min-width: 768px) {
-  .catalog-list .item:hover .item-card {
+  .no-touch .catalog-list .item:hover .item-card {
     position: absolute;
     top: -70px;
     left: -10px;
@@ -6750,23 +6759,23 @@ a.pswp__share--download:hover {
     background-color: #fff;
     box-shadow: 0 3px 18px rgba(0, 0, 0, .5);
     }
-  .catalog-list .item:hover .item-title {
+  .no-touch .catalog-list .item:hover .item-title {
     min-height: 2.143em;
     font-size: 16px;
     line-height: 18px;
     }
-  .catalog-list .item:hover .item-props {
+  .no-touch .catalog-list .item:hover .item-props {
     margin-bottom: 16px;
     line-height: 18px;
     }
-  .catalog-list .item:hover .item-price {
+  .no-touch .catalog-list .item:hover .item-price {
     height: 54px;
     padding-top: 30px;
     margin-bottom: 16px;
     font-size: 22px;
     }
-  .catalog-list .item:hover .slider-wrap,
-  .catalog-list .item:hover .buy-form {
+  .no-touch .catalog-list .item:hover .slider-wrap,
+  .no-touch .catalog-list .item:hover .buy-form {
     display: block;
     }
   }
@@ -6845,10 +6854,13 @@ a.pswp__share--download:hover {
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: 2;
+  z-index: 3;
   display: block;
+
+  -ms-touch-action: initial;
+      touch-action: initial;
   }
-.catalog-list .item .item-main-image a:focus {
+.no-touch .catalog-list .item .item-main-image a:focus {
   outline: 0;
   }
 .catalog-list .item .item-main-image .item-status {

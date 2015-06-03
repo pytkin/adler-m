@@ -50,16 +50,20 @@ textarea {
 a {
 	color: @link-color;
 	text-decoration: none;
-	transition: color .3s ease-in-out, border-color .2s ease-in-out, background-color .3s ease-in-out;
+	outline: 0;
+}
 
-	&:hover,
-	&:focus {
-		color: @link-hover-color;
-		text-decoration: @link-hover-decoration;
-	}
+.no-touch {
+	a {
+		transition: color .3s ease-in-out, border-color .2s ease-in-out, background-color .3s ease-in-out;
 
-	&:focus {
-		outline: 0
+		&:hover {
+			color: @link-hover-color;
+			text-decoration: @link-hover-decoration;
+		}
+		&:focus {
+			outline: 0;
+		}
 	}
 }
 

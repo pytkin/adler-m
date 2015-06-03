@@ -4,6 +4,14 @@ $(function () {
 	var substibtionIndex = 1;
 	var _ = window._;
 
+	if ($('html').hasClass('touch')) {
+		$('.catalog-index-list, .catalog-list').on('click touchend', 'a', function () {
+			var el = $(this);
+			var link = el.attr('href');
+			window.location = link;
+		});
+	}
+
 	// Header menu
 	$('#show-catalog-menu').on('click', function (e) {
 		e.preventDefault();
