@@ -5,7 +5,7 @@ $(function () {
 	var _ = window._;
 
 	if ($('html').hasClass('touch')) {
-		$('.catalog-index-list, .catalog-list').on('click touchend', 'a', function () {
+		$('.catalog-index-list, .catalog-list').on('tap', 'a', function () {
 			var el = $(this);
 			var link = el.attr('href');
 			window.location = link;
