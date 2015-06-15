@@ -4513,8 +4513,8 @@ a.pswp__share--download:hover {
   width: 0;
   height: 13px;
   margin-top: 8px;
-  margin-right: 7px;
-  margin-left: 9px;
+  margin-right: 3px;
+  margin-left: 3px;
   border-right: 1px solid #fff;
   border-left: 1px solid #e3e4e4;
   }
@@ -6737,7 +6737,7 @@ a.pswp__share--download:hover {
 @media (min-width: 768px) {
   .catalog-list .item {
     width: 25%;
-    min-height: 276px;
+    min-height: 280px;
     }
   }
 @media (min-width: 992px) {
@@ -7387,17 +7387,12 @@ a.pswp__share--download:hover {
 .about-block .bottom-line .teaser-list li {
   position: relative;
   display: block;
-  width: 100%;
+  float: left;
+  width: 50%;
   min-height: 1px;
   padding-right: 10px;
   padding-left: 10px;
   text-align: center;
-  }
-@media (min-width: 480px) {
-  .about-block .bottom-line .teaser-list li {
-    float: left;
-    width: 50%;
-    }
   }
 @media (max-width: 767px) {
   .about-block .bottom-line .teaser-list li {
@@ -7436,9 +7431,14 @@ a.pswp__share--download:hover {
     }
   }
 .about-block .bottom-line .teaser-image {
-  height: 180px;
+  height: 140px;
   border: 1px solid #b2cce0;
   border-radius: 4px;
+  }
+@media (min-width: 480px) {
+  .about-block .bottom-line .teaser-image {
+    height: 180px;
+    }
   }
 @media (max-width: 767px) {
   .about-block .bottom-line .teaser-image {
@@ -7466,7 +7466,7 @@ a.pswp__share--download:hover {
   }
 @media (max-width: 767px) {
   .about-block .bottom-line .teaser-image-holder img {
-    max-width: 55%;
+    max-width: 75%;
     max-height: 84%;
     }
   }
@@ -9818,17 +9818,11 @@ a.pswp__share--download:hover {
   }
 .how2buy-block .teaser-list li {
   display: block;
+  float: left;
   width: 50%;
-  width: 100%;
   padding-right: 10px;
   padding-left: 10px;
   text-align: center;
-  }
-@media (min-width: 480px) {
-  .how2buy-block .teaser-list li {
-    float: left;
-    width: 50%;
-    }
   }
 @media (min-width: 768px) {
   .how2buy-block .teaser-list li {
@@ -9861,9 +9855,14 @@ a.pswp__share--download:hover {
     }
   }
 .how2buy-block .teaser-list li .teaser-image {
-  height: 180px;
+  height: 140px;
   border: 1px solid #b2cce0;
   border-radius: 4px;
+  }
+@media (min-width: 480px) {
+  .how2buy-block .teaser-list li .teaser-image {
+    height: 180px;
+    }
   }
 @media (max-width: 767px) {
   .how2buy-block .teaser-list li .teaser-image {

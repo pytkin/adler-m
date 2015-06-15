@@ -12,6 +12,21 @@ $(function () {
 		});
 	}
 
+
+	function resizeArchiveTable() {
+		console.log('fire');
+		if ($(window).width() < 768) {
+			$('.archive-table .th-item').each(function (index) {
+				$(this).closest('.archive-table').find('.tb-item').eq(index).add($(this)).equalHeights();
+			});
+		} else {
+			$('.archive-table .th-item').height('auto');
+		}
+	}
+	// уравниваем высоту строк для таблиц
+	$(window).on('resize', resizeArchiveTable);
+	resizeArchiveTable();
+
 	// Header menu
 	$('#show-catalog-menu').on('click', function (e) {
 		e.preventDefault();

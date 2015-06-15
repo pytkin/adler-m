@@ -244,6 +244,7 @@ module.exports = function (grunt) {
 					'<%= config.bowerConf.directory %>/select2-dist/dist/js/select2.js',
 					'<%= config.bowerConf.directory %>/photo.swipe/dist/photoswipe.js',
 					'<%= config.bowerConf.directory %>/photo.swipe/dist/photoswipe-ui-default.js',
+					'<%= config.bowerConf.directory %>/jquery.equalheights/jquery.equalheights.js',
 
 					'<%= config.bowerConf.directory %>/bootstrap/js/transition.js',
 					'<%= config.bowerConf.directory %>/bootstrap/js/collapse.js',
