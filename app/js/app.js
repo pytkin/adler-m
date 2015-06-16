@@ -14,7 +14,6 @@ $(function () {
 
 
 	function resizeArchiveTable() {
-		console.log('fire');
 		if ($(window).width() < 768) {
 			$('.archive-table .th-item').each(function (index) {
 				$(this).closest('.archive-table').find('.tb-item').eq(index).add($(this)).equalHeights();
