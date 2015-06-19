@@ -280,3 +280,11 @@
     padding: 6px;
   }
 }
+
+.select2-container--default-filter {
+  &:extend(.select2-container--default all);
+
+  .select2-results > .select2-results__options {
+    max-height: 320px;
+  }
+}

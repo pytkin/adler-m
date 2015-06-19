@@ -107,7 +107,10 @@ $(function () {
     });
 
 	// Custom selects
-	$('select').select2();
+	$('select').not('[data-type="filter-select"]').select2();
+	$('select[data-type="filter-select"]').select2({
+		theme: 'default-filter'
+	});
 
 	$('#filter-reset').on('click', function () {
         $(this).closest('form').find('select').val('').trigger('change');

@@ -14,7 +14,6 @@ $(function () {
 
 
 	function resizeArchiveTable() {
-		console.log('fire');
 		if ($(window).width() < 768) {
 			$('.archive-table .th-item').each(function (index) {
 				$(this).closest('.archive-table').find('.tb-item').eq(index).add($(this)).equalHeights();
@@ -108,7 +107,10 @@ $(function () {
     });
 
 	// Custom selects
-	$('select').select2();
+	$('select').not('[data-type="filter-select"]').select2();
+	$('select[data-type="filter-select"]').select2({
+		theme: 'default-filter'
+	});
 
 	$('#filter-reset').on('click', function () {
         $(this).closest('form').find('select').val('').trigger('change');
