@@ -313,7 +313,8 @@ $(function () {
 	var options = {
 		index: 0,
 		shareEl: false,
-		captionEl: false
+		captionEl: false,
+		clickToCloseNonZoomable: false
 	};
 	var $itemGallery = $('#item-gallery');
 

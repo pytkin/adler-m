@@ -1,5 +1,5 @@
 /*!
- * jQuery JavaScript Library v2.1.3
+ * jQuery JavaScript Library v2.1.4
  * http://jquery.com/
  *
  * Includes Sizzle.js
@@ -9,7 +9,7 @@
  * Released under the MIT license
  * http://jquery.org/license
  *
- * Date: 2014-12-18T15:11Z
+ * Date: 2015-04-28T16:01Z
  */
 
 (function( global, factory ) {
@@ -67,7 +67,7 @@ var
 	// Use the correct document accordingly with window argument (sandbox)
 	document = window.document,
 
-	version = "2.1.3",
+	version = "2.1.4",
 
 	// Define a local copy of jQuery
 	jQuery = function( selector, context ) {
@@ -531,7 +531,12 @@ jQuery.each("Boolean Number String Function Array Date RegExp Object Error".spli
 });
 
 function isArraylike( obj ) {
-	var length = obj.length,
+
+	// Support: iOS 8.2 (not reproducible in simulator)
+	// `in` check used to prevent JIT error (gh-2145)
+	// hasOwn isn't used here due to false negatives
+	// regarding Nodelist length in IE
+	var length = "length" in obj && obj.length,
 		type = jQuery.type( obj );
 
 	if ( type === "function" || jQuery.isWindow( obj ) ) {
@@ -9205,7 +9210,7 @@ return jQuery;
 }));
 
 /*
- * jQuery FlexSlider v2.3.0
+ * jQuery FlexSlider v2.5.0
  * Copyright 2012 WooThemes
  * Contributing Author: Tyler Smith
  */
@@ -9244,7 +9249,7 @@ return jQuery;
         slider.animating = false;
         // Get current slide and make sure it is a number
         slider.currentSlide = parseInt( ( slider.vars.startAt ? slider.vars.startAt : 0), 10 );
-        if ( isNaN( slider.currentSlide ) ) slider.currentSlide = 0;
+        if ( isNaN( slider.currentSlide ) ) { slider.currentSlide = 0; }
         slider.animatingTo = slider.currentSlide;
         slider.atEnd = (slider.currentSlide === 0 || slider.currentSlide === slider.last);
         slider.containerSelector = slider.vars.selector.substr(0,slider.vars.selector.search(' '));
@@ -9254,7 +9259,7 @@ return jQuery;
         // SYNC:
         slider.syncExists = $(slider.vars.sync).length > 0;
         // SLIDE:
-        if (slider.vars.animation === "slide") slider.vars.animation = "swing";
+        if (slider.vars.animation === "slide") { slider.vars.animation = "swing"; }
         slider.prop = (vertical) ? "top" : "marginLeft";
         slider.args = {};
         // SLIDESHOW:
@@ -9282,6 +9287,9 @@ return jQuery;
         // MANUAL:
         if (slider.vars.manualControls !== "") slider.manualControls = $(slider.vars.manualControls).length > 0 && $(slider.vars.manualControls);
 
+        // CUSTOM DIRECTION NAV:
+        if (slider.vars.customDirectionNav !== "") slider.customDirectionNav = $(slider.vars.customDirectionNav).length === 2 && $(slider.vars.customDirectionNav);
+
         // RANDOMIZE:
         if (slider.vars.randomize) {
           slider.slides.sort(function() { return (Math.round(Math.random())-0.5); });
@@ -9294,10 +9302,10 @@ return jQuery;
         slider.setup("init");
 
         // CONTROLNAV:
-        if (slider.vars.controlNav) methods.controlNav.setup();
+        if (slider.vars.controlNav) { methods.controlNav.setup(); }
 
         // DIRECTIONNAV:
-        if (slider.vars.directionNav) methods.directionNav.setup();
+        if (slider.vars.directionNav) { methods.directionNav.setup(); }
 
         // KEYBOARD:
         if (slider.vars.keyboard && ($(slider.containerSelector).length === 1 || slider.vars.multipleKeyboard)) {
@@ -9320,18 +9328,18 @@ return jQuery;
         }
 
         // PAUSEPLAY
-        if (slider.vars.pausePlay) methods.pausePlay.setup();
+        if (slider.vars.pausePlay) { methods.pausePlay.setup(); }
 
         //PAUSE WHEN INVISIBLE
-        if (slider.vars.slideshow && slider.vars.pauseInvisible) methods.pauseInvisible.init();
+        if (slider.vars.slideshow && slider.vars.pauseInvisible) { methods.pauseInvisible.init(); }
 
         // SLIDSESHOW
         if (slider.vars.slideshow) {
           if (slider.vars.pauseOnHover) {
             slider.hover(function() {
-              if (!slider.manualPlay && !slider.manualPause) slider.pause();
+              if (!slider.manualPlay && !slider.manualPause) { slider.pause(); }
             }, function() {
-              if (!slider.manualPause && !slider.manualPlay && !slider.stopped) slider.play();
+              if (!slider.manualPause && !slider.manualPlay && !slider.stopped) { slider.play(); }
             });
           }
           // initialize animation
@@ -9342,13 +9350,13 @@ return jQuery;
         }
 
         // ASNAV:
-        if (asNav) methods.asNav.setup();
+        if (asNav) { methods.asNav.setup(); }
 
         // TOUCH
-        if (touch && slider.vars.touch) methods.touch();
+        if (touch && slider.vars.touch) { methods.touch(); }
 
         // FADE&&SMOOTHHEIGHT || SLIDE:
-        if (!fade || (fade && slider.vars.smoothHeight)) $(window).bind("resize orientationchange focus", methods.resize);
+        if (!fade || (fade && slider.vars.smoothHeight)) { $(window).bind("resize orientationchange focus", methods.resize); }
 
         slider.find("img").attr("draggable", "false");
 
@@ -9384,8 +9392,9 @@ return jQuery;
                   that._gesture.target = that;
                   that.addEventListener("MSPointerDown", function (e){
                       e.preventDefault();
-                      if(e.currentTarget._gesture)
-                          e.currentTarget._gesture.addPointer(e.pointerId);
+                      if(e.currentTarget._gesture) {
+                        e.currentTarget._gesture.addPointer(e.pointerId);
+                      }
                   }, false);
                   that.addEventListener("MSGestureTap", function (e){
                       e.preventDefault();
@@ -9422,7 +9431,7 @@ return jQuery;
               item = (slider.vars.controlNav === "thumbnails") ? '<img src="' + slide.attr( 'data-thumb' ) + '"/>' : '<a>' + j + '</a>';
               if ( 'thumbnails' === slider.vars.controlNav && true === slider.vars.thumbCaptions ) {
                 var captn = slide.attr( 'data-thumbcaption' );
-                if ( '' != captn && undefined != captn ) item += '<span class="' + namespace + 'caption">' + captn + '</span>';
+                if ( '' !== captn && undefined !== captn ) { item += '<span class="' + namespace + 'caption">' + captn + '</span>'; }
               }
               slider.controlNavScaffold.append('<li>' + item + '</li>');
               j++;
@@ -9501,10 +9510,13 @@ return jQuery;
       },
       directionNav: {
         setup: function() {
-          var directionNavScaffold = $('<ul class="' + namespace + 'direction-nav"><li><a class="' + namespace + 'prev" href="#">' + slider.vars.prevText + '</a></li><li><a class="' + namespace + 'next" href="#">' + slider.vars.nextText + '</a></li></ul>');
+          var directionNavScaffold = $('<ul class="' + namespace + 'direction-nav"><li class="' + namespace + 'nav-prev"><a class="' + namespace + 'prev" href="#">' + slider.vars.prevText + '</a></li><li class="' + namespace + 'nav-next"><a class="' + namespace + 'next" href="#">' + slider.vars.nextText + '</a></li></ul>');
 
+          // CUSTOM DIRECTION NAV:
+          if (slider.customDirectionNav) {
+            slider.directionNav = slider.customDirectionNav;
           // CONTROLSCONTAINER:
-          if (slider.controlsContainer) {
+          } else if (slider.controlsContainer) {
             $(slider.controlsContainer).append(directionNavScaffold);
             slider.directionNav = $('.' + namespace + 'direction-nav li a', slider.controlsContainer);
           } else {
@@ -9595,15 +9607,16 @@ return jQuery;
           cwidth,
           dx,
           startT,
+          onTouchStart,
+          onTouchMove,
+          onTouchEnd,
           scrolling = false,
           localX = 0,
           localY = 0,
           accDx = 0;
 
         if(!msGesture){
-            el.addEventListener('touchstart', onTouchStart, false);
-
-            function onTouchStart(e) {
+            onTouchStart = function(e) {
               if (slider.animating) {
                 e.preventDefault();
               } else if ( ( window.navigator.msPointerEnabled ) || e.touches.length === 1 ) {
@@ -9628,9 +9641,9 @@ return jQuery;
                 el.addEventListener('touchmove', onTouchMove, false);
                 el.addEventListener('touchend', onTouchEnd, false);
               }
-            }
+            };
 
-            function onTouchMove(e) {
+            onTouchMove = function(e) {
               // Local vars for X and Y points.
 
               localX = e.touches[0].pageX;
@@ -9650,9 +9663,9 @@ return jQuery;
                   slider.setProps(offset + dx, "setTouch");
                 }
               }
-            }
+            };
 
-            function onTouchEnd(e) {
+            onTouchEnd = function(e) {
               // finish the touch by undoing the touch session
               el.removeEventListener('touchmove', onTouchMove, false);
 
@@ -9663,7 +9676,7 @@ return jQuery;
                 if (slider.canAdvance(target) && (Number(new Date()) - startT < 550 && Math.abs(updateDx) > 50 || Math.abs(updateDx) > cwidth/2)) {
                   slider.flexAnimate(target, slider.vars.pauseOnAction);
                 } else {
-                  if (!fade) slider.flexAnimate(slider.currentSlide, slider.vars.pauseOnAction, true);
+                  if (!fade) { slider.flexAnimate(slider.currentSlide, slider.vars.pauseOnAction, true); }
                 }
               }
               el.removeEventListener('touchend', onTouchEnd, false);
@@ -9672,7 +9685,9 @@ return jQuery;
               startY = null;
               dx = null;
               offset = null;
-            }
+            };
+
+            el.addEventListener('touchstart', onTouchStart, false);
         }else{
             el.style.msTouchAction = "none";
             el._gesture = new MSGesture();
@@ -9748,7 +9763,7 @@ return jQuery;
                     if (slider.canAdvance(target) && (Number(new Date()) - startT < 550 && Math.abs(updateDx) > 50 || Math.abs(updateDx) > cwidth/2)) {
                         slider.flexAnimate(target, slider.vars.pauseOnAction);
                     } else {
-                        if (!fade) slider.flexAnimate(slider.currentSlide, slider.vars.pauseOnAction, true);
+                        if (!fade) { slider.flexAnimate(slider.currentSlide, slider.vars.pauseOnAction, true); }
                     }
                 }
 
@@ -9762,7 +9777,7 @@ return jQuery;
       },
       resize: function() {
         if (!slider.animating && slider.is(':visible')) {
-          if (!carousel) slider.doMath();
+          if (!carousel) { slider.doMath(); }
 
           if (fade) {
             // SMOOTH HEIGHT:
@@ -9777,7 +9792,7 @@ return jQuery;
             slider.setProps(slider.h, "setTotal");
           } else {
             // SMOOTH HEIGHT:
-            if (slider.vars.smoothHeight) methods.smoothHeight();
+            if (slider.vars.smoothHeight) { methods.smoothHeight(); }
             slider.newSlides.width(slider.computedW);
             slider.setProps(slider.computedW, "setTotal");
           }
@@ -9897,33 +9912,33 @@ return jQuery;
         slider.animatingTo = target;
 
         // SLIDESHOW:
-        if (pause) slider.pause();
+        if (pause) { slider.pause(); }
 
         // API: before() animation Callback
         slider.vars.before(slider);
 
         // SYNC:
-        if (slider.syncExists && !fromNav) methods.sync("animate");
+        if (slider.syncExists && !fromNav) { methods.sync("animate"); }
 
         // CONTROLNAV
-        if (slider.vars.controlNav) methods.controlNav.active();
+        if (slider.vars.controlNav) { methods.controlNav.active(); }
 
         // !CAROUSEL:
         // CANDIDATE: slide active class (for add/remove slide)
-        if (!carousel) slider.slides.removeClass(namespace + 'active-slide').eq(target).addClass(namespace + 'active-slide');
+        if (!carousel) { slider.slides.removeClass(namespace + 'active-slide').eq(target).addClass(namespace + 'active-slide'); }
 
         // INFINITE LOOP:
         // CANDIDATE: atEnd
         slider.atEnd = target === 0 || target === slider.last;
 
         // DIRECTIONNAV:
-        if (slider.vars.directionNav) methods.directionNav.update();
+        if (slider.vars.directionNav) { methods.directionNav.update(); }
 
         if (target === slider.last) {
           // API: end() of cycle Callback
           slider.vars.end(slider);
           // SLIDESHOW && !INFINITE LOOP:
-          if (!slider.vars.animationLoop) slider.pause();
+          if (!slider.vars.animationLoop) { slider.pause(); }
         }
 
         // SLIDE:
@@ -9984,7 +9999,7 @@ return jQuery;
           }
         }
         // SMOOTH HEIGHT:
-        if (slider.vars.smoothHeight) methods.smoothHeight(slider.vars.animationSpeed);
+        if (slider.vars.smoothHeight) { methods.smoothHeight(slider.vars.animationSpeed); }
       }
     };
     slider.wrapup = function(dimension) {
@@ -10004,7 +10019,7 @@ return jQuery;
 
     // SLIDESHOW:
     slider.animateSlides = function() {
-      if (!slider.animating && focused ) slider.flexAnimate(slider.getTarget("next"));
+      if (!slider.animating && focused ) { slider.flexAnimate(slider.getTarget("next")); }
     };
     // SLIDESHOW:
     slider.pause = function() {
@@ -10012,19 +10027,19 @@ return jQuery;
       slider.animatedSlides = null;
       slider.playing = false;
       // PAUSEPLAY:
-      if (slider.vars.pausePlay) methods.pausePlay.update("play");
+      if (slider.vars.pausePlay) { methods.pausePlay.update("play"); }
       // SYNC:
-      if (slider.syncExists) methods.sync("pause");
+      if (slider.syncExists) { methods.sync("pause"); }
     };
     // SLIDESHOW:
     slider.play = function() {
-      if (slider.playing) clearInterval(slider.animatedSlides);
+      if (slider.playing) { clearInterval(slider.animatedSlides); }
       slider.animatedSlides = slider.animatedSlides || setInterval(slider.animateSlides, slider.vars.slideshowSpeed);
       slider.started = slider.playing = true;
       // PAUSEPLAY:
-      if (slider.vars.pausePlay) methods.pausePlay.update("pause");
+      if (slider.vars.pausePlay) { methods.pausePlay.update("pause"); }
       // SYNC:
-      if (slider.syncExists) methods.sync("play");
+      if (slider.syncExists) { methods.sync("play"); }
     };
     // STOP:
     slider.stop = function () {
@@ -10084,7 +10099,7 @@ return jQuery;
       }
 
       slider.args[slider.prop] = target;
-      if (slider.transitions || dur === undefined) slider.container.css(slider.args);
+      if (slider.transitions || dur === undefined) { slider.container.css(slider.args); }
 
       slider.container.css('transform',target);
     };
@@ -10111,7 +10126,7 @@ return jQuery;
           slider.cloneCount = 2;
           slider.cloneOffset = 1;
           // clear out old clones
-          if (type !== "init") slider.container.find('.clone').remove();
+          if (type !== "init") { slider.container.find('.clone').remove(); }
           slider.container.append(methods.uniqueID(slider.slides.first().clone().addClass('clone')).attr('aria-hidden', 'true'))
                           .prepend(methods.uniqueID(slider.slides.last().clone().addClass('clone')).attr('aria-hidden', 'true'));
         }
@@ -10134,7 +10149,7 @@ return jQuery;
             slider.doMath();
             slider.newSlides.css({"width": slider.computedW, "float": "left", "display": "block"});
             // SMOOTH HEIGHT:
-            if (slider.vars.smoothHeight) methods.smoothHeight();
+            if (slider.vars.smoothHeight) { methods.smoothHeight(); }
           }, (type === "init") ? 100 : 0);
         }
       } else { // FADE:
@@ -10152,11 +10167,11 @@ return jQuery;
           }
         }
         // SMOOTH HEIGHT:
-        if (slider.vars.smoothHeight) methods.smoothHeight();
+        if (slider.vars.smoothHeight) { methods.smoothHeight(); }
       }
       // !CAROUSEL:
       // CANDIDATE: active slide
-      if (!carousel) slider.slides.removeClass(namespace + "active-slide").eq(slider.currentSlide).addClass(namespace + "active-slide");
+      if (!carousel) { slider.slides.removeClass(namespace + "active-slide").eq(slider.currentSlide).addClass(namespace + "active-slide"); }
 
       //FlexSlider: init() Callback
       slider.vars.init(slider);
@@ -10221,7 +10236,7 @@ return jQuery;
         }
       }
       // update directionNav
-      if (slider.vars.directionNav) methods.directionNav.update();
+      if (slider.vars.directionNav) { methods.directionNav.update(); }
 
     };
 
@@ -10331,6 +10346,7 @@ return jQuery;
     // Special properties
     controlsContainer: "",          //{UPDATED} jQuery Object/Selector: Declare which container the navigation elements should be appended too. Default container is the FlexSlider element. Example use would be $(".flexslider-container"). Property is ignored if given element is not found.
     manualControls: "",             //{UPDATED} jQuery Object/Selector: Declare custom control navigation. Examples would be $(".flex-control-nav li") or "#tabs-nav li img", etc. The number of elements in your controlNav should match the number of slides/tabs.
+    customDirectionNav: "",         //{NEW} jQuery Object/Selector: Custom prev / next button. Must be two jQuery elements. In order to make the events work they have to have the classes "prev" and "next" (plus namespace)
     sync: "",                       //{NEW} Selector: Mirror the actions performed on this slider with another slider. Use with care.
     asNavFor: "",                   //{NEW} Selector: Internal property exposed for turning the slider into a thumbnail navigation for another slider
 
@@ -10354,7 +10370,7 @@ return jQuery;
 
   //FlexSlider: Plugin Function
   $.fn.flexslider = function(options) {
-    if (options === undefined) options = {};
+    if (options === undefined) { options = {}; }
 
     if (typeof options === "object") {
       return this.each(function() {
@@ -10364,7 +10380,7 @@ return jQuery;
 
       if ( ( $slides.length === 1 && options.allowOneSlide === true ) || $slides.length === 0 ) {
           $slides.fadeIn(400);
-          if (options.start) options.start($this);
+          if (options.start) { options.start($this); }
         } else if ($this.data('flexslider') === undefined) {
           new $.flexslider(this, options);
         }
@@ -10379,14 +10395,14 @@ return jQuery;
         case "next": $slider.flexAnimate($slider.getTarget("next"), true); break;
         case "prev":
         case "previous": $slider.flexAnimate($slider.getTarget("prev"), true); break;
-        default: if (typeof options === "number") $slider.flexAnimate(options, true);
+        default: if (typeof options === "number") { $slider.flexAnimate(options, true); }
       }
     }
   };
 })(jQuery);
 
 /*!
- * Select2 4.0.0-rc.2
+ * Select2 4.0.0
  * https://select2.github.io
  *
  * Released under the MIT license
@@ -11101,6 +11117,23 @@ S2.define('select2/utils',[
     });
   };
 
+  // Append an array of jQuery nodes to a given element.
+  Utils.appendMany = function ($element, $nodes) {
+    // jQuery 1.7.x does not support $.fn.append() with an array
+    // Fall back to a jQuery object collection using $.fn.add()
+    if ($.fn.jquery.substr(0, 3) === '1.7') {
+      var $jqNodes = $();
+
+      $.map($nodes, function (node) {
+        $jqNodes = $jqNodes.add(node);
+      });
+
+      $nodes = $jqNodes;
+    }
+
+    $element.append($nodes);
+  };
+
   return Utils;
 });
 
@@ -11215,7 +11248,8 @@ S2.define('select2/results',[
         // id needs to be converted to a string when comparing
         var id = '' + item.id;
 
-        if ($.inArray(id, selectedIds) > -1) {
+        if ((item.element != null && item.element.selected) ||
+            (item.element == null && $.inArray(id, selectedIds) > -1)) {
           $option.attr('aria-selected', 'true');
         } else {
           $option.attr('aria-selected', 'false');
@@ -11951,7 +11985,7 @@ S2.define('select2/selection/multiple',[
       return;
     }
 
-    var $selections = $();
+    var $selections = [];
 
     for (var d = 0; d < data.length; d++) {
       var selection = data[d];
@@ -11964,10 +11998,12 @@ S2.define('select2/selection/multiple',[
 
       $selection.data('data', selection);
 
-      $selections = $selections.add($selection);
+      $selections.push($selection);
     }
 
-    this.$selection.find('.select2-selection__rendered').append($selections);
+    var $rendered = this.$selection.find('.select2-selection__rendered');
+
+    Utils.appendMany($rendered, $selections);
   };
 
   return MultipleSelection;
@@ -12024,8 +12060,9 @@ S2.define('select2/selection/placeholder',[
 });
 
 S2.define('select2/selection/allowClear',[
-  'jquery'
-], function ($) {
+  'jquery',
+  '../keys'
+], function ($, KEYS) {
   function AllowClear () { }
 
   AllowClear.prototype.bind = function (decorated, container, $container) {
@@ -12033,8 +12070,8 @@ S2.define('select2/selection/allowClear',[
 
     decorated.call(this, container, $container);
 
-    if (self.placeholder == null) {
-      if (self.options.get('debug') && window.console && console.error) {
+    if (this.placeholder == null) {
+      if (this.options.get('debug') && window.console && console.error) {
         console.error(
           'Select2: The `allowClear` option should be used in combination ' +
           'with the `placeholder` option.'
@@ -12044,34 +12081,59 @@ S2.define('select2/selection/allowClear',[
 
     this.$selection.on('mousedown', '.select2-selection__clear',
       function (evt) {
-        // Ignore the event if it is disabled
-        if (self.options.get('disabled')) {
-          return;
-        }
-
-        evt.stopPropagation();
-
-        var data = $(this).data('data');
-
-        for (var d = 0; d < data.length; d++) {
-          var unselectData = {
-            data: data[d]
-          };
-
-          // Trigger the `unselect` event, so people can prevent it from being
-          // cleared.
-          self.trigger('unselect', unselectData);
-
-          // If the event was prevented, don't clear it out.
-          if (unselectData.prevented) {
-            return;
-          }
-        }
-
-        self.$element.val(self.placeholder.id).trigger('change');
-
-        self.trigger('toggle');
+        self._handleClear(evt);
     });
+
+    container.on('keypress', function (evt) {
+      self._handleKeyboardClear(evt, container);
+    });
+  };
+
+  AllowClear.prototype._handleClear = function (_, evt) {
+    // Ignore the event if it is disabled
+    if (this.options.get('disabled')) {
+      return;
+    }
+
+    var $clear = this.$selection.find('.select2-selection__clear');
+
+    // Ignore the event if nothing has been selected
+    if ($clear.length === 0) {
+      return;
+    }
+
+    evt.stopPropagation();
+
+    var data = $clear.data('data');
+
+    for (var d = 0; d < data.length; d++) {
+      var unselectData = {
+        data: data[d]
+      };
+
+      // Trigger the `unselect` event, so people can prevent it from being
+      // cleared.
+      this.trigger('unselect', unselectData);
+
+      // If the event was prevented, don't clear it out.
+      if (unselectData.prevented) {
+        return;
+      }
+    }
+
+    this.$element.val(this.placeholder.id).trigger('change');
+
+    this.trigger('toggle');
+  };
+
+  AllowClear.prototype._handleKeyboardClear = function (_, evt, container) {
+    if (container.isOpen()) {
+      return;
+    }
+
+    if (evt.which == KEYS.DELETE || evt.which == KEYS.BACKSPACE) {
+      this._handleClear(evt);
+    }
   };
 
   AllowClear.prototype.update = function (decorated, data) {
@@ -12172,6 +12234,8 @@ S2.define('select2/selection/search',[
           var item = $previousChoice.data('data');
 
           self.searchRemoveChoice(item);
+
+          evt.preventDefault();
         }
       }
     });
@@ -13252,7 +13316,9 @@ S2.define('select2/data/select',[
   SelectAdapter.prototype.select = function (data) {
     var self = this;
 
-    // If data.element is a DOM nose, use it instead
+    data.selected = true;
+
+    // If data.element is a DOM node, use it instead
     if ($(data.element).is('option')) {
       data.element.selected = true;
 
@@ -13293,6 +13359,8 @@ S2.define('select2/data/select',[
     if (!this.$element.prop('multiple')) {
       return;
     }
+
+    data.selected = false;
 
     if ($(data.element).is('option')) {
       data.element.selected = false;
@@ -13369,7 +13437,7 @@ S2.define('select2/data/select',[
   };
 
   SelectAdapter.prototype.addOptions = function ($options) {
-    this.$element.append($options);
+    Utils.appendMany(this.$element, $options);
   };
 
   SelectAdapter.prototype.option = function (data) {
@@ -13518,7 +13586,9 @@ S2.define('select2/data/array',[
   Utils.Extend(ArrayAdapter, SelectAdapter);
 
   ArrayAdapter.prototype.select = function (data) {
-    var $option = this.$element.find('option[value="' + data.id + '"]');
+    var $option = this.$element.find('option').filter(function (i, elm) {
+      return elm.value == data.id.toString();
+    });
 
     if ($option.length === 0) {
       $option = this.option(data);
@@ -13537,7 +13607,7 @@ S2.define('select2/data/array',[
       return self.item($(this)).id;
     }).get();
 
-    var $options = $();
+    var $options = [];
 
     // Filter out all items except for the one passed in the argument
     function onlyItem (item) {
@@ -13568,10 +13638,10 @@ S2.define('select2/data/array',[
       if (item.children) {
         var $children = this.convertToOptions(item.children);
 
-        $option.append($children);
+        Utils.appendMany($option, $children);
       }
 
-      $options = $options.add($option);
+      $options.push($option);
     }
 
     return $options;
@@ -13625,8 +13695,12 @@ S2.define('select2/data/ajax',[
     var matches = [];
     var self = this;
 
-    if (this._request) {
-      this._request.abort();
+    if (this._request != null) {
+      // JSONP requests cannot always be aborted
+      if ($.isFunction(this._request.abort)) {
+        this._request.abort();
+      }
+
       this._request = null;
     }
 
@@ -13751,7 +13825,7 @@ S2.define('select2/data/tags',[
         var $option = self.option(tag);
         $option.attr('data-select2-tag', true);
 
-        self.addOptions($option);
+        self.addOptions([$option]);
 
         self.insertTag(data, tag);
       }
@@ -14427,9 +14501,16 @@ S2.define('select2/dropdown/attachBody',[
   AttachBody.prototype._resizeDropdown = function () {
     this.$dropdownContainer.width();
 
-    this.$dropdown.css({
+    var css = {
       width: this.$container.outerWidth(false) + 'px'
-    });
+    };
+
+    if (this.options.get('dropdownAutoWidth')) {
+      css.minWidth = css.width;
+      css.width = 'auto';
+    }
+
+    this.$dropdown.css(css);
   };
 
   AttachBody.prototype._showDropdown = function (decorated) {
@@ -14504,7 +14585,9 @@ S2.define('select2/dropdown/selectOnClose',[
       return;
     }
 
-    $highlightedResults.trigger('mouseup');
+    this.trigger('select', {
+        data: $highlightedResults.data('data')
+    });
   };
 
   return SelectOnClose;
@@ -14755,6 +14838,19 @@ S2.define('select2/defaults',[
         );
       }
 
+      if (
+        options.dropdownCssClass != null ||
+        options.dropdownCss != null ||
+        options.adaptDropdownCssClass != null
+      ) {
+        var DropdownCSS = require(options.amdBase + 'compat/dropdownCss');
+
+        options.dropdownAdapter = Utils.Decorate(
+          options.dropdownAdapter,
+          DropdownCSS
+        );
+      }
+
       options.dropdownAdapter = Utils.Decorate(
         options.dropdownAdapter,
         AttachBody
@@ -14787,6 +14883,19 @@ S2.define('select2/defaults',[
         options.selectionAdapter = Utils.Decorate(
           options.selectionAdapter,
           SelectionSearch
+        );
+      }
+
+      if (
+        options.containerCssClass != null ||
+        options.containerCss != null ||
+        options.adaptContainerCssClass != null
+      ) {
+        var ContainerCSS = require(options.amdBase + 'compat/containerCss');
+
+        options.selectionAdapter = Utils.Decorate(
+          options.selectionAdapter,
+          ContainerCSS
         );
       }
 
@@ -14847,7 +14956,14 @@ S2.define('select2/defaults',[
 
       options.translations = languages;
     } else {
-      options.translations = new Translation(options.language);
+      var baseTranslation = Translation.loadPath(
+        this.defaults.amdLanguageBase + 'en'
+      );
+      var customTranslation = new Translation(options.language);
+
+      customTranslation.extend(baseTranslation);
+
+      options.translations = customTranslation;
     }
 
     return options;
@@ -14913,6 +15029,7 @@ S2.define('select2/defaults',[
       amdLanguageBase: './i18n/',
       closeOnSelect: true,
       debug: false,
+      dropdownAutoWidth: false,
       escapeMarkup: Utils.escapeMarkup,
       language: EnglishTranslation,
       matcher: matcher,
@@ -14952,10 +15069,11 @@ S2.define('select2/defaults',[
 });
 
 S2.define('select2/options',[
+  'require',
   'jquery',
   './defaults',
   './utils'
-], function ($, Defaults, Utils) {
+], function (require, $, Defaults, Utils) {
   function Options (options, $element) {
     this.options = options;
 
@@ -15152,8 +15270,9 @@ S2.define('select2/core',[
     });
 
     // Hide the original select
-    $element.hide();
-
+    $element.addClass('select2-hidden-accessible');
+	$element.attr('aria-hidden', 'true');
+	
     // Synchronize any monitored attributes
     this._syncAttributes();
 
@@ -15564,7 +15683,8 @@ S2.define('select2/core',[
     this.$element.off('.select2');
     this.$element.attr('tabindex', this.$element.data('old-tabindex'));
 
-    this.$element.show();
+    this.$element.removeClass('select2-hidden-accessible');
+	this.$element.attr('aria-hidden', 'false');
     this.$element.removeData('select2');
 
     this.dataAdapter.destroy();
@@ -15602,15 +15722,18 @@ S2.define('select2/core',[
 
 S2.define('jquery.select2',[
   'jquery',
+  'require',
+
   './select2/core',
   './select2/defaults'
-], function ($, Select2, Defaults) {
+], function ($, require, Select2, Defaults) {
   // Force jQuery.mousewheel to be loaded if it hasn't already
-  try {
-    require('jquery.mousewheel');
-  } catch (Exception) { }
+  require('jquery.mousewheel');
 
   if ($.fn.select2 == null) {
+    // All methods that should return the element
+    var thisMethods = ['open', 'close', 'destroy'];
+
     $.fn.select2 = function (options) {
       options = options || {};
 
@@ -15624,9 +15747,24 @@ S2.define('jquery.select2',[
         return this;
       } else if (typeof options === 'string') {
         var instance = this.data('select2');
+
+        if (instance == null && window.console && console.error) {
+          console.error(
+            'The select2(\'' + options + '\') method was called on an ' +
+            'element that is not using Select2.'
+          );
+        }
+
         var args = Array.prototype.slice.call(arguments, 1);
 
-        return instance[options](args);
+        var ret = instance[options](args);
+
+        // Check if we should be returning `this`
+        if ($.inArray(options, thisMethods) > -1) {
+          return this;
+        }
+
+        return ret;
       } else {
         throw new Error('Invalid arguments for Select2: ' + options);
       }
@@ -15638,6 +15776,13 @@ S2.define('jquery.select2',[
   }
 
   return Select2;
+});
+
+S2.define('jquery.mousewheel',[
+  'jquery'
+], function ($) {
+  // Used to shim jQuery.mousewheel for non-full builds.
+  return $;
 });
 
   // Return the AMD loader configuration so it can be used outside of this file
@@ -15654,16 +15799,16 @@ S2.define('jquery.select2',[
   // Hold the AMD module references on the jQuery function that was just loaded
   // This allows Select2 to use the internal loader outside of this file, such
   // as in the language files.
-  $.fn.select2.amd = S2;
+  jQuery.fn.select2.amd = S2;
 
   // Return the Select2 instance for anyone who is importing it.
   return select2;
 }));
 
-/*! PhotoSwipe - v4.0.7 - 2015-03-18
+/*! PhotoSwipe - v4.1.0 - 2015-07-11
 * http://photoswipe.com
 * Copyright (c) 2015 Dmitry Semenov; */
-(function (root, factory) { 
+(function (root, factory) {
 	if (typeof define === 'function' && define.amd) {
 		define(factory);
 	} else if (typeof exports === 'object') {
@@ -15680,9 +15825,9 @@ S2.define('jquery.select2',[
 /**
  *
  * Set of generic functions used by gallery.
- * 
+ *
  * You're free to modify anything here as long as functionality is kept.
- * 
+ *
  */
 var framework = {
 	features: null,
@@ -15714,7 +15859,7 @@ var framework = {
 	},
 	removeClass: function(el, className) {
 		var reg = new RegExp('(\\s|^)' + className + '(\\s|$)');
-		el.className = el.className.replace(reg, ' ').replace(/^\s\s*/, '').replace(/\s\s*$/, ''); 
+		el.className = el.className.replace(reg, ' ').replace(/^\s\s*/, '').replace(/\s\s*$/, '');
 	},
 	addClass: function(el, className) {
 		if( !framework.hasClass(el,className) ) {
@@ -15738,7 +15883,7 @@ var framework = {
 		while(i--) {
 			if(array[i][key] === value) {
 				return i;
-			} 
+			}
 		}
 		return -1;
 	},
@@ -15789,16 +15934,16 @@ var framework = {
 	},
 
 	/**
-	 * 
+	 *
 	 * @return {object}
-	 * 
+	 *
 	 * {
 	 *  raf : request animation frame function
 	 *  caf : cancel animation frame function
 	 *  transfrom : transform property key (with vendor), or null if not supported
 	 *  oldIE : IE8 or below
 	 * }
-	 * 
+	 *
 	 */
 	detectFeatures: function() {
 		if(framework.features) {
@@ -15823,14 +15968,14 @@ var framework = {
 
 		// fix false-positive detection of old Android in new IE
 		// (IE11 ua string contains "Android 4.0")
-		
-		if(!features.pointerEvent) { 
+
+		if(!features.pointerEvent) {
 
 			var ua = navigator.userAgent;
 
 			// Detect if device is iPhone or iPod and if it's older than iOS 8
 			// http://stackoverflow.com/a/14223920
-			// 
+			//
 			// This detection is made because of buggy top/bottom toolbars
 			// that don't trigger window.resize event.
 			// For more info refer to _isFixedPosition variable in core.js
@@ -15848,7 +15993,7 @@ var framework = {
 			// Detect old Android (before KitKat)
 			// due to bugs related to position:fixed
 			// http://stackoverflow.com/questions/7184573/pick-up-the-android-version-in-the-browser-by-javascript
-			
+
 			var match = ua.match(/Android\s([0-9\.]*)/);
 			var androidversion =  match ? match[1] : 0;
 			androidversion = parseFloat(androidversion);
@@ -15857,12 +16002,12 @@ var framework = {
 					features.isOldAndroid = true; // for fixed position bug & performance
 				}
 				features.androidVersion = androidversion; // for touchend bug
-			}	
+			}
 			features.isMobileOpera = /opera mini|opera mobi/i.test(ua);
 
 			// p.s. yes, yes, UA sniffing is bad, propose your solution for above bugs.
 		}
-		
+
 		var styleChecks = ['transform', 'perspective', 'animationName'],
 			vendors = ['', 'webkit','Moz','ms','O'],
 			styleCheckItem,
@@ -15875,10 +16020,10 @@ var framework = {
 				styleCheckItem = styleChecks[a];
 
 				// uppercase first letter of property name, if vendor is present
-				styleName = vendor + (vendor ? 
-										styleCheckItem.charAt(0).toUpperCase() + styleCheckItem.slice(1) : 
+				styleName = vendor + (vendor ?
+										styleCheckItem.charAt(0).toUpperCase() + styleCheckItem.slice(1) :
 										styleCheckItem);
-			
+
 				if(!features[styleCheckItem] && styleName in helperStyle ) {
 					features[styleCheckItem] = styleName;
 				}
@@ -15888,12 +16033,12 @@ var framework = {
 				vendor = vendor.toLowerCase();
 				features.raf = window[vendor+'RequestAnimationFrame'];
 				if(features.raf) {
-					features.caf = window[vendor+'CancelAnimationFrame'] || 
+					features.caf = window[vendor+'CancelAnimationFrame'] ||
 									window[vendor+'CancelRequestAnimationFrame'];
 				}
 			}
 		}
-			
+
 		if(!features.raf) {
 			var lastTime = 0;
 			features.raf = function(fn) {
@@ -15907,7 +16052,7 @@ var framework = {
 		}
 
 		// Detect SVG support
-		features.svg = !!document.createElementNS && 
+		features.svg = !!document.createElementNS &&
 						!!document.createElementNS('http://www.w3.org/2000/svg', 'svg').createSVGRect;
 
 		framework.features = features;
@@ -15922,7 +16067,7 @@ framework.detectFeatures();
 if(framework.features.oldIE) {
 
 	framework.bind = function(target, type, listener, unbind) {
-		
+
 		type = type.split(' ');
 
 		var methodName = (unbind ? 'detach' : 'attach') + 'Event',
@@ -15952,7 +16097,7 @@ if(framework.features.oldIE) {
 			}
 		}
 	};
-	
+
 }
 
 /*>>framework-bridge*/
@@ -15965,7 +16110,7 @@ var self = this;
 /**
  * Static vars, don't change unless you know what you're doing.
  */
-var DOUBLE_TAP_RADIUS = 25, 
+var DOUBLE_TAP_RADIUS = 25,
 	NUM_HOLDERS = 3;
 
 /**
@@ -15980,6 +16125,7 @@ var _options = {
 	pinchToClose: true,
 	closeOnScroll: true,
 	closeOnVerticalDrag: true,
+	verticalDragRange: 0.75,
 	hideAnimationDuration: 333,
 	showAnimationDuration: 333,
 	showHideOpacity: false,
@@ -15995,14 +16141,14 @@ var _options = {
     	if(isMouseClick) {
     		return 1;
     	} else {
-    		return item.initialZoomLevel < 0.7 ? 1 : 1.5;
+    		return item.initialZoomLevel < 0.7 ? 1 : 1.33;
     	}
     },
-    maxSpreadZoom: 2,
+    maxSpreadZoom: 1.33,
+	modal: true,
 
 	// not fully implemented yet
 	scaleMode: 'fit', // TODO
-	modal: true, // TODO
 	alwaysFadeIn: false // TODO
 };
 framework.extend(_options, options);
@@ -16012,8 +16158,8 @@ framework.extend(_options, options);
  * Private helper variables & functions
  */
 
-var _getEmptyPoint = function() { 
-		return {x:0,y:0}; 
+var _getEmptyPoint = function() {
+		return {x:0,y:0};
 	};
 
 var _isOpen,
@@ -16036,7 +16182,7 @@ var _isOpen,
 	_updateSizeInterval,
 	_itemsNeedUpdate,
 	_currPositionIndex = 0,
-	_offset,
+	_offset = {},
 	_slideSize = _getEmptyPoint(), // size of slide area, including spacing
 	_itemHolders,
 	_prevItemIndex,
@@ -16058,6 +16204,7 @@ var _isOpen,
 	_currentWindowScrollY,
 	_features,
 	_windowVisibleSize = {},
+	_renderMaxResolution = false,
 
 	// Registers PhotoSWipe module (History, Controller ...)
 	_registerModule = function(name, module) {
@@ -16074,7 +16221,7 @@ var _isOpen,
 		}
 		return index;
 	},
-	
+
 	// Micro bind/trigger
 	_listeners = {},
 	_listen = function(name, fn) {
@@ -16103,21 +16250,43 @@ var _isOpen,
 		_bgOpacity = opacity;
 		self.bg.style.opacity = opacity * _options.bgOpacity;
 	},
-	
-	_applyZoomTransform = function(styleObj,x,y,zoom) {
+
+	_applyZoomTransform = function(styleObj,x,y,zoom,item) {
+		if(!_renderMaxResolution || (item && item !== self.currItem) ) {
+			zoom = zoom / (item ? item.fitRatio : self.currItem.fitRatio);
+		}
+
 		styleObj[_transformKey] = _translatePrefix + x + 'px, ' + y + 'px' + _translateSufix + ' scale(' + zoom + ')';
 	},
-	_applyCurrentZoomPan = function() {
+	_applyCurrentZoomPan = function( allowRenderResolution ) {
 		if(_currZoomElementStyle) {
+
+			if(allowRenderResolution) {
+				if(_currZoomLevel > self.currItem.fitRatio) {
+					if(!_renderMaxResolution) {
+						_setImageSize(self.currItem, false, true);
+						_renderMaxResolution = true;
+					}
+				} else {
+					if(_renderMaxResolution) {
+						_setImageSize(self.currItem);
+						_renderMaxResolution = false;
+					}
+				}
+			}
+
+
 			_applyZoomTransform(_currZoomElementStyle, _panOffset.x, _panOffset.y, _currZoomLevel);
 		}
 	},
 	_applyZoomPanToItem = function(item) {
 		if(item.container) {
-			_applyZoomTransform(item.container.style, 
-								item.initialPosition.x, 
-								item.initialPosition.y, 
-								item.initialZoomLevel);
+
+			_applyZoomTransform(item.container.style,
+								item.initialPosition.x,
+								item.initialPosition.y,
+								item.initialZoomLevel,
+								item);
 		}
 	},
 	_setTranslateX = function(x, elStyle) {
@@ -16127,15 +16296,15 @@ var _isOpen,
 
 		if(!_options.loop && dragging) {
 			// if of current item during scroll (float)
-			var newSlideIndexOffset = _currentItemIndex + (_slideSize.x * _currPositionIndex - x)/_slideSize.x; 
+			var newSlideIndexOffset = _currentItemIndex + (_slideSize.x * _currPositionIndex - x)/_slideSize.x;
 			var delta = Math.round(x - _mainScrollPos.x);
 
-			if( (newSlideIndexOffset < 0 && delta > 0) || 
+			if( (newSlideIndexOffset < 0 && delta > 0) ||
 				(newSlideIndexOffset >= _getNumItems()-1 && delta < 0) ) {
 				x = _mainScrollPos.x + delta * _options.mainScrollEndFriction;
-			} 
+			}
 		}
-		
+
 		_mainScrollPos.x = x;
 		_setTranslateX(x, _containerStyle);
 	},
@@ -16143,7 +16312,7 @@ var _isOpen,
 		var m = _midZoomPoint[axis] - _offset[axis];
 		return _startPanOffset[axis] + _currPanDist[axis] + m - m * ( zoomLevel / _startZoomLevel );
 	},
-	
+
 	_equalizePoints = function(p1, p2) {
 		p1.x = p2.x;
 		p1.y = p2.y;
@@ -16160,7 +16329,7 @@ var _isOpen,
 	_onFirstMouseMove = function() {
 		// Wait until mouse move event is fired at least twice during 100ms
 		// We do this, because some mobile browsers trigger it on touchstart
-		if(_mouseMoveTimeout ) { 
+		if(_mouseMoveTimeout ) {
 			framework.unbind(document, 'mousemove', _onFirstMouseMove);
 			framework.addClass(template, 'pswp--has_mouse');
 			_options.mouseUsed = true;
@@ -16178,7 +16347,7 @@ var _isOpen,
 			// don't bind click event in browsers that don't support transform (mostly IE8)
 			framework.bind(self.scrollWrap, 'click', self);
 		}
-		
+
 
 		if(!_options.mouseUsed) {
 			framework.bind(document, 'mousemove', _onFirstMouseMove);
@@ -16205,7 +16374,7 @@ var _isOpen,
 
 		_shout('unbindEvents');
 	},
-	
+
 	_calculatePanBounds = function(zoomLevel, update) {
 		var bounds = _calculateItemSize( self.currItem, _viewportSize, zoomLevel );
 		if(update) {
@@ -16213,7 +16382,7 @@ var _isOpen,
 		}
 		return bounds;
 	},
-	
+
 	_getMinZoomLevel = function(item) {
 		if(!item) {
 			item = self.currItem;
@@ -16233,7 +16402,7 @@ var _isOpen,
 			destPanOffset[axis] = self.currItem.initialPosition[axis];
 			return true;
 		} else {
-			destPanOffset[axis] = _calculatePanOffset(axis, destZoomLevel); 
+			destPanOffset[axis] = _calculatePanOffset(axis, destZoomLevel);
 
 			if(destPanOffset[axis] > destPanBounds.min[axis]) {
 				destPanOffset[axis] = destPanBounds.min[axis];
@@ -16252,13 +16421,13 @@ var _isOpen,
 			// setup 3d transforms
 			var allow3dTransform = _features.perspective && !_likelyTouchDevice;
 			_translatePrefix = 'translate' + (allow3dTransform ? '3d(' : '(');
-			_translateSufix = _features.perspective ? ', 0px)' : ')';	
+			_translateSufix = _features.perspective ? ', 0px)' : ')';
 			return;
 		}
 
 		// Override zoom/pan/move functions in case old browser is used (most likely IE)
 		// (so they use left/top/width/height, instead of CSS transform)
-	
+
 		_transformKey = 'left';
 		framework.addClass(template, 'pswp--ie');
 
@@ -16294,18 +16463,18 @@ var _isOpen,
 				s.left = _panOffset.x + 'px';
 				s.top = _panOffset.y + 'px';
 			}
-			
+
 		};
 	},
 
 	_onKeyDown = function(e) {
 		var keydownAction = '';
-		if(_options.escKey && e.keyCode === 27) { 
+		if(_options.escKey && e.keyCode === 27) {
 			keydownAction = 'close';
 		} else if(_options.arrowKeys) {
 			if(e.keyCode === 37) {
 				keydownAction = 'prev';
-			} else if(e.keyCode === 39) { 
+			} else if(e.keyCode === 39) {
 				keydownAction = 'next';
 			}
 		}
@@ -16318,7 +16487,7 @@ var _isOpen,
 					e.preventDefault();
 				} else {
 					e.returnValue = false;
-				} 
+				}
 				self[keydownAction]();
 			}
 		}
@@ -16336,13 +16505,13 @@ var _isOpen,
 		}
 	},
 
-	_onPageScroll = function() {
-		self.setScrollOffset(0, framework.getScrollY());		
+	_updatePageScrollOffset = function() {
+		self.setScrollOffset(0, framework.getScrollY());
 	};
-	
 
 
-	
+
+
 
 
 
@@ -16372,8 +16541,8 @@ var _animations = {},
 
 			if( _animations.hasOwnProperty( prop ) ) {
 				_stopAnimation(prop);
-			} 
-			
+			}
+
 		}
 	},
 	_animateProp = function(name, b, endProp, d, easingFn, onUpdate, onComplete) {
@@ -16382,7 +16551,7 @@ var _animations = {},
 
 		var animloop = function(){
 			if ( _animations[name] ) {
-				
+
 				t = _getCurrentTime() - startAnimTime; // time diff
 				//b - beginning (start prop)
 				//d - anim duration
@@ -16402,7 +16571,7 @@ var _animations = {},
 		};
 		animloop();
 	};
-	
+
 
 
 var publicMethods = {
@@ -16424,19 +16593,20 @@ var publicMethods = {
 	},
 	isDragging: function() {
 		return _isDragging;
-	},	
+	},
 	isZooming: function() {
 		return _isZooming;
 	},
 	setScrollOffset: function(x,y) {
 		_offset.x = x;
 		_currentWindowScrollY = _offset.y = y;
+		_shout('updateScrollOffset', _offset);
 	},
-	applyZoomPan: function(zoomLevel,panX,panY) {
+	applyZoomPan: function(zoomLevel,panX,panY,allowRenderResolution) {
 		_panOffset.x = panX;
 		_panOffset.y = panY;
 		_currZoomLevel = zoomLevel;
-		_applyCurrentZoomPan();
+		_applyCurrentZoomPan( allowRenderResolution );
 	},
 
 	init: function() {
@@ -16453,13 +16623,13 @@ var publicMethods = {
 
 		_initalClassName = template.className;
 		_isOpen = true;
-				
+
 		_features = framework.detectFeatures();
 		_requestAF = _features.raf;
 		_cancelAF = _features.caf;
 		_transformKey = _features.transform;
 		_oldIE = _features.oldIE;
-		
+
 		self.scrollWrap = framework.getChildByClass(template, 'pswp__scroll-wrap');
 		self.container = framework.getChildByClass(self.scrollWrap, 'pswp__container');
 
@@ -16480,12 +16650,12 @@ var publicMethods = {
 		// Setup global events
 		_globalEventHandlers = {
 			resize: self.updateSize,
-			scroll: _onPageScroll,
+			scroll: _updatePageScrollOffset,
 			keydown: _onKeyDown,
 			click: _onGlobalClick
 		};
 
-		// disable show/hide effects on old browsers that don't support CSS animations or transforms, 
+		// disable show/hide effects on old browsers that don't support CSS animations or transforms,
 		// old IOS, Android and Opera mobile. Blackberry seems to work fine, even older models.
 		var oldPhone = _features.isOldIOSPhone || _features.isOldAndroid || _features.isMobileOpera;
 		if(!_features.animationName || !_features.transform || oldPhone) {
@@ -16496,7 +16666,7 @@ var publicMethods = {
 		for(i = 0; i < _modules.length; i++) {
 			self['init' + _modules[i]]();
 		}
-		
+
 		// init
 		if(UiClass) {
 			var ui = self.ui = new UiClass(self, framework);
@@ -16511,13 +16681,13 @@ var publicMethods = {
 		}
 		self.currItem = _getItemAt( _currentItemIndex );
 
-		
+
 		if(_features.isOldIOSPhone || _features.isOldAndroid) {
 			_isFixedPosition = false;
 		}
-		
+
+		template.setAttribute('aria-hidden', 'false');
 		if(_options.modal) {
-			template.setAttribute('aria-hidden', 'false');
 			if(!_isFixedPosition) {
 				template.style.position = 'absolute';
 				template.style.top = framework.getScrollY() + 'px';
@@ -16530,7 +16700,7 @@ var publicMethods = {
 			_shout('initialLayout');
 			_currentWindowScrollY = _initalWindowScrollY = framework.getScrollY();
 		}
-		
+
 		// add classes to root element of PhotoSwipe
 		var rootClasses = 'pswp--open ';
 		if(_options.mainClass) {
@@ -16555,7 +16725,7 @@ var publicMethods = {
 
 		if(!_oldIE) {
 			framework.bind(self.scrollWrap, _downEvents, self); // no dragging for old IE
-		}	
+		}
 
 		_listen('initialZoomInEnd', function() {
 			self.setContent(_itemHolders[0], _currentItemIndex-1);
@@ -16564,19 +16734,19 @@ var publicMethods = {
 			_itemHolders[0].el.style.display = _itemHolders[2].el.style.display = 'block';
 
 			if(_options.focus) {
-				// focus causes layout, 
-				// which causes lag during the animation, 
+				// focus causes layout,
+				// which causes lag during the animation,
 				// that's why we delay it untill the initial zoom transition ends
 				template.focus();
 			}
-			 
+
 
 			_bindEvents();
 		});
 
 		// set content for center slide (first time)
 		self.setContent(_itemHolders[1], _currentItemIndex);
-		
+
 		self.updateCurrItem();
 
 		_shout('afterInit');
@@ -16584,14 +16754,14 @@ var publicMethods = {
 		if(!_isFixedPosition) {
 
 			// On all versions of iOS lower than 8.0, we check size of viewport every second.
-			// 
-			// This is done to detect when Safari top & bottom bars appear, 
-			// as this action doesn't trigger any events (like resize). 
-			// 
+			//
+			// This is done to detect when Safari top & bottom bars appear,
+			// as this action doesn't trigger any events (like resize).
+			//
 			// On iOS8 they fixed this.
-			// 
+			//
 			// 10 Nov 2014: iOS 7 usage ~40%. iOS 8 usage 56%.
-			
+
 			_updateSizeInterval = setInterval(function() {
 				if(!_numAnimations && !_isDragging && !_isZooming && (_currZoomLevel === self.currItem.initialZoomLevel)  ) {
 					self.updateSize();
@@ -16623,11 +16793,9 @@ var publicMethods = {
 		if(_showOrHideTimeout) {
 			clearTimeout(_showOrHideTimeout);
 		}
-		
-		if(_options.modal) {
-			template.setAttribute('aria-hidden', 'true');
-			template.className = _initalClassName;
-		}
+
+		template.setAttribute('aria-hidden', 'true');
+		template.className = _initalClassName;
 
 		if(_updateSizeInterval) {
 			clearInterval(_updateSizeInterval);
@@ -16647,8 +16815,8 @@ var publicMethods = {
 
 	/**
 	 * Pan image to position
-	 * @param {Number} x     
-	 * @param {Number} y     
+	 * @param {Number} x
+	 * @param {Number} y
 	 * @param {Boolean} force Will ignore bounds if set to true.
 	 */
 	panTo: function(x,y,force) {
@@ -16665,12 +16833,12 @@ var publicMethods = {
 				y = _currPanBounds.max.y;
 			}
 		}
-		
+
 		_panOffset.x = x;
 		_panOffset.y = y;
 		_applyCurrentZoomPan();
 	},
-	
+
 	handleEvent: function (e) {
 		e = e || window.event;
 		if(_globalEventHandlers[e.type]) {
@@ -16689,9 +16857,9 @@ var publicMethods = {
 		_currentItemIndex = index;
 		self.currItem = _getItemAt( _currentItemIndex );
 		_currPositionIndex -= diff;
-		
+
 		_moveMainScroll(_slideSize.x * _currPositionIndex);
-		
+
 
 		_stopAllAnimations();
 		_mainScrollAnimating = false;
@@ -16722,8 +16890,8 @@ var publicMethods = {
 		} else {
 			_currZoomElementStyle = null;
 		}
-		
-		_currPanBounds = self.currItem.bounds;	
+
+		_currPanBounds = self.currItem.bounds;
 		_startZoomLevel = _currZoomLevel = self.currItem.initialZoomLevel;
 
 		_panOffset.x = _currPanBounds.center.x;
@@ -16759,7 +16927,8 @@ var publicMethods = {
 
 
 		self.currItem = _getItemAt( _currentItemIndex );
-		
+		_renderMaxResolution = false;
+
 		_shout('beforeChange', _indexDiff);
 
 		if(diffAbs >= NUM_HOLDERS) {
@@ -16782,7 +16951,7 @@ var publicMethods = {
 				_setTranslateX( _containerShiftIndex * _slideSize.x, tempHolder.el.style);
 				self.setContent(tempHolder, _currentItemIndex + diffAbs - i - 1 - 1);
 			}
-			
+
 		}
 
 		// reset zoom/pan on previous item
@@ -16791,7 +16960,8 @@ var publicMethods = {
 			var prevItem = _getItemAt(_prevItemIndex);
 			if(prevItem.initialZoomLevel !== _currZoomLevel) {
 				_calculateItemSize(prevItem , _viewportSize );
-				_applyZoomPanToItem( prevItem ); 
+				_setImageSize(prevItem);
+				_applyZoomPanToItem( prevItem );
 			}
 
 		}
@@ -16804,14 +16974,14 @@ var publicMethods = {
 		_prevItemIndex = _currentItemIndex;
 
 		_shout('afterChange');
-		
+
 	},
 
 
 
 	updateSize: function(force) {
-		
-		if(!_isFixedPosition) {
+
+		if(!_isFixedPosition && _options.modal) {
 			var windowScrollY = framework.getScrollY();
 			if(_currentWindowScrollY !== windowScrollY) {
 				template.style.top = windowScrollY + 'px';
@@ -16832,8 +17002,7 @@ var publicMethods = {
 		_viewportSize.x = self.scrollWrap.clientWidth;
 		_viewportSize.y = self.scrollWrap.clientHeight;
 
-		
-		_offset = {x:0,y:_currentWindowScrollY};//framework.getOffset(template); 
+		_updatePageScrollOffset();
 
 		_slideSize.x = _viewportSize.x + Math.round(_viewportSize.x * _options.spacing);
 		_slideSize.y = _viewportSize.y;
@@ -16868,7 +17037,7 @@ var publicMethods = {
 				if( item && (_itemsNeedUpdate || item.needsUpdate || !item.bounds) ) {
 
 					self.cleanSlide( item );
-					
+
 					self.setContent( holder, hIndex );
 
 					// if "center" slide
@@ -16885,12 +17054,13 @@ var publicMethods = {
 				}
 				if(item && item.container) {
 					_calculateItemSize(item, _viewportSize);
+					_setImageSize(item);
 					_applyZoomPanToItem( item );
 				}
-				
+
 			}
 			_itemsNeedUpdate = false;
-		}	
+		}
 
 		_startZoomLevel = _currZoomLevel = self.currItem.initialZoomLevel;
 		_currPanBounds = self.currItem.bounds;
@@ -16898,12 +17068,12 @@ var publicMethods = {
 		if(_currPanBounds) {
 			_panOffset.x = _currPanBounds.center.x;
 			_panOffset.y = _currPanBounds.center.y;
-			_applyCurrentZoomPan();
+			_applyCurrentZoomPan( true );
 		}
-		
+
 		_shout('resize');
 	},
-	
+
 	// Zoom current item to
 	zoomTo: function(destZoomLevel, centerPoint, speed, easingFn, updateFn) {
 		/*
@@ -16951,7 +17121,7 @@ var publicMethods = {
 				updateFn(now);
 			}
 
-			_applyCurrentZoomPan();
+			_applyCurrentZoomPan( now === 1 );
 		};
 
 		if(speed) {
@@ -16964,12 +17134,13 @@ var publicMethods = {
 
 };
 
+
 /*>>core*/
 
 /*>>gestures*/
 /**
  * Mouse/touch/pointer event handlers.
- * 
+ *
  * separated from @core.js for readability
  */
 
@@ -17045,7 +17216,7 @@ var _gestureStartTime,
 	_canPan = function() {
 		return !(_options.scaleMode === 'fit' && _currZoomLevel ===  self.currItem.initialZoomLevel);
 	},
-	
+
 	// find the closest parent DOM element
 	_closestElement = function(el, fn) {
 	  	if(!el) {
@@ -17086,7 +17257,7 @@ var _gestureStartTime,
 		if(time - _gestureCheckSpeedTime > 50) {
 			var o = _posPoints.length > 2 ? _posPoints.shift() : {};
 			o.x = x;
-			o.y = y; 
+			o.y = y;
 			_posPoints.push(o);
 			_gestureCheckSpeedTime = time;
 		}
@@ -17097,7 +17268,7 @@ var _gestureStartTime,
 		return 1 -  Math.abs( yOffset / (_viewportSize.y / 2)  );
 	},
 
-	
+
 	// points pool, reused during touch events
 	_ePoint1 = {},
 	_ePoint2 = {},
@@ -17118,7 +17289,7 @@ var _gestureStartTime,
 						_tempPointsArr[1] = _convertTouchToPoint(e.touches[1], _ePoint2);
 					}
 				}
-				
+
 			} else {
 				_ePoint1.x = e.pageX;
 				_ePoint1.y = e.pageY;
@@ -17156,13 +17327,13 @@ var _gestureStartTime,
 		// calculate fdistance over the bounds and friction
 		if(newOffset > _currPanBounds.min[axis] || newOffset < _currPanBounds.max[axis]) {
 			panFriction = _options.panEndFriction;
-			// Linear increasing of friction, so at 1/4 of viewport it's at max value. 
+			// Linear increasing of friction, so at 1/4 of viewport it's at max value.
 			// Looks not as nice as was expected. Left for history.
 			// panFriction = (1 - (_panOffset[axis] + delta[axis] + panBounds.min[axis]) / (_viewportSize[axis] / 4) );
 		} else {
 			panFriction = 1;
 		}
-		
+
 		newOffset = _panOffset[axis] + delta[axis] * panFriction;
 
 		// move main scroll or start panning
@@ -17170,18 +17341,18 @@ var _gestureStartTime,
 
 
 			if(!_currZoomElementStyle) {
-				
+
 				newMainScrollPos = newMainScrollPosition;
 
 			} else if(_direction === 'h' && axis === 'x' && !_zoomStarted ) {
-				
+
 				if(dir) {
 					if(newOffset > _currPanBounds.min[axis]) {
 						panFriction = _options.panEndFriction;
 						overDiff = _currPanBounds.min[axis] - newOffset;
 						startOverDiff = _currPanBounds.min[axis] - _startPanOffset[axis];
 					}
-					
+
 					// drag right
 					if( (startOverDiff <= 0 || mainScrollDiff < 0) && _getNumItems() > 1 ) {
 						newMainScrollPos = newMainScrollPosition;
@@ -17192,7 +17363,7 @@ var _gestureStartTime,
 						if(_currPanBounds.min.x !== _currPanBounds.max.x) {
 							newPanPos = newOffset;
 						}
-						
+
 					}
 
 				} else {
@@ -17247,17 +17418,17 @@ var _gestureStartTime,
 		}
 
 		if(!_mainScrollAnimating) {
-			
+
 			if(!_mainScrollShifted) {
 				if(_currZoomLevel > self.currItem.fitRatio) {
 					_panOffset[axis] += delta[axis] * panFriction;
-				
+
 				}
 			}
 
-			
+
 		}
-		
+
 	},
 
 	// Pointerdown/touchstart/mousedown handler
@@ -17265,7 +17436,7 @@ var _gestureStartTime,
 
 		// Allow dragging only via left mouse button.
 		// As this handler is not added in IE8 - we ignore e.which
-		// 
+		//
 		// http://www.quirksmode.org/js/events_properties.html
 		// https://developer.mozilla.org/en-US/docs/Web/API/event.button
 		if(e.type === 'mousedown' && e.button > 0  ) {
@@ -17296,7 +17467,7 @@ var _gestureStartTime,
 			}
 			_currPointers[pointerIndex] = {x:e.pageX, y:e.pageY, id: e.pointerId};
 		}
-		
+
 
 
 		var startPointsList = _getTouchPoints(e),
@@ -17309,18 +17480,18 @@ var _gestureStartTime,
 		// init drag
 		if(!_isDragging || numPoints === 1) {
 
-			
+
 
 			_isDragging = _isFirstMove = true;
 			framework.bind(window, _upMoveEvents, self);
 
-			_isZoomingIn = 
-				_wasOverInitialZoom = 
-				_opacityChanged = 
-				_verticalDragInitiated = 
-				_mainScrollShifted = 
-				_moved = 
-				_isMultitouch = 
+			_isZoomingIn =
+				_wasOverInitialZoom =
+				_opacityChanged =
+				_verticalDragInitiated =
+				_mainScrollShifted =
+				_moved =
+				_isMultitouch =
 				_zoomStarted = false;
 
 			_direction = null;
@@ -17345,11 +17516,11 @@ var _gestureStartTime,
 
 			//_mainScrollAnimationEnd(true);
 			_calculatePanBounds( _currZoomLevel, true );
-			
+
 			// Start rendering
 			_stopDragUpdateLoop();
 			_dragUpdateLoop();
-			
+
 		}
 
 		// init zoom
@@ -17385,25 +17556,32 @@ var _gestureStartTime,
 			if(pointerIndex > -1) {
 				var p = _currPointers[pointerIndex];
 				p.x = e.pageX;
-				p.y = e.pageY; 
+				p.y = e.pageY;
 			}
 		}
 
 		if(_isDragging) {
 			var touchesList = _getTouchPoints(e);
 			if(!_direction && !_moved && !_isZooming) {
-				var diff = Math.abs(touchesList[0].x - _currPoint.x) - Math.abs(touchesList[0].y - _currPoint.y);
-				// check the direction of movement
-				if(Math.abs(diff) >= DIRECTION_CHECK_OFFSET) {
-					_direction = diff > 0 ? 'h' : 'v';
-					_currentPoints = touchesList;
+
+				if(_mainScrollPos.x !== _slideSize.x * _currPositionIndex) {
+					// if main scroll position is shifted – direction is always horizontal
+					_direction = 'h';
+				} else {
+					var diff = Math.abs(touchesList[0].x - _currPoint.x) - Math.abs(touchesList[0].y - _currPoint.y);
+					// check the direction of movement
+					if(Math.abs(diff) >= DIRECTION_CHECK_OFFSET) {
+						_direction = diff > 0 ? 'h' : 'v';
+						_currentPoints = touchesList;
+					}
 				}
+
 			} else {
 				_currentPoints = touchesList;
 			}
-		}	
+		}
 	},
-	// 
+	//
 	_renderMovement =  function() {
 
 		if(!_currentPoints) {
@@ -17426,7 +17604,7 @@ var _gestureStartTime,
 
 			_currPoint.x = p.x;
 			_currPoint.y = p.y;
-		
+
 			// check if one of two points changed
 			if( !delta.x && !delta.y && _isEqualPoints(_currentPoints[1], p2) ) {
 				return;
@@ -17439,7 +17617,7 @@ var _gestureStartTime,
 				_zoomStarted = true;
 				_shout('zoomGestureStarted');
 			}
-			
+
 			// Distance between two points
 			var pointsDistance = _calculatePointsDistance(p,p2);
 
@@ -17456,7 +17634,7 @@ var _gestureStartTime,
 				maxZoomLevel = _getMaxZoomLevel();
 
 			if ( zoomLevel < minZoomLevel ) {
-				
+
 				if(_options.pinchToClose && !_wasOverInitialZoom && _startZoomLevel <= self.currItem.initialZoomLevel) {
 					// fade out background if zooming out
 					var minusDiff = minZoomLevel - zoomLevel;
@@ -17472,7 +17650,7 @@ var _gestureStartTime,
 					}
 					zoomLevel = minZoomLevel - zoomFriction * (minZoomLevel / 3);
 				}
-				
+
 			} else if ( zoomLevel > maxZoomLevel ) {
 				// 1.5 - extra zoom level above the max. E.g. if max is x6, real max 6 + 1.5 = 7.5
 				zoomFriction = (zoomLevel - maxZoomLevel) / ( minZoomLevel * 6 );
@@ -17491,7 +17669,7 @@ var _gestureStartTime,
 
 			// _centerPoint - The point in the middle of two pointers
 			_findCenterOfPoints(p, p2, _centerPoint);
-		
+
 			// paning with two pointers pressed
 			_currPanDist.x += _centerPoint.x - _currCenterPoint.x;
 			_currPanDist.y += _centerPoint.y - _currCenterPoint.y;
@@ -17515,12 +17693,12 @@ var _gestureStartTime,
 			if(_isFirstMove) {
 				_isFirstMove = false;
 
-				// subtract drag distance that was used during the detection direction  
+				// subtract drag distance that was used during the detection direction
 
 				if( Math.abs(delta.x) >= DIRECTION_CHECK_OFFSET) {
 					delta.x -= _currentPoints[0].x - _startPoint.x;
 				}
-				
+
 				if( Math.abs(delta.y) >= DIRECTION_CHECK_OFFSET) {
 					delta.y -= _currentPoints[0].y - _startPoint.y;
 				}
@@ -17536,7 +17714,6 @@ var _gestureStartTime,
 
 			if(_direction === 'v' && _options.closeOnVerticalDrag) {
 				if(!_canPan()) {
-					
 					_currPanDist.y += delta.y;
 					_panOffset.y += delta.y;
 
@@ -17555,7 +17732,7 @@ var _gestureStartTime,
 
 			_moved = true;
 			_currPanBounds = self.currItem.bounds;
-			
+
 			var mainScrollChanged = _panOrMoveMainScroll('x', delta);
 			if(!mainScrollChanged) {
 				_panOrMoveMainScroll('y', delta);
@@ -17567,7 +17744,7 @@ var _gestureStartTime,
 		}
 
 	},
-	
+
 	// Pointerup/pointercancel/touchend/touchcancel/mouseup event handler
 	_onDragRelease = function(e) {
 
@@ -17577,7 +17754,7 @@ var _gestureStartTime,
 				return;
 			}
 
-			// on Android (v4.1, 4.2, 4.3 & possibly older) 
+			// on Android (v4.1, 4.2, 4.3 & possibly older)
 			// ghost mousedown/up event isn't preventable via e.preventDefault,
 			// which causes fake mousedown event
 			// so we block mousedown/up for 600ms
@@ -17587,7 +17764,7 @@ var _gestureStartTime,
 					_oldAndroidTouchEndTimeout = 0;
 				}, 600);
 			}
-			
+
 		}
 
 		_shout('pointerUp');
@@ -17600,7 +17777,7 @@ var _gestureStartTime,
 
 		if(_pointerEventEnabled) {
 			var pointerIndex = framework.arraySearch(_currPointers, e.pointerId, 'id');
-			
+
 			if(pointerIndex > -1) {
 				releasePoint = _currPointers.splice(pointerIndex, 1)[0];
 
@@ -17609,7 +17786,7 @@ var _gestureStartTime,
 				} else {
 					var MSPOINTER_TYPES = {
 						4: 'mouse', // event.MSPOINTER_TYPE_MOUSE
-						2: 'touch', // event.MSPOINTER_TYPE_TOUCH 
+						2: 'touch', // event.MSPOINTER_TYPE_TOUCH
 						3: 'pen' // event.MSPOINTER_TYPE_PEN
 					};
 					releasePoint.type = MSPOINTER_TYPES[e.pointerType];
@@ -17639,7 +17816,7 @@ var _gestureStartTime,
 		// if second pointer released
 		if(numPoints === 1) {
 			_equalizePoints(_startPoint, touchList[0]);
-		}				
+		}
 
 
 		// pointer hasn't moved, send "tap release" point
@@ -17649,7 +17826,7 @@ var _gestureStartTime,
 					releasePoint = {x: e.pageX, y: e.pageY, type:'mouse'};
 				} else if(e.changedTouches && e.changedTouches[0]) {
 					releasePoint = {x: e.changedTouches[0].pageX, y: e.changedTouches[0].pageY, type:'touch'};
-				}		
+				}
 			}
 
 			_shout('touchRelease', e, releasePoint);
@@ -17673,7 +17850,7 @@ var _gestureStartTime,
 			}
 		}
 		_lastReleaseTime = numPoints === 1 ? _getCurrentTime() : -1;
-		
+
 		if(releaseTimeDiff !== -1 && releaseTimeDiff < 150) {
 			gestureType = 'zoom';
 		} else {
@@ -17695,14 +17872,14 @@ var _gestureStartTime,
 			// nothing to animate
 			return;
 		}
-	
+
 		_stopAllAnimations();
 
-		
+
 		if(!_releaseAnimData) {
 			_releaseAnimData = _initDragReleaseAnimationData();
 		}
-		
+
 		_releaseAnimData.calculateSwipeSpeed('x');
 
 
@@ -17710,14 +17887,14 @@ var _gestureStartTime,
 
 			var opacityRatio = _calculateVerticalDragOpacityRatio();
 
-			if(opacityRatio < 0.6) {
+			if(opacityRatio < _options.verticalDragRange) {
 				self.close();
 			} else {
 				var initalPanY = _panOffset.y,
 					initialBgOpacity = _bgOpacity;
 
 				_animateProp('verticalDrag', 0, 1, 300, framework.easing.cubic.out, function(now) {
-					
+
 					_panOffset.y = (self.currItem.initialPosition.y - initalPanY) * now + initalPanY;
 
 					_applyBgOpacity(  (1 - initialBgOpacity) * now + initialBgOpacity );
@@ -17731,7 +17908,7 @@ var _gestureStartTime,
 		}
 
 
-		// main scroll 
+		// main scroll
 		if(  (_mainScrollShifted || _mainScrollAnimating) && numPoints === 0) {
 			var itemChanged = _finishSwipeMainScrollGesture(gestureType, _releaseAnimData);
 			if(itemChanged) {
@@ -17744,13 +17921,13 @@ var _gestureStartTime,
 		if(_mainScrollAnimating) {
 			return;
 		}
-		
-		// Complete simple zoom gesture (reset zoom level if it's out of the bounds)  
+
+		// Complete simple zoom gesture (reset zoom level if it's out of the bounds)
 		if(gestureType !== 'swipe') {
 			_completeZoomGesture();
 			return;
 		}
-	
+
 		// Complete pan gesture if main scroll is not shifted, and it's possible to pan current image
 		if(!_mainScrollShifted && _currZoomLevel > self.currItem.fitRatio) {
 			_completePanGesture(_releaseAnimData);
@@ -17778,7 +17955,7 @@ var _gestureStartTime,
 			backAnimDestination: {},
 			backAnimStarted: {},
 			calculateSwipeSpeed: function(axis) {
-				
+
 
 				if( _posPoints.length > 1) {
 					lastFlickDuration = _getCurrentTime() - _gestureCheckSpeedTime + 50;
@@ -17797,7 +17974,7 @@ var _gestureStartTime,
 				if( Math.abs(s.lastFlickSpeed[axis]) < 0.1 ) {
 					s.lastFlickSpeed[axis] = 0;
 				}
-				
+
 				s.slowDownRatio[axis] = 0.95;
 				s.slowDownRatioReverse[axis] = 1 - s.slowDownRatio[axis];
 				s.speedDecelerationRatio[axis] = 1;
@@ -17808,7 +17985,7 @@ var _gestureStartTime,
 
 					if(_panOffset[axis] > _currPanBounds.min[axis]) {
 						s.backAnimDestination[axis] = _currPanBounds.min[axis];
-						
+
 					} else if(_panOffset[axis] < _currPanBounds.max[axis]) {
 						s.backAnimDestination[axis] = _currPanBounds.max[axis];
 					}
@@ -17821,10 +17998,10 @@ var _gestureStartTime,
 							s.lastFlickSpeed[axis] = 0;
 							s.backAnimStarted[axis] = true;
 
-							_animateProp('bounceZoomPan'+axis,_panOffset[axis], 
-								s.backAnimDestination[axis], 
-								speed || 300, 
-								framework.easing.sine.out, 
+							_animateProp('bounceZoomPan'+axis,_panOffset[axis],
+								s.backAnimDestination[axis],
+								speed || 300,
+								framework.easing.sine.out,
 								function(pos) {
 									_panOffset[axis] = pos;
 									_applyCurrentZoomPan();
@@ -17839,8 +18016,8 @@ var _gestureStartTime,
 			// Reduces the speed by slowDownRatio (per 10ms)
 			calculateAnimOffset: function(axis) {
 				if(!s.backAnimStarted[axis]) {
-					s.speedDecelerationRatio[axis] = s.speedDecelerationRatio[axis] * (s.slowDownRatio[axis] + 
-												s.slowDownRatioReverse[axis] - 
+					s.speedDecelerationRatio[axis] = s.speedDecelerationRatio[axis] * (s.slowDownRatio[axis] +
+												s.slowDownRatioReverse[axis] -
 												s.slowDownRatioReverse[axis] * s.timeDiff / 10);
 
 					s.speedDecelerationRatioAbs[axis] = Math.abs(s.lastFlickSpeed[axis] * s.speedDecelerationRatio[axis]);
@@ -17857,12 +18034,12 @@ var _gestureStartTime,
 					s.now = _getCurrentTime();
 					s.timeDiff = s.now - s.lastNow;
 					s.lastNow = s.now;
-					
+
 					s.calculateAnimOffset('x');
 					s.calculateAnimOffset('y');
 
 					_applyCurrentZoomPan();
-					
+
 					s.calculateOverBoundsAnimOffset('x');
 					s.calculateOverBoundsAnimOffset('y');
 
@@ -17873,7 +18050,7 @@ var _gestureStartTime,
 						_panOffset.x = Math.round(_panOffset.x);
 						_panOffset.y = Math.round(_panOffset.y);
 						_applyCurrentZoomPan();
-						
+
 						_stopAnimation('zoomPan');
 						return;
 					}
@@ -17889,7 +18066,7 @@ var _gestureStartTime,
 		animData.calculateSwipeSpeed('y');
 
 		_currPanBounds = self.currItem.bounds;
-		
+
 		animData.backAnimDestination = {};
 		animData.backAnimStarted = {};
 
@@ -17917,20 +18094,20 @@ var _gestureStartTime,
 		}
 
 
-		
+
 		var itemsDiff;
 
 		if(gestureType === 'swipe') {
 			var totalShiftDist = _currPoint.x - _startPoint.x,
 				isFastLastFlick = _releaseAnimData.lastFlickDist.x < 10;
 
-			// if container is shifted for more than MIN_SWIPE_DISTANCE, 
+			// if container is shifted for more than MIN_SWIPE_DISTANCE,
 			// and last flick gesture was in right direction
-			if(totalShiftDist > MIN_SWIPE_DISTANCE && 
+			if(totalShiftDist > MIN_SWIPE_DISTANCE &&
 				(isFastLastFlick || _releaseAnimData.lastFlickOffset.x > 20) ) {
 				// go to prev item
 				itemsDiff = -1;
-			} else if(totalShiftDist < -MIN_SWIPE_DISTANCE && 
+			} else if(totalShiftDist < -MIN_SWIPE_DISTANCE &&
 				(isFastLastFlick || _releaseAnimData.lastFlickOffset.x < -20) ) {
 				// go to next item
 				itemsDiff = 1;
@@ -17940,7 +18117,7 @@ var _gestureStartTime,
 		var nextCircle;
 
 		if(itemsDiff) {
-			
+
 			_currentItemIndex += itemsDiff;
 
 			if(_currentItemIndex < 0) {
@@ -17956,9 +18133,9 @@ var _gestureStartTime,
 				_currPositionIndex -= itemsDiff;
 				itemChanged = true;
 			}
-			
 
-			
+
+
 		}
 
 		var animateToX = _slideSize.x * _currPositionIndex;
@@ -17968,10 +18145,10 @@ var _gestureStartTime,
 
 		if(!itemChanged && animateToX > _mainScrollPos.x !== _releaseAnimData.lastFlickSpeed.x > 0) {
 			// "return to current" duration, e.g. when dragging from slide 0 to -1
-			finishAnimDuration = 333; 
+			finishAnimDuration = 333;
 		} else {
-			finishAnimDuration = Math.abs(_releaseAnimData.lastFlickSpeed.x) > 0 ? 
-									animateToDist / Math.abs(_releaseAnimData.lastFlickSpeed.x) : 
+			finishAnimDuration = Math.abs(_releaseAnimData.lastFlickSpeed.x) > 0 ?
+									animateToDist / Math.abs(_releaseAnimData.lastFlickSpeed.x) :
 									333;
 
 			finishAnimDuration = Math.min(finishAnimDuration, 400);
@@ -17981,22 +18158,22 @@ var _gestureStartTime,
 		if(_currZoomedItemIndex === _currentItemIndex) {
 			itemChanged = false;
 		}
-		
+
 		_mainScrollAnimating = true;
-		
+
 		_shout('mainScrollAnimStart');
 
-		_animateProp('mainScroll', _mainScrollPos.x, animateToX, finishAnimDuration, framework.easing.cubic.out, 
+		_animateProp('mainScroll', _mainScrollPos.x, animateToX, finishAnimDuration, framework.easing.cubic.out,
 			_moveMainScroll,
 			function() {
 				_stopAllAnimations();
 				_mainScrollAnimating = false;
 				_currZoomedItemIndex = -1;
-				
+
 				if(itemChanged || _currZoomedItemIndex !== _currentItemIndex) {
 					self.updateCurrItem();
 				}
-				
+
 				_shout('mainScrollAnimComplete');
 			}
 		);
@@ -18036,13 +18213,11 @@ var _gestureStartTime,
 
 		if(_opacityChanged) {
 			onUpdate = function(now) {
-
 				_applyBgOpacity(  (destOpacity - initialOpacity) * now + initialOpacity );
-
 			};
 		}
 
-		self.zoomTo(destZoomLevel, 0, 300,  framework.easing.cubic.out, onUpdate);
+		self.zoomTo(destZoomLevel, 0, 200,  framework.easing.cubic.out, onUpdate);
 		return true;
 	};
 
@@ -18081,7 +18256,7 @@ _registerModule('Gestures', {
 				addEventNames('touch', 'start', 'move', 'end', 'cancel');
 				_likelyTouchDevice = true;
 			} else {
-				addEventNames('mouse', 'down', 'move', 'up');	
+				addEventNames('mouse', 'down', 'move', 'up');
 			}
 
 			_upMoveEvents = _dragMoveEvent + ' ' + _dragEndEvent  + ' ' +  _dragCancelEvent;
@@ -18091,8 +18266,8 @@ _registerModule('Gestures', {
 				_likelyTouchDevice = (navigator.maxTouchPoints > 1) || (navigator.msMaxTouchPoints > 1);
 			}
 			// make variable public
-			self.likelyTouchDevice = _likelyTouchDevice; 
-			
+			self.likelyTouchDevice = _likelyTouchDevice;
+
 			_globalEventHandlers[_dragStartEvent] = _onDragStart;
 			_globalEventHandlers[_dragMoveEvent] = _onDragMove;
 			_globalEventHandlers[_dragEndEvent] = _onDragRelease; // the Kraken
@@ -18131,7 +18306,7 @@ _registerModule('Gestures', {
  * If you're not planning to use transition for gallery at all,
  * you may set options hideAnimationDuration and showAnimationDuration to 0,
  * and just delete startAnimation function.
- * 
+ *
  */
 
 
@@ -18144,10 +18319,10 @@ var _showOrHideTimeout,
 
 		_initialZoomRunning = true;
 		_initialContentSet = true;
-		
+
 		// dimensions of small thumbnail {x:,y:,w:}.
 		// Height is optional, as calculated based on large image.
-		var thumbBounds; 
+		var thumbBounds;
 		if(item.initialLayout) {
 			thumbBounds = item.initialLayout;
 			item.initialLayout = null;
@@ -18194,14 +18369,14 @@ var _showOrHideTimeout,
 				onComplete();
 			};
 			finishWithoutAnimation();
-			
+
 			return;
 		}
 
 		var startAnimation = function() {
 			var closeWithRaf = _closedByScroll,
 				fadeEverything = !self.currItem.src || self.currItem.loadError || _options.showHideOpacity;
-			
+
 			// apply hw-acceleration to image
 			if(item.miniImg) {
 				item.miniImg.style.webkitBackfaceVisibility = 'hidden';
@@ -18217,7 +18392,7 @@ var _showOrHideTimeout,
 			}
 
 			_registerStartAnimation('initialZoom');
-			
+
 			if(out && !closeWithRaf) {
 				framework.removeClass(template, 'pswp--animated-in');
 			}
@@ -18235,15 +18410,15 @@ var _showOrHideTimeout,
 			_showOrHideTimeout = setTimeout(function() {
 
 				_shout('initialZoom' + (out ? 'Out' : 'In') );
-				
+
 
 				if(!out) {
 
 					// "in" animation always uses CSS transitions (instead of rAF).
-					// CSS transition work faster here, 
-					// as developer may also want to animate other things, 
+					// CSS transition work faster here,
+					// as developer may also want to animate other things,
 					// like ui on top of sliding area, which can be animated just via CSS
-					
+
 					_currZoomLevel = item.initialZoomLevel;
 					_equalizePoints(_panOffset,  item.initialPosition );
 					_applyCurrentZoomPan();
@@ -18267,7 +18442,7 @@ var _showOrHideTimeout,
 						initialZoomLevel = _currZoomLevel,
 						initalBgOpacity = _bgOpacity,
 						onUpdate = function(now) {
-							
+
 							if(now === 1) {
 								_currZoomLevel = destZoomLevel;
 								_panOffset.x = thumbBounds.x;
@@ -18277,7 +18452,7 @@ var _showOrHideTimeout,
 								_panOffset.x = (thumbBounds.x - initialPanOffset.x) * now + initialPanOffset.x;
 								_panOffset.y = (thumbBounds.y - _currentWindowScrollY - initialPanOffset.y) * now + initialPanOffset.y;
 							}
-							
+
 							_applyCurrentZoomPan();
 							if(fadeEverything) {
 								template.style.opacity = 1 - now;
@@ -18293,14 +18468,14 @@ var _showOrHideTimeout,
 						_showOrHideTimeout = setTimeout(onComplete, duration + 20);
 					}
 				}
-			
+
 			}, out ? 25 : 90); // Main purpose of this delay is to give browser time to paint and
 					// create composite layers of PhotoSwipe UI parts (background, controls, caption, arrows).
 					// Which avoids lag at the beginning of scale transition.
 		};
 		startAnimation();
 
-		
+
 	};
 
 /*>>show-hide-transition*/
@@ -18309,7 +18484,7 @@ var _showOrHideTimeout,
 /**
 *
 * Controller manages gallery items, their dimensions, and their content.
-* 
+*
 */
 
 var _items,
@@ -18333,8 +18508,8 @@ var _getItemAt,
 	_initialIsLoop,
 	_getZeroBounds = function() {
 		return {
-			center:{x:0,y:0}, 
-			max:{x:0,y:0}, 
+			center:{x:0,y:0},
+			max:{x:0,y:0},
 			min:{x:0,y:0}
 		};
 	},
@@ -18346,14 +18521,14 @@ var _getItemAt,
 		bounds.center.y = Math.round((_tempPanAreaSize.y - realPanElementH) / 2) + item.vGap.top;
 
 		// maximum pan position
-		bounds.max.x = (realPanElementW > _tempPanAreaSize.x) ? 
-							Math.round(_tempPanAreaSize.x - realPanElementW) : 
+		bounds.max.x = (realPanElementW > _tempPanAreaSize.x) ?
+							Math.round(_tempPanAreaSize.x - realPanElementW) :
 							bounds.center.x;
-		
-		bounds.max.y = (realPanElementH > _tempPanAreaSize.y) ? 
-							Math.round(_tempPanAreaSize.y - realPanElementH) + item.vGap.top : 
+
+		bounds.max.y = (realPanElementH > _tempPanAreaSize.y) ?
+							Math.round(_tempPanAreaSize.y - realPanElementH) + item.vGap.top :
 							bounds.center.y;
-		
+
 		// minimum pan position
 		bounds.min.x = (realPanElementW > _tempPanAreaSize.x) ? 0 : bounds.center.x;
 		bounds.min.y = (realPanElementH > _tempPanAreaSize.y) ? item.vGap.top : bounds.center.y;
@@ -18362,7 +18537,7 @@ var _getItemAt,
 
 		if (item.src && !item.loadError) {
 			var isInitial = !zoomLevel;
-			
+
 			if(isInitial) {
 				if(!item.vGap) {
 					item.vGap = {top:0,bottom:0};
@@ -18395,10 +18570,10 @@ var _getItemAt,
 				}
 
 				item.initialZoomLevel = zoomLevel;
-				
+
 				if(!item.bounds) {
 					// reuse bounds object
-					item.bounds = _getZeroBounds(); 
+					item.bounds = _getZeroBounds();
 				}
 			}
 
@@ -18425,52 +18600,34 @@ var _getItemAt,
 		return false;
 	},
 
-	
+
 
 
 	_appendImage = function(index, item, baseDiv, img, preventAnimation, keepPlaceholder) {
-		
+
 
 		if(item.loadError) {
 			return;
 		}
 
-		var animate,
-			isSwiping = self.isDragging() && !self.isZooming(),
-			slideMightBeVisible = index === _currentItemIndex || self.isMainScrollAnimating() || isSwiping;
-
-		// fade in loaded image only when current holder is active, or might be visible
-		if(!preventAnimation && (_likelyTouchDevice || _options.alwaysFadeIn) && slideMightBeVisible) {
-			animate = true;
-		}
-
 		if(img) {
-			if(animate) {
-				img.style.opacity = 0;
-			}
 
 			item.imageAppended = true;
-			_setImageSize(img, item.w, item.h);
-			
+			_setImageSize(item, img);
+
 			baseDiv.appendChild(img);
 
-			if(animate) {
+			if(keepPlaceholder) {
 				setTimeout(function() {
-					img.style.opacity = 1;
-					if(keepPlaceholder) {
-						setTimeout(function() {
-							// hide image placeholder "behind"
-							if(item && item.loaded && item.placeholder) {
-								item.placeholder.style.display = 'none';
-								item.placeholder = null;
-							}
-						}, 500);
+					if(item && item.loaded && item.placeholder) {
+						item.placeholder.style.display = 'none';
+						item.placeholder = null;
 					}
-				}, 50);
+				}, 500);
 			}
 		}
 	},
-	
+
 
 
 	_preloadImage = function(item) {
@@ -18493,7 +18650,7 @@ var _getItemAt,
 		img.onerror = function() {
 			item.loadError = true;
 			onComplete();
-		};		
+		};
 
 		img.src = item.src;// + '?a=' + Math.random();
 
@@ -18508,10 +18665,26 @@ var _getItemAt,
 
 			item.container.innerHTML = _options.errorMsg.replace('%url%',  item.src );
 			return true;
-			
+
 		}
 	},
-	_setImageSize = function(img, w, h) {
+	_setImageSize = function(item, img, maxRes) {
+		if(!item.src) {
+			return;
+		}
+
+		if(!img) {
+			img = item.container.lastChild;
+		}
+
+		var w = maxRes ? item.w : Math.round(item.w * item.fitRatio),
+			h = maxRes ? item.h : Math.round(item.h * item.fitRatio);
+
+		if(item.placeholder && !item.loaded) {
+			item.placeholder.style.width = w + 'px';
+			item.placeholder.style.height = h + 'px';
+		}
+
 		img.style.width = w + 'px';
 		img.style.height = h + 'px';
 	},
@@ -18523,13 +18696,13 @@ var _getItemAt,
 			for(var i = 0; i < _imagesToAppendPool.length; i++) {
 				poolItem = _imagesToAppendPool[i];
 				if( poolItem.holder.index === poolItem.index ) {
-					_appendImage(poolItem.index, poolItem.item, poolItem.baseDiv, poolItem.img);
+					_appendImage(poolItem.index, poolItem.item, poolItem.baseDiv, poolItem.img, false, poolItem.clearPlaceholder);
 				}
 			}
 			_imagesToAppendPool = [];
 		}
 	};
-	
+
 
 
 _registerModule('Controller', {
@@ -18597,7 +18770,7 @@ _registerModule('Controller', {
 					item = _items[i];
 					// remove reference to DOM elements, for GC
 					if(item.container) {
-						item.container = null; 
+						item.container = null;
 					}
 					if(item.placeholder) {
 						item.placeholder = null;
@@ -18625,17 +18798,17 @@ _registerModule('Controller', {
 		},
 
 		allowProgressiveImg: function() {
-			// 1. Progressive image loading isn't working on webkit/blink 
+			// 1. Progressive image loading isn't working on webkit/blink
 			//    when hw-acceleration (e.g. translateZ) is applied to IMG element.
 			//    That's why in PhotoSwipe parent element gets zoom transform, not image itself.
-			//    
+			//
 			// 2. Progressive image loading sometimes blinks in webkit/blink when applying animation to parent element.
 			//    That's why it's disabled on touch devices (mainly because of swipe transition)
-			//    
+			//
 			// 3. Progressive image loading sometimes doesn't work in IE (up to 11).
 
 			// Don't allow progressive loading on non-large touch devices
-			return _options.forceProgressiveLoading || !_likelyTouchDevice || _options.mouseUsed || screen.width > 1200; 
+			return _options.forceProgressiveLoading || !_likelyTouchDevice || _options.mouseUsed || screen.width > 1200;
 			// 1200 - to eliminate touch devices with large screen (like Chromebook Pixel)
 		},
 
@@ -18649,10 +18822,10 @@ _registerModule('Controller', {
 			if(prevItem) {
 				prevItem.container = null;
 			}
-	
+
 			var item = self.getItemAt(index),
 				img;
-			
+
 			if(!item) {
 				holder.el.innerHTML = '';
 				return;
@@ -18665,9 +18838,9 @@ _registerModule('Controller', {
 			holder.item = item;
 
 			// base container DIV is created only once for each of 3 holders
-			var baseDiv = item.container = framework.createEl('pswp__zoom-wrap'); 
+			var baseDiv = item.container = framework.createEl('pswp__zoom-wrap');
 
-			
+
 
 			if(!item.src && item.html) {
 				if(item.html.tagName) {
@@ -18678,7 +18851,9 @@ _registerModule('Controller', {
 			}
 
 			_checkForError(item);
-			
+
+			_calculateItemSize(item, _viewportSize);
+
 			if(item.src && !item.loadError && !item.loaded) {
 
 				item.loadComplete = function(item) {
@@ -18686,14 +18861,6 @@ _registerModule('Controller', {
 					// gallery closed before image finished loading
 					if(!_isOpen) {
 						return;
-					}
-
-					// Apply hw-acceleration only after image is loaded.
-					// This is webkit progressive image loading bugfix.
-					// https://bugs.webkit.org/show_bug.cgi?id=108630
-					// https://code.google.com/p/chromium/issues/detail?id=404547
-					if(item.img) {
-						item.img.style.webkitBackfaceVisibility = 'hidden';
 					}
 
 					// check if holder hasn't changed while image was loading
@@ -18716,10 +18883,11 @@ _registerModule('Controller', {
 									baseDiv:baseDiv,
 									img:item.img,
 									index:index,
-									holder:holder
+									holder:holder,
+									clearPlaceholder:true
 								});
 							} else {
-								_appendImage(index, item, baseDiv, item.img, _mainScrollAnimating || _initialZoomRunning);
+								_appendImage(index, item, baseDiv, item.img, _mainScrollAnimating || _initialZoomRunning, true);
 							}
 						} else {
 							// remove preloader & mini-img
@@ -18737,24 +18905,24 @@ _registerModule('Controller', {
 				};
 
 				if(framework.features.transform) {
-					
-					var placeholderClassName = 'pswp__img pswp__img--placeholder'; 
+
+					var placeholderClassName = 'pswp__img pswp__img--placeholder';
 					placeholderClassName += (item.msrc ? '' : ' pswp__img--placeholder--blank');
 
 					var placeholder = framework.createEl(placeholderClassName, item.msrc ? 'img' : '');
 					if(item.msrc) {
 						placeholder.src = item.msrc;
 					}
-					
-					_setImageSize(placeholder, item.w, item.h);
+
+					_setImageSize(item, placeholder);
 
 					baseDiv.appendChild(placeholder);
 					item.placeholder = placeholder;
 
 				}
-				
 
-				
+
+
 
 				if(!item.loading) {
 					_preloadImage(item);
@@ -18765,28 +18933,26 @@ _registerModule('Controller', {
 					// just append image
 					if(!_initialContentSet && _features.transform) {
 						_imagesToAppendPool.push({
-							item:item, 
-							baseDiv:baseDiv, 
-							img:item.img, 
-							index:index, 
+							item:item,
+							baseDiv:baseDiv,
+							img:item.img,
+							index:index,
 							holder:holder
 						});
 					} else {
 						_appendImage(index, item, baseDiv, item.img, true, true);
 					}
 				}
-				
+
 			} else if(item.src && !item.loadError) {
 				// image object is created every time, due to bugs of image loading & delay when switching images
 				img = framework.createEl('pswp__img', 'img');
-				img.style.webkitBackfaceVisibility = 'hidden';
 				img.style.opacity = 1;
 				img.src = item.src;
-				_setImageSize(img, item.w, item.h);
+				_setImageSize(item, img);
 				_appendImage(index, item, baseDiv, img, true);
 			}
-			
-			_calculateItemSize(item, _viewportSize);
+
 
 			if(!_initialContentSet && index === _currentItemIndex) {
 				_currZoomElementStyle = baseDiv.style;
@@ -18816,17 +18982,17 @@ _registerModule('Controller', {
  * tap.js:
  *
  * Displatches tap and double-tap events.
- * 
+ *
  */
 
 var tapTimer,
 	tapReleasePoint = {},
-	_dispatchTapEvent = function(origEvent, releasePoint, pointerType) {		
+	_dispatchTapEvent = function(origEvent, releasePoint, pointerType) {
 		var e = document.createEvent( 'CustomEvent' ),
 			eDetail = {
-				origEvent:origEvent, 
-				target:origEvent.target, 
-				releasePoint: releasePoint, 
+				origEvent:origEvent,
+				target:origEvent.target,
+				releasePoint: releasePoint,
 				pointerType:pointerType || 'touch'
 			};
 
@@ -18902,11 +19068,11 @@ _registerModule('Tap', {
  * - Manages "dragging", "zoomed-in", "zoom-out" classes.
  *   (which are used for cursors and zoom icon)
  * - Adds toggleDesktopZoom function.
- * 
+ *
  */
 
 var _wheelDelta;
-	
+
 _registerModule('DesktopZoom', {
 
 	publicMethods: {
@@ -18935,7 +19101,7 @@ _registerModule('DesktopZoom', {
 			_wheelDelta = {};
 
 			var events = 'wheel mousewheel DOMMouseScroll';
-			
+
 			_listen('bindEvents', function() {
 				framework.bind(template, events,  self.handleMouseWheel);
 			});
@@ -18981,19 +19147,19 @@ _registerModule('DesktopZoom', {
 			if(!onInit) {
 				updateZoomable();
 			}
-			
+
 		},
 
 		handleMouseWheel: function(e) {
 
 			if(_currZoomLevel <= self.currItem.fitRatio) {
-				if(!_options.closeOnScroll) {
-					e.preventDefault();
-				} else {
+				if( _options.modal ) {
 
-					// close PhotoSwipe
-					// if browser supports transforms & scroll changed enough
-					if( _transformKey && Math.abs(e.deltaY) > 2 ) {
+					if (!_options.closeOnScroll || _numAnimations || _isDragging) {
+						e.preventDefault();
+					} else if(_transformKey && Math.abs(e.deltaY) > 2) {
+						// close PhotoSwipe
+						// if browser supports transforms & scroll changed enough
 						_closedByScroll = true;
 						self.close();
 					}
@@ -19002,14 +19168,13 @@ _registerModule('DesktopZoom', {
 				return true;
 			}
 
-			e.preventDefault();
 			// allow just one event to fire
 			e.stopPropagation();
 
 			// https://developer.mozilla.org/en-US/docs/Web/Events/wheel
 			_wheelDelta.x = 0;
 
-			if('deltaX' in e) {				
+			if('deltaX' in e) {
 				if(e.deltaMode === 1 /* DOM_DELTA_LINE */) {
 					// 18 - average line height
 					_wheelDelta.x = e.deltaX * 18;
@@ -19021,7 +19186,7 @@ _registerModule('DesktopZoom', {
 			} else if('wheelDelta' in e) {
 				if(e.wheelDeltaX) {
 					_wheelDelta.x = -0.16 * e.wheelDeltaX;
-				} 
+				}
 				if(e.wheelDeltaY) {
 					_wheelDelta.y = -0.16 * e.wheelDeltaY;
 				} else {
@@ -19032,18 +19197,31 @@ _registerModule('DesktopZoom', {
 			} else {
 				return;
 			}
-		
-			// TODO: use rAF instead of mousewheel?
+
 			_calculatePanBounds(_currZoomLevel, true);
-			self.panTo(_panOffset.x - _wheelDelta.x, _panOffset.y - _wheelDelta.y);
+
+			var newPanX = _panOffset.x - _wheelDelta.x,
+				newPanY = _panOffset.y - _wheelDelta.y;
+
+			// only prevent scrolling in nonmodal mode when not at edges
+			if (_options.modal ||
+				(
+				newPanX <= _currPanBounds.min.x && newPanX >= _currPanBounds.max.x &&
+				newPanY <= _currPanBounds.min.y && newPanY >= _currPanBounds.max.y
+				) ) {
+				e.preventDefault();
+			}
+
+			// TODO: use rAF instead of mousewheel?
+			self.panTo(newPanX, newPanY);
 		},
 
 		toggleDesktopZoom: function(centerPoint) {
-			centerPoint = centerPoint || {x:_viewportSize.x/2, y:_viewportSize.y/2 + _currentWindowScrollY };
+			centerPoint = centerPoint || {x:_viewportSize.x/2 + _offset.x, y:_viewportSize.y/2 + _offset.y };
 
 			var doubleTapZoomLevel = _options.getDoubleTapZoom(true, self.currItem);
 			var zoomOut = _currZoomLevel === doubleTapZoomLevel;
-			
+
 			self.mouseZoomedIn = !zoomOut;
 
 			self.zoomTo(zoomOut ? self.currItem.initialZoomLevel : doubleTapZoomLevel, centerPoint, 333);
@@ -19053,6 +19231,7 @@ _registerModule('DesktopZoom', {
 	}
 });
 
+
 /*>>desktop-zoom*/
 
 /*>>history*/
@@ -19061,12 +19240,12 @@ _registerModule('DesktopZoom', {
  * history.js:
  *
  * - Back button to close gallery.
- * 
+ *
  * - Unique URL for each slide: example.com/&pid=1&gid=3
  *   (where PID is picture index, and GID and gallery index)
- *   
+ *
  * - Switch URL when slides change.
- * 
+ *
  */
 
 
@@ -19113,18 +19292,30 @@ var _historyUpdateTimeout,
 			return params;
 		}
 
-		var vars = hash.split('&');
-		for (var i = 0; i < vars.length; i++) {
+		var i, vars = hash.split('&');
+		for (i = 0; i < vars.length; i++) {
 			if(!vars[i]) {
 				continue;
 			}
-			var pair = vars[i].split('=');	
+			var pair = vars[i].split('=');
 			if(pair.length < 2) {
 				continue;
 			}
 			params[pair[0]] = pair[1];
 		}
-		params.pid = parseInt(params.pid,10)-1;
+		if(_options.galleryPIDs) {
+			// detect custom pid in hash and search for it among the items collection
+			var searchfor = params.pid;
+			params.pid = 0; // if custom pid cannot be found, fallback to the first item
+			for(i = 0; i < _items.length; i++) {
+				if(_items[i].pid === searchfor) {
+					params.pid = i;
+					break;
+				}
+			}
+		} else {
+			params.pid = parseInt(params.pid,10)-1;
+		}
 		if( params.pid < 0 ) {
 			params.pid = 0;
 		}
@@ -19143,7 +19334,7 @@ var _historyUpdateTimeout,
 			_hashAnimCheckTimeout = setTimeout(_updateHash, 500);
 			return;
 		}
-		
+
 		if(_hashChangedByScript) {
 			clearTimeout(_hashChangeTimeout);
 		} else {
@@ -19151,7 +19342,13 @@ var _historyUpdateTimeout,
 		}
 
 
-		var newHash = _initialHash + '&'  +  'gid=' + _options.galleryUID + '&' + 'pid=' + (_currentItemIndex + 1);
+		var pid = (_currentItemIndex + 1);
+		var item = _getItemAt( _currentItemIndex );
+		if(item.hasOwnProperty('pid')) {
+			// carry forward any custom pid assigned to the item
+			pid = item.pid;
+		}
+		var newHash = _initialHash + '&'  +  'gid=' + _options.galleryUID + '&' + 'pid=' + pid;
 
 		if(!_historyChanged) {
 			if(_windowLoc.hash.indexOf(newHash) === -1) {
@@ -19175,8 +19372,8 @@ var _historyUpdateTimeout,
 				_windowLoc.hash = newHash;
 			}
 		}
-		
-		
+
+
 
 		_historyChanged = true;
 		_hashChangeTimeout = setTimeout(function() {
@@ -19186,11 +19383,11 @@ var _historyUpdateTimeout,
 
 
 
-	
+
 
 _registerModule('History', {
 
-	
+
 
 	publicMethods: {
 		initHistory: function() {
@@ -19214,7 +19411,7 @@ _registerModule('History', {
 				_initialHash = _initialHash.split('&gid=')[0];
 				_initialHash = _initialHash.split('?gid=')[0];
 			}
-			
+
 
 			_listen('afterChange', self.updateURL);
 			_listen('unbindEvents', function() {
@@ -19242,7 +19439,7 @@ _registerModule('History', {
 							}
 						}
 					}
-					
+
 				}
 
 				_cleanHistoryTimeouts();
@@ -19265,9 +19462,9 @@ _registerModule('History', {
 				_currentItemIndex = _parseItemIndexFromURL().pid;
 			});
 
-			
 
-			
+
+
 			var index = _initialHash.indexOf('pid=');
 			if(index > -1) {
 				_initialHash = _initialHash.substring(0, index);
@@ -19275,14 +19472,14 @@ _registerModule('History', {
 					_initialHash = _initialHash.slice(0, -1);
 				}
 			}
-			
+
 
 			setTimeout(function() {
 				if(_isOpen) { // hasn't destroyed yet
 					framework.bind(window, 'hashchange', self.onHashChange);
 				}
 			}, 40);
-			
+
 		},
 		onHashChange: function() {
 
@@ -19298,15 +19495,15 @@ _registerModule('History', {
 				self.goTo( _parseItemIndexFromURL().pid );
 				_hashChangedByHistory = false;
 			}
-			
+
 		},
 		updateURL: function() {
 
-			// Delay the update of URL, to avoid lag during transition, 
+			// Delay the update of URL, to avoid lag during transition,
 			// and to not to trigger actions like "refresh page sound" or "blinking favicon" to often
-			
+
 			_cleanHistoryTimeouts();
-			
+
 
 			if(_hashChangedByHistory) {
 				return;
@@ -19318,24 +19515,26 @@ _registerModule('History', {
 				_historyUpdateTimeout = setTimeout(_updateHash, 800);
 			}
 		}
-	
+
 	}
 });
+
 
 /*>>history*/
 	framework.extend(self, publicMethods); };
 	return PhotoSwipe;
 });
-/*! PhotoSwipe Default UI - 4.0.7 - 2015-03-18
+
+/*! PhotoSwipe Default UI - 4.1.0 - 2015-07-11
 * http://photoswipe.com
 * Copyright (c) 2015 Dmitry Semenov; */
 /**
 *
 * UI on top of main sliding area (caption, arrows, close button, etc.).
 * Built just using public methods/properties of PhotoSwipe.
-* 
+*
 */
-(function (root, factory) { 
+(function (root, factory) {
 	if (typeof define === 'function' && define.amd) {
 		define(factory);
 	} else if (typeof exports === 'object') {
@@ -19376,11 +19575,11 @@ var PhotoSwipeUI_Default =
 		_options,
 		_defaultUIOptions = {
 			barsSize: {top:44, bottom:'auto'},
-			closeElClasses: ['item', 'caption', 'zoom-wrap', 'ui', 'top-bar'], 
-			timeToIdle: 4000, 
+			closeElClasses: ['item', 'caption', 'zoom-wrap', 'ui', 'top-bar'],
+			timeToIdle: 4000,
 			timeToIdleOutside: 1000,
 			loadingIndicatorDelay: 1000, // 2s
-			
+
 			addCaptionHTMLFn: function(item, captionEl /*, isFake */) {
 				if(!item.title) {
 					captionEl.children[0].innerHTML = '';
@@ -19420,7 +19619,7 @@ var PhotoSwipeUI_Default =
 			getTextForShare: function( /* shareButtonData */ ) {
 				return pswp.currItem.title || '';
 			},
-				
+
 			indexIndicatorSep: ' / '
 
 		},
@@ -19463,12 +19662,12 @@ var PhotoSwipeUI_Default =
 				}
 				_blockControlsTap = true;
 
-				// Some versions of Android don't prevent ghost click event 
+				// Some versions of Android don't prevent ghost click event
 				// when preventDefault() was called on touchstart and/or touchend.
-				// 
-				// This happens on v4.3, 4.2, 4.1, 
-				// older versions strangely work correctly, 
-				// but just in case we add delay on all of them)	
+				//
+				// This happens on v4.3, 4.2, 4.1,
+				// older versions strangely work correctly,
+				// but just in case we add delay on all of them)
 				var tapDelay = framework.features.isOldAndroid ? 600 : 30;
 				_blockControlsTapTimeout = setTimeout(function() {
 					_blockControlsTap = false;
@@ -19499,8 +19698,8 @@ var PhotoSwipeUI_Default =
 		_toggleShareModal = function() {
 
 			_shareModalHidden = !_shareModalHidden;
-			
-			
+
+
 			if(!_shareModalHidden) {
 				_toggleShareModalClass();
 				setTimeout(function() {
@@ -19516,7 +19715,7 @@ var PhotoSwipeUI_Default =
 					}
 				}, 300);
 			}
-			
+
 			if(!_shareModalHidden) {
 				_updateShareURLs();
 			}
@@ -19538,13 +19737,13 @@ var PhotoSwipeUI_Default =
 			}
 
 			window.open(target.href, 'pswp_share', 'scrollbars=yes,resizable=yes,toolbar=no,'+
-										'location=yes,width=550,height=420,top=100,left=' + 
+										'location=yes,width=550,height=420,top=100,left=' +
 										(window.screen ? Math.round(screen.width / 2 - 275) : 100)  );
 
 			if(!_shareModalHidden) {
 				_toggleShareModal();
 			}
-			
+
 			return false;
 		},
 		_updateShareURLs = function() {
@@ -19569,7 +19768,7 @@ var PhotoSwipeUI_Default =
 
 				shareButtonOut += '<a href="' + shareURL + '" target="_blank" '+
 									'class="pswp__share--' + shareButtonData.id + '"' +
-									(shareButtonData.download ? 'download' : '') + '>' + 
+									(shareButtonData.download ? 'download' : '') + '>' +
 									shareButtonData.label + '</a>';
 
 				if(_options.parseShareButtonOut) {
@@ -19624,7 +19823,7 @@ var PhotoSwipeUI_Default =
 		_setupLoadingIndicator = function() {
 			// Setup loading indicator
 			if(_options.preloaderEl) {
-			
+
 				_toggleLoadingIndicator(true);
 
 				_listen('beforeChange', function() {
@@ -19637,18 +19836,18 @@ var PhotoSwipeUI_Default =
 						if(pswp.currItem && pswp.currItem.loading) {
 
 							if( !pswp.allowProgressiveImg() || (pswp.currItem.img && !pswp.currItem.img.naturalWidth)  ) {
-								// show preloader if progressive loading is not enabled, 
+								// show preloader if progressive loading is not enabled,
 								// or image width is not defined yet (because of slow connection)
-								_toggleLoadingIndicator(false); 
+								_toggleLoadingIndicator(false);
 								// items-controller.js function allowProgressiveImg
 							}
-							
+
 						} else {
 							_toggleLoadingIndicator(true); // hide preloader
 						}
 
 					}, _options.loadingIndicatorDelay);
-					
+
 				});
 				_listen('imageLoadComplete', function(index, item) {
 					if(pswp.currItem === item) {
@@ -19668,8 +19867,8 @@ var PhotoSwipeUI_Default =
 			var gap = item.vGap;
 
 			if( _fitControlsInViewport() ) {
-				
-				var bars = _options.barsSize; 
+
+				var bars = _options.barsSize;
 				if(_options.captionEl && bars.bottom === 'auto') {
 					if(!_fakeCaptionContainer) {
 						_fakeCaptionContainer = framework.createEl('pswp__caption pswp__caption--fake');
@@ -19687,7 +19886,7 @@ var PhotoSwipeUI_Default =
 				} else {
 					gap.bottom = bars.bottom === 'auto' ? 0 : bars.bottom;
 				}
-				
+
 				// height of top bar is static, no need to calculate it
 				gap.top = bars.top;
 			} else {
@@ -19698,7 +19897,7 @@ var PhotoSwipeUI_Default =
 			// Hide controls when mouse is used
 			if(_options.timeToIdle) {
 				_listen('mouseUsed', function() {
-					
+
 					framework.bind(document, 'mousemove', _onIdleMouseMove);
 					framework.bind(document, 'mouseout', _onMouseLeaveWindow);
 
@@ -19745,77 +19944,77 @@ var PhotoSwipeUI_Default =
 
 
 	var _uiElements = [
-		{ 
-			name: 'caption', 
+		{
+			name: 'caption',
 			option: 'captionEl',
-			onInit: function(el) {  
-				_captionContainer = el; 
-			} 
+			onInit: function(el) {
+				_captionContainer = el;
+			}
 		},
-		{ 
-			name: 'share-modal', 
+		{
+			name: 'share-modal',
 			option: 'shareEl',
-			onInit: function(el) {  
+			onInit: function(el) {
 				_shareModal = el;
 			},
 			onTap: function() {
 				_toggleShareModal();
-			} 
+			}
 		},
-		{ 
-			name: 'button--share', 
+		{
+			name: 'button--share',
 			option: 'shareEl',
-			onInit: function(el) { 
+			onInit: function(el) {
 				_shareButton = el;
 			},
 			onTap: function() {
 				_toggleShareModal();
-			} 
+			}
 		},
-		{ 
-			name: 'button--zoom', 
+		{
+			name: 'button--zoom',
 			option: 'zoomEl',
 			onTap: pswp.toggleDesktopZoom
 		},
-		{ 
-			name: 'counter', 
+		{
+			name: 'counter',
 			option: 'counterEl',
-			onInit: function(el) {  
+			onInit: function(el) {
 				_indexIndicator = el;
-			} 
+			}
 		},
-		{ 
-			name: 'button--close', 
+		{
+			name: 'button--close',
 			option: 'closeEl',
 			onTap: pswp.close
 		},
-		{ 
-			name: 'button--arrow--left', 
+		{
+			name: 'button--arrow--left',
 			option: 'arrowEl',
 			onTap: pswp.prev
 		},
-		{ 
-			name: 'button--arrow--right', 
+		{
+			name: 'button--arrow--right',
 			option: 'arrowEl',
 			onTap: pswp.next
 		},
-		{ 
-			name: 'button--fs', 
+		{
+			name: 'button--fs',
 			option: 'fullscreenEl',
-			onTap: function() {  
+			onTap: function() {
 				if(_fullscrenAPI.isFullscreen()) {
 					_fullscrenAPI.exit();
 				} else {
 					_fullscrenAPI.enter();
 				}
-			} 
+			}
 		},
-		{ 
-			name: 'preloader', 
+		{
+			name: 'preloader',
 			option: 'preloaderEl',
-			onInit: function(el) {  
+			onInit: function(el) {
 				_loadingIndicator = el;
-			} 
+			}
 		}
 
 	];
@@ -19841,12 +20040,12 @@ var PhotoSwipeUI_Default =
 					if(classAttr.indexOf('pswp__' + uiElement.name) > -1  ) {
 
 						if( _options[uiElement.option] ) { // if element is not disabled from options
-							
+
 							framework.removeClass(item, 'pswp__element--disabled');
 							if(uiElement.onInit) {
 								uiElement.onInit(item);
 							}
-							
+
 							//item.style.display = 'block';
 						} else {
 							framework.addClass(item, 'pswp__element--disabled');
@@ -19865,7 +20064,7 @@ var PhotoSwipeUI_Default =
 	};
 
 
-	
+
 
 	ui.init = function() {
 
@@ -19901,9 +20100,9 @@ var PhotoSwipeUI_Default =
 		_listen('preventDragEvent', function(e, isDown, preventObj) {
 			var t = e.target || e.srcElement;
 			if(
-				t && 
-				t.className && e.type.indexOf('mouse') > -1 && 
-				( t.className.indexOf('__caption') > 0 || (/(SMALL|STRONG|EM)/i).test(t.tagName) ) 
+				t &&
+				t.className && e.type.indexOf('mouse') > -1 &&
+				( t.className.indexOf('__caption') > 0 || (/(SMALL|STRONG|EM)/i).test(t.tagName) )
 			) {
 				preventObj.prevent = false;
 			}
@@ -19961,7 +20160,7 @@ var PhotoSwipeUI_Default =
 			framework.addClass( _controls, 'pswp__ui--hidden');
 			ui.setIdle(false);
 		});
-		
+
 
 		if(!_options.showAnimationDuration) {
 			framework.removeClass( _controls, 'pswp__ui--hidden');
@@ -19976,7 +20175,7 @@ var PhotoSwipeUI_Default =
 		});
 
 		_listen('parseVerticalMargin', _applyNavBarGaps);
-		
+
 		_setupUIElements();
 
 		if(_options.shareEl && _shareButton && _shareModal) {
@@ -20000,7 +20199,7 @@ var PhotoSwipeUI_Default =
 	ui.update = function() {
 		// Don't update UI if it's hidden
 		if(_controlsVisible && pswp.currItem) {
-			
+
 			ui.updateIndexIndicator();
 
 			if(_options.captionEl) {
@@ -20031,19 +20230,19 @@ var PhotoSwipeUI_Default =
 				pswp.setScrollOffset( 0, framework.getScrollY() );
 			}, 50);
 		}
-		
+
 		// toogle pswp--fs class on root element
 		framework[ (_fullscrenAPI.isFullscreen() ? 'add' : 'remove') + 'Class' ](pswp.template, 'pswp--fs');
 	};
 
 	ui.updateIndexIndicator = function() {
 		if(_options.counterEl) {
-			_indexIndicator.innerHTML = (pswp.getCurrentIndex()+1) + 
-										_options.indexIndicatorSep + 
+			_indexIndicator.innerHTML = (pswp.getCurrentIndex()+1) +
+										_options.indexIndicatorSep +
 										_options.getNumItemsFn();
 		}
 	};
-	
+
 	ui.onGlobalTap = function(e) {
 		e = e || window.event;
 		var target = e.target || e.srcElement;
@@ -20064,19 +20263,20 @@ var PhotoSwipeUI_Default =
 				if(pswp.getZoomLevel() === 1 && pswp.getZoomLevel() <= pswp.currItem.fitRatio) {
 					if(_options.clickToCloseNonZoomable) {
 						pswp.close();
+					} else {
+						pswp.next();
 					}
 				} else {
 					pswp.toggleDesktopZoom(e.detail.releasePoint);
 				}
 			}
-			
+
 		} else {
 
 			// tap anywhere (except buttons) to toggle visibility of controls
 			if(_options.tapToToggleControls) {
-				if(_controlsVisible) {
-					ui.hideControls();
-				} else {
+				pswp.next();
+				if(!_controlsVisible) {
 					ui.showControls();
 				}
 			}
@@ -20086,7 +20286,7 @@ var PhotoSwipeUI_Default =
 				pswp.close();
 				return;
 			}
-			
+
 		}
 	};
 	ui.onMouseOver = function(e) {
@@ -20136,7 +20336,7 @@ var PhotoSwipeUI_Default =
 				eventK: 'moz' + tF
 			};
 
-			
+
 
 		} else if(dE.webkitRequestFullscreen) {
 			api = {
@@ -20156,21 +20356,21 @@ var PhotoSwipeUI_Default =
 		}
 
 		if(api) {
-			api.enter = function() { 
+			api.enter = function() {
 				// disable close-on-scroll in fullscreen
-				_initalCloseOnScrollValue = _options.closeOnScroll; 
-				_options.closeOnScroll = false; 
+				_initalCloseOnScrollValue = _options.closeOnScroll;
+				_options.closeOnScroll = false;
 
 				if(this.enterK === 'webkitRequestFullscreen') {
 					pswp.template[this.enterK]( Element.ALLOW_KEYBOARD_INPUT );
 				} else {
-					return pswp.template[this.enterK](); 
+					return pswp.template[this.enterK]();
 				}
 			};
-			api.exit = function() { 
+			api.exit = function() {
 				_options.closeOnScroll = _initalCloseOnScrollValue;
 
-				return document[this.exitK](); 
+				return document[this.exitK]();
 
 			};
 			api.isFullscreen = function() { return document[this.elementK]; };
@@ -20186,6 +20386,7 @@ return PhotoSwipeUI_Default;
 
 
 });
+
 /*!
  * Simple jQuery Equal Heights
  *
@@ -20221,7 +20422,7 @@ return PhotoSwipeUI_Default;
 })(jQuery);
 
 /* ========================================================================
- * Bootstrap: transition.js v3.3.4
+ * Bootstrap: transition.js v3.3.5
  * http://getbootstrap.com/javascript/#transitions
  * ========================================================================
  * Copyright 2011-2015 Twitter, Inc.
@@ -20281,7 +20482,7 @@ return PhotoSwipeUI_Default;
 }(jQuery);
 
 /* ========================================================================
- * Bootstrap: collapse.js v3.3.4
+ * Bootstrap: collapse.js v3.3.5
  * http://getbootstrap.com/javascript/#collapse
  * ========================================================================
  * Copyright 2011-2015 Twitter, Inc.
@@ -20311,7 +20512,7 @@ return PhotoSwipeUI_Default;
     if (this.options.toggle) this.toggle()
   }
 
-  Collapse.VERSION  = '3.3.4'
+  Collapse.VERSION  = '3.3.5'
 
   Collapse.TRANSITION_DURATION = 350
 
@@ -20493,7 +20694,7 @@ return PhotoSwipeUI_Default;
 }(jQuery);
 
 /* ========================================================================
- * Bootstrap: affix.js v3.3.4
+ * Bootstrap: affix.js v3.3.5
  * http://getbootstrap.com/javascript/#affix
  * ========================================================================
  * Copyright 2011-2015 Twitter, Inc.
@@ -20522,7 +20723,7 @@ return PhotoSwipeUI_Default;
     this.checkPosition()
   }
 
-  Affix.VERSION  = '3.3.4'
+  Affix.VERSION  = '3.3.5'
 
   Affix.RESET    = 'affix affix-top affix-bottom'
 
@@ -20572,7 +20773,7 @@ return PhotoSwipeUI_Default;
     var offset       = this.options.offset
     var offsetTop    = offset.top
     var offsetBottom = offset.bottom
-    var scrollHeight = $(document.body).height()
+    var scrollHeight = Math.max($(document).height(), $(document.body).height())
 
     if (typeof offset != 'object')         offsetBottom = offsetTop = offset
     if (typeof offsetTop == 'function')    offsetTop    = offset.top(this.$element)
@@ -20656,7 +20857,7 @@ return PhotoSwipeUI_Default;
 }(jQuery);
 
 /* ========================================================================
- * Bootstrap: tab.js v3.3.4
+ * Bootstrap: tab.js v3.3.5
  * http://getbootstrap.com/javascript/#tabs
  * ========================================================================
  * Copyright 2011-2015 Twitter, Inc.
@@ -20671,10 +20872,12 @@ return PhotoSwipeUI_Default;
   // ====================
 
   var Tab = function (element) {
+    // jscs:disable requireDollarBeforejQueryAssignment
     this.element = $(element)
+    // jscs:enable requireDollarBeforejQueryAssignment
   }
 
-  Tab.VERSION = '3.3.4'
+  Tab.VERSION = '3.3.5'
 
   Tab.TRANSITION_DURATION = 150
 
@@ -20722,7 +20925,7 @@ return PhotoSwipeUI_Default;
     var $active    = container.find('> .active')
     var transition = callback
       && $.support.transition
-      && (($active.length && $active.hasClass('fade')) || !!container.find('> .fade').length)
+      && ($active.length && $active.hasClass('fade') || !!container.find('> .fade').length)
 
     function next() {
       $active
@@ -20810,7 +21013,7 @@ return PhotoSwipeUI_Default;
 }(jQuery);
 
 /* ========================================================================
- * Bootstrap: tooltip.js v3.3.4
+ * Bootstrap: tooltip.js v3.3.5
  * http://getbootstrap.com/javascript/#tooltip
  * Inspired by the original jQuery.tipsy by Jason Frame
  * ========================================================================
@@ -20832,11 +21035,12 @@ return PhotoSwipeUI_Default;
     this.timeout    = null
     this.hoverState = null
     this.$element   = null
+    this.inState    = null
 
     this.init('tooltip', element, options)
   }
 
-  Tooltip.VERSION  = '3.3.4'
+  Tooltip.VERSION  = '3.3.5'
 
   Tooltip.TRANSITION_DURATION = 150
 
@@ -20861,7 +21065,8 @@ return PhotoSwipeUI_Default;
     this.type      = type
     this.$element  = $(element)
     this.options   = this.getOptions(options)
-    this.$viewport = this.options.viewport && $(this.options.viewport.selector || this.options.viewport)
+    this.$viewport = this.options.viewport && $($.isFunction(this.options.viewport) ? this.options.viewport.call(this, this.$element) : (this.options.viewport.selector || this.options.viewport))
+    this.inState   = { click: false, hover: false, focus: false }
 
     if (this.$element[0] instanceof document.constructor && !this.options.selector) {
       throw new Error('`selector` option must be specified when initializing ' + this.type + ' on the window.document object!')
@@ -20920,14 +21125,18 @@ return PhotoSwipeUI_Default;
     var self = obj instanceof this.constructor ?
       obj : $(obj.currentTarget).data('bs.' + this.type)
 
-    if (self && self.$tip && self.$tip.is(':visible')) {
-      self.hoverState = 'in'
-      return
-    }
-
     if (!self) {
       self = new this.constructor(obj.currentTarget, this.getDelegateOptions())
       $(obj.currentTarget).data('bs.' + this.type, self)
+    }
+
+    if (obj instanceof $.Event) {
+      self.inState[obj.type == 'focusin' ? 'focus' : 'hover'] = true
+    }
+
+    if (self.tip().hasClass('in') || self.hoverState == 'in') {
+      self.hoverState = 'in'
+      return
     }
 
     clearTimeout(self.timeout)
@@ -20941,6 +21150,14 @@ return PhotoSwipeUI_Default;
     }, self.options.delay.show)
   }
 
+  Tooltip.prototype.isInStateTrue = function () {
+    for (var key in this.inState) {
+      if (this.inState[key]) return true
+    }
+
+    return false
+  }
+
   Tooltip.prototype.leave = function (obj) {
     var self = obj instanceof this.constructor ?
       obj : $(obj.currentTarget).data('bs.' + this.type)
@@ -20949,6 +21166,12 @@ return PhotoSwipeUI_Default;
       self = new this.constructor(obj.currentTarget, this.getDelegateOptions())
       $(obj.currentTarget).data('bs.' + this.type, self)
     }
+
+    if (obj instanceof $.Event) {
+      self.inState[obj.type == 'focusout' ? 'focus' : 'hover'] = false
+    }
+
+    if (self.isInStateTrue()) return
 
     clearTimeout(self.timeout)
 
@@ -20996,6 +21219,7 @@ return PhotoSwipeUI_Default;
         .data('bs.' + this.type, this)
 
       this.options.container ? $tip.appendTo(this.options.container) : $tip.insertAfter(this.$element)
+      this.$element.trigger('inserted.bs.' + this.type)
 
       var pos          = this.getPosition()
       var actualWidth  = $tip[0].offsetWidth
@@ -21003,13 +21227,12 @@ return PhotoSwipeUI_Default;
 
       if (autoPlace) {
         var orgPlacement = placement
-        var $container   = this.options.container ? $(this.options.container) : this.$element.parent()
-        var containerDim = this.getPosition($container)
+        var viewportDim = this.getPosition(this.$viewport)
 
-        placement = placement == 'bottom' && pos.bottom + actualHeight > containerDim.bottom ? 'top'    :
-                    placement == 'top'    && pos.top    - actualHeight < containerDim.top    ? 'bottom' :
-                    placement == 'right'  && pos.right  + actualWidth  > containerDim.width  ? 'left'   :
-                    placement == 'left'   && pos.left   - actualWidth  < containerDim.left   ? 'right'  :
+        placement = placement == 'bottom' && pos.bottom + actualHeight > viewportDim.bottom ? 'top'    :
+                    placement == 'top'    && pos.top    - actualHeight < viewportDim.top    ? 'bottom' :
+                    placement == 'right'  && pos.right  + actualWidth  > viewportDim.width  ? 'left'   :
+                    placement == 'left'   && pos.left   - actualWidth  < viewportDim.left   ? 'right'  :
                     placement
 
         $tip
@@ -21050,8 +21273,8 @@ return PhotoSwipeUI_Default;
     if (isNaN(marginTop))  marginTop  = 0
     if (isNaN(marginLeft)) marginLeft = 0
 
-    offset.top  = offset.top  + marginTop
-    offset.left = offset.left + marginLeft
+    offset.top  += marginTop
+    offset.left += marginLeft
 
     // $.fn.offset doesn't round pixel values
     // so we use setOffset directly with our own function B-0
@@ -21133,7 +21356,7 @@ return PhotoSwipeUI_Default;
 
   Tooltip.prototype.fixTitle = function () {
     var $e = this.$element
-    if ($e.attr('title') || typeof ($e.attr('data-original-title')) != 'string') {
+    if ($e.attr('title') || typeof $e.attr('data-original-title') != 'string') {
       $e.attr('data-original-title', $e.attr('title') || '').attr('title', '')
     }
   }
@@ -21188,7 +21411,7 @@ return PhotoSwipeUI_Default;
       var rightEdgeOffset = pos.left + viewportPadding + actualWidth
       if (leftEdgeOffset < viewportDimensions.left) { // left overflow
         delta.left = viewportDimensions.left - leftEdgeOffset
-      } else if (rightEdgeOffset > viewportDimensions.width) { // right overflow
+      } else if (rightEdgeOffset > viewportDimensions.right) { // right overflow
         delta.left = viewportDimensions.left + viewportDimensions.width - rightEdgeOffset
       }
     }
@@ -21214,7 +21437,13 @@ return PhotoSwipeUI_Default;
   }
 
   Tooltip.prototype.tip = function () {
-    return (this.$tip = this.$tip || $(this.options.template))
+    if (!this.$tip) {
+      this.$tip = $(this.options.template)
+      if (this.$tip.length != 1) {
+        throw new Error(this.type + ' `template` option must consist of exactly 1 top-level element!')
+      }
+    }
+    return this.$tip
   }
 
   Tooltip.prototype.arrow = function () {
@@ -21243,7 +21472,13 @@ return PhotoSwipeUI_Default;
       }
     }
 
-    self.tip().hasClass('in') ? self.leave(self) : self.enter(self)
+    if (e) {
+      self.inState.click = !self.inState.click
+      if (self.isInStateTrue()) self.enter(self)
+      else self.leave(self)
+    } else {
+      self.tip().hasClass('in') ? self.leave(self) : self.enter(self)
+    }
   }
 
   Tooltip.prototype.destroy = function () {
@@ -21251,6 +21486,12 @@ return PhotoSwipeUI_Default;
     clearTimeout(this.timeout)
     this.hide(function () {
       that.$element.off('.' + that.type).removeData('bs.' + that.type)
+      if (that.$tip) {
+        that.$tip.detach()
+      }
+      that.$tip = null
+      that.$arrow = null
+      that.$viewport = null
     })
   }
 
@@ -21287,7 +21528,7 @@ return PhotoSwipeUI_Default;
 }(jQuery);
 
 /* ========================================================================
- * Bootstrap: modal.js v3.3.4
+ * Bootstrap: modal.js v3.3.5
  * http://getbootstrap.com/javascript/#modals
  * ========================================================================
  * Copyright 2011-2015 Twitter, Inc.
@@ -21321,7 +21562,7 @@ return PhotoSwipeUI_Default;
     }
   }
 
-  Modal.VERSION  = '3.3.4'
+  Modal.VERSION  = '3.3.5'
 
   Modal.TRANSITION_DURATION = 300
   Modal.BACKDROP_TRANSITION_DURATION = 150
@@ -21378,9 +21619,7 @@ return PhotoSwipeUI_Default;
         that.$element[0].offsetWidth // force reflow
       }
 
-      that.$element
-        .addClass('in')
-        .attr('aria-hidden', false)
+      that.$element.addClass('in')
 
       that.enforceFocus()
 
@@ -21414,7 +21653,6 @@ return PhotoSwipeUI_Default;
 
     this.$element
       .removeClass('in')
-      .attr('aria-hidden', true)
       .off('click.dismiss.bs.modal')
       .off('mouseup.dismiss.bs.modal')
 
@@ -21478,7 +21716,8 @@ return PhotoSwipeUI_Default;
     if (this.isShown && this.options.backdrop) {
       var doAnimate = $.support.transition && animate
 
-      this.$backdrop = $('<div class="modal-backdrop ' + animate + '" />')
+      this.$backdrop = $(document.createElement('div'))
+        .addClass('modal-backdrop ' + animate)
         .appendTo(this.$body)
 
       this.$element.on('click.dismiss.bs.modal', $.proxy(function (e) {
@@ -21626,7 +21865,7 @@ return PhotoSwipeUI_Default;
 
 }(jQuery);
 
-//     Underscore.js 1.8.2
+//     Underscore.js 1.8.3
 //     http://underscorejs.org
 //     (c) 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
 //     Underscore may be freely distributed under the MIT license.
@@ -21683,7 +21922,7 @@ return PhotoSwipeUI_Default;
   }
 
   // Current version.
-  _.VERSION = '1.8.2';
+  _.VERSION = '1.8.3';
 
   // Internal function that returns an efficient (for current engines) version
   // of the passed-in callback, to be repeatedly applied in other Underscore
@@ -21750,12 +21989,20 @@ return PhotoSwipeUI_Default;
     return result;
   };
 
+  var property = function(key) {
+    return function(obj) {
+      return obj == null ? void 0 : obj[key];
+    };
+  };
+
   // Helper for collection methods to determine whether a collection
   // should be iterated as an array or as an object
   // Related: http://people.mozilla.org/~jorendorff/es6-draft.html#sec-tolength
+  // Avoids a very nasty iOS 8 JIT bug on ARM-64. #2094
   var MAX_ARRAY_INDEX = Math.pow(2, 53) - 1;
+  var getLength = property('length');
   var isArrayLike = function(collection) {
-    var length = collection && collection.length;
+    var length = getLength(collection);
     return typeof length == 'number' && length >= 0 && length <= MAX_ARRAY_INDEX;
   };
 
@@ -21880,11 +22127,12 @@ return PhotoSwipeUI_Default;
     return false;
   };
 
-  // Determine if the array or object contains a given value (using `===`).
+  // Determine if the array or object contains a given item (using `===`).
   // Aliased as `includes` and `include`.
-  _.contains = _.includes = _.include = function(obj, target, fromIndex) {
+  _.contains = _.includes = _.include = function(obj, item, fromIndex, guard) {
     if (!isArrayLike(obj)) obj = _.values(obj);
-    return _.indexOf(obj, target, typeof fromIndex == 'number' && fromIndex) >= 0;
+    if (typeof fromIndex != 'number' || guard) fromIndex = 0;
+    return _.indexOf(obj, item, fromIndex) >= 0;
   };
 
   // Invoke a method (with arguments) on every item in a collection.
@@ -22108,7 +22356,7 @@ return PhotoSwipeUI_Default;
   // Internal implementation of a recursive `flatten` function.
   var flatten = function(input, shallow, strict, startIndex) {
     var output = [], idx = 0;
-    for (var i = startIndex || 0, length = input && input.length; i < length; i++) {
+    for (var i = startIndex || 0, length = getLength(input); i < length; i++) {
       var value = input[i];
       if (isArrayLike(value) && (_.isArray(value) || _.isArguments(value))) {
         //flatten current level of array or arguments object
@@ -22139,7 +22387,6 @@ return PhotoSwipeUI_Default;
   // been sorted, you have the option of using a faster algorithm.
   // Aliased as `unique`.
   _.uniq = _.unique = function(array, isSorted, iteratee, context) {
-    if (array == null) return [];
     if (!_.isBoolean(isSorted)) {
       context = iteratee;
       iteratee = isSorted;
@@ -22148,7 +22395,7 @@ return PhotoSwipeUI_Default;
     if (iteratee != null) iteratee = cb(iteratee, context);
     var result = [];
     var seen = [];
-    for (var i = 0, length = array.length; i < length; i++) {
+    for (var i = 0, length = getLength(array); i < length; i++) {
       var value = array[i],
           computed = iteratee ? iteratee(value, i, array) : value;
       if (isSorted) {
@@ -22175,10 +22422,9 @@ return PhotoSwipeUI_Default;
   // Produce an array that contains every item shared between all the
   // passed-in arrays.
   _.intersection = function(array) {
-    if (array == null) return [];
     var result = [];
     var argsLength = arguments.length;
-    for (var i = 0, length = array.length; i < length; i++) {
+    for (var i = 0, length = getLength(array); i < length; i++) {
       var item = array[i];
       if (_.contains(result, item)) continue;
       for (var j = 1; j < argsLength; j++) {
@@ -22207,7 +22453,7 @@ return PhotoSwipeUI_Default;
   // Complement of _.zip. Unzip accepts an array of arrays and groups
   // each array's elements on shared indices
   _.unzip = function(array) {
-    var length = array && _.max(array, 'length').length || 0;
+    var length = array && _.max(array, getLength).length || 0;
     var result = Array(length);
 
     for (var index = 0; index < length; index++) {
@@ -22221,7 +22467,7 @@ return PhotoSwipeUI_Default;
   // the corresponding values.
   _.object = function(list, values) {
     var result = {};
-    for (var i = 0, length = list && list.length; i < length; i++) {
+    for (var i = 0, length = getLength(list); i < length; i++) {
       if (values) {
         result[list[i]] = values[i];
       } else {
@@ -22231,42 +22477,11 @@ return PhotoSwipeUI_Default;
     return result;
   };
 
-  // Return the position of the first occurrence of an item in an array,
-  // or -1 if the item is not included in the array.
-  // If the array is large and already in sort order, pass `true`
-  // for **isSorted** to use binary search.
-  _.indexOf = function(array, item, isSorted) {
-    var i = 0, length = array && array.length;
-    if (typeof isSorted == 'number') {
-      i = isSorted < 0 ? Math.max(0, length + isSorted) : isSorted;
-    } else if (isSorted && length) {
-      i = _.sortedIndex(array, item);
-      return array[i] === item ? i : -1;
-    }
-    if (item !== item) {
-      return _.findIndex(slice.call(array, i), _.isNaN);
-    }
-    for (; i < length; i++) if (array[i] === item) return i;
-    return -1;
-  };
-
-  _.lastIndexOf = function(array, item, from) {
-    var idx = array ? array.length : 0;
-    if (typeof from == 'number') {
-      idx = from < 0 ? idx + from + 1 : Math.min(idx, from + 1);
-    }
-    if (item !== item) {
-      return _.findLastIndex(slice.call(array, 0, idx), _.isNaN);
-    }
-    while (--idx >= 0) if (array[idx] === item) return idx;
-    return -1;
-  };
-
   // Generator function to create the findIndex and findLastIndex functions
-  function createIndexFinder(dir) {
+  function createPredicateIndexFinder(dir) {
     return function(array, predicate, context) {
       predicate = cb(predicate, context);
-      var length = array != null && array.length;
+      var length = getLength(array);
       var index = dir > 0 ? 0 : length - 1;
       for (; index >= 0 && index < length; index += dir) {
         if (predicate(array[index], index, array)) return index;
@@ -22276,16 +22491,15 @@ return PhotoSwipeUI_Default;
   }
 
   // Returns the first index on an array-like that passes a predicate test
-  _.findIndex = createIndexFinder(1);
-
-  _.findLastIndex = createIndexFinder(-1);
+  _.findIndex = createPredicateIndexFinder(1);
+  _.findLastIndex = createPredicateIndexFinder(-1);
 
   // Use a comparator function to figure out the smallest index at which
   // an object should be inserted so as to maintain order. Uses binary search.
   _.sortedIndex = function(array, obj, iteratee, context) {
     iteratee = cb(iteratee, context, 1);
     var value = iteratee(obj);
-    var low = 0, high = array.length;
+    var low = 0, high = getLength(array);
     while (low < high) {
       var mid = Math.floor((low + high) / 2);
       if (iteratee(array[mid]) < value) low = mid + 1; else high = mid;
@@ -22293,11 +22507,43 @@ return PhotoSwipeUI_Default;
     return low;
   };
 
+  // Generator function to create the indexOf and lastIndexOf functions
+  function createIndexFinder(dir, predicateFind, sortedIndex) {
+    return function(array, item, idx) {
+      var i = 0, length = getLength(array);
+      if (typeof idx == 'number') {
+        if (dir > 0) {
+            i = idx >= 0 ? idx : Math.max(idx + length, i);
+        } else {
+            length = idx >= 0 ? Math.min(idx + 1, length) : idx + length + 1;
+        }
+      } else if (sortedIndex && idx && length) {
+        idx = sortedIndex(array, item);
+        return array[idx] === item ? idx : -1;
+      }
+      if (item !== item) {
+        idx = predicateFind(slice.call(array, i, length), _.isNaN);
+        return idx >= 0 ? idx + i : -1;
+      }
+      for (idx = dir > 0 ? i : length - 1; idx >= 0 && idx < length; idx += dir) {
+        if (array[idx] === item) return idx;
+      }
+      return -1;
+    };
+  }
+
+  // Return the position of the first occurrence of an item in an array,
+  // or -1 if the item is not included in the array.
+  // If the array is large and already in sort order, pass `true`
+  // for **isSorted** to use binary search.
+  _.indexOf = createIndexFinder(1, _.findIndex, _.sortedIndex);
+  _.lastIndexOf = createIndexFinder(-1, _.findLastIndex);
+
   // Generate an integer Array containing an arithmetic progression. A port of
   // the native Python `range()` function. See
   // [the Python documentation](http://docs.python.org/library/functions.html#range).
   _.range = function(start, stop, step) {
-    if (arguments.length <= 1) {
+    if (stop == null) {
       stop = start || 0;
       start = 0;
     }
@@ -22676,6 +22922,15 @@ return PhotoSwipeUI_Default;
   // Fill in a given object with default properties.
   _.defaults = createAssigner(_.allKeys, true);
 
+  // Creates an object that inherits from the given prototype object.
+  // If additional properties are provided then they will be added to the
+  // created object.
+  _.create = function(prototype, props) {
+    var result = baseCreate(prototype);
+    if (props) _.extendOwn(result, props);
+    return result;
+  };
+
   // Create a (shallow-cloned) duplicate of an object.
   _.clone = function(obj) {
     if (!_.isObject(obj)) return obj;
@@ -22753,7 +23008,7 @@ return PhotoSwipeUI_Default;
     }
     // Assume equality for cyclic structures. The algorithm for detecting cyclic
     // structures is adapted from ES 5.1 section 15.12.3, abstract operation `JO`.
-    
+
     // Initializing stack of traversed objects.
     // It's done here since we only need them for objects and arrays comparison.
     aStack = aStack || [];
@@ -22904,11 +23159,7 @@ return PhotoSwipeUI_Default;
 
   _.noop = function(){};
 
-  _.property = function(key) {
-    return function(obj) {
-      return obj == null ? void 0 : obj[key];
-    };
-  };
+  _.property = property;
 
   // Generates a function for a given object that returns a given property.
   _.propertyOf = function(obj) {
@@ -22917,7 +23168,7 @@ return PhotoSwipeUI_Default;
     };
   };
 
-  // Returns a predicate for checking whether an object has a given set of 
+  // Returns a predicate for checking whether an object has a given set of
   // `key:value` pairs.
   _.matcher = _.matches = function(attrs) {
     attrs = _.extendOwn({}, attrs);
@@ -23144,7 +23395,7 @@ return PhotoSwipeUI_Default;
   // Provide unwrapping proxy for some methods used in engine operations
   // such as arithmetic and JSON stringification.
   _.prototype.valueOf = _.prototype.toJSON = _.prototype.value;
-  
+
   _.prototype.toString = function() {
     return '' + this._wrapped;
   };

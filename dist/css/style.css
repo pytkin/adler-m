@@ -222,9 +222,6 @@ th {
   h3 {
     page-break-after: avoid;
     }
-  select {
-    background: #fff !important;
-    }
   .navbar {
     display: none;
     }
@@ -506,62 +503,72 @@ small,
 .text-primary {
   color: #0061ca;
   }
-a.text-primary:hover {
+a.text-primary:hover,
+a.text-primary:focus {
   color: #004997;
   }
 .text-success {
   color: #1bb560;
   }
-a.text-success:hover {
+a.text-success:hover,
+a.text-success:focus {
   color: #148948;
   }
 .text-info {
   color: #59ccff;
   }
-a.text-info:hover {
+a.text-info:hover,
+a.text-info:focus {
   color: #26bcff;
   }
 .text-warning {
   color: #f2c500;
   }
-a.text-warning:hover {
+a.text-warning:hover,
+a.text-warning:focus {
   color: #bf9b00;
   }
 .text-danger {
   color: #ea5748;
   }
-a.text-danger:hover {
+a.text-danger:hover,
+a.text-danger:focus {
   color: #e52d1a;
   }
 .bg-primary {
   color: #fff;
   background-color: #0061ca;
   }
-a.bg-primary:hover {
+a.bg-primary:hover,
+a.bg-primary:focus {
   background-color: #004997;
   }
 .bg-success {
   background-color: #dff0d8;
   }
-a.bg-success:hover {
+a.bg-success:hover,
+a.bg-success:focus {
   background-color: #c1e2b3;
   }
 .bg-info {
   background-color: #d9edf7;
   }
-a.bg-info:hover {
+a.bg-info:hover,
+a.bg-info:focus {
   background-color: #afd9ee;
   }
 .bg-warning {
   background-color: #fcf8e3;
   }
-a.bg-warning:hover {
+a.bg-warning:hover,
+a.bg-warning:focus {
   background-color: #f7ecb5;
   }
 .bg-danger {
   background-color: #f2dede;
   }
-a.bg-danger:hover {
+a.bg-danger:hover,
+a.bg-danger:focus {
   background-color: #e4b9b9;
   }
 .page-header {
@@ -4174,7 +4181,7 @@ a.pswp__share--download:hover {
     display: block !important;
     }
   table.visible-xs {
-    display: table;
+    display: table !important;
     }
   tr.visible-xs {
     display: table-row !important;
@@ -4204,7 +4211,7 @@ a.pswp__share--download:hover {
     display: block !important;
     }
   table.visible-sm {
-    display: table;
+    display: table !important;
     }
   tr.visible-sm {
     display: table-row !important;
@@ -4234,7 +4241,7 @@ a.pswp__share--download:hover {
     display: block !important;
     }
   table.visible-md {
-    display: table;
+    display: table !important;
     }
   tr.visible-md {
     display: table-row !important;
@@ -4264,7 +4271,7 @@ a.pswp__share--download:hover {
     display: block !important;
     }
   table.visible-lg {
-    display: table;
+    display: table !important;
     }
   tr.visible-lg {
     display: table-row !important;
@@ -4317,7 +4324,7 @@ a.pswp__share--download:hover {
     display: block !important;
     }
   table.visible-print {
-    display: table;
+    display: table !important;
     }
   tr.visible-print {
     display: table-row !important;
