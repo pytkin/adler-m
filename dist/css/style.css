@@ -10560,7 +10560,7 @@ a.pswp__share--download:hover {
 .catalog-card .card-details .details-buy .buy-price {
   position: relative;
   float: left;
-  width: 33.33333333%;
+  width: 30.33333333%;
   min-height: 1px;
   padding-right: 10px;
   padding-left: 10px;
@@ -10578,10 +10578,10 @@ a.pswp__share--download:hover {
 .catalog-card .card-details .details-buy .buy-button {
   position: relative;
   float: left;
-  width: 33.33333333%;
+  width: 36.33333333%;
   height: 46px;
   padding: 9px 15px;
-  font-size: 20px;
+  font-size: 14px;
   line-height: 26px;
   }
 @media (max-width: 991px) {
