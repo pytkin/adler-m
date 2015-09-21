@@ -1,3 +1,5 @@
+var serveStatic = require('serve-static');
+
 module.exports = function (grunt) {
 	'use strict';
 
@@ -71,8 +73,9 @@ module.exports = function (grunt) {
 				options: {
 					middleware: function (connect) {
 						return [
-							connect.static('.'),
-							connect().use('/dist/img', connect.static(config.app + '/img'))
+							serveStatic('.'),
+							serveStatic('dist'),
+							serveStatic('app')
 						];
 					}
 				}
